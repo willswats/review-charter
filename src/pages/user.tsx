@@ -31,6 +31,8 @@ export default function User() {
   };
 
   const fetchUserFavouriteCharacterIds = async (name: string) => {
+    setCharacterIds([]);
+
     const queryUserFavouriteCharacterIds: string = `
     query ($name: String) {
       User(name: $name) {
@@ -71,13 +73,15 @@ export default function User() {
       const response = await fetch(aniListUrl, options);
       const data = await response.json();
 
-      const nodes = data.data.User.favourites.characters.nodes;
-      const idArray: string[] = [];
-      nodes.forEach((node: { id: string }) => {
-        idArray.push(node.id);
-      });
+      if (data.data.User !== null) {
+        const nodes = data.data.User.favourites.characters.nodes;
+        const idArray: string[] = [];
+        nodes.forEach((node: { id: string }) => {
+          idArray.push(node.id);
+        });
 
-      setCharacterIds(idArray);
+        setCharacterIds(idArray);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -85,6 +89,7 @@ export default function User() {
 
   const fetchCharacter = async (id: number) => {
     setCharacters([]);
+
     const queryCharacter: string = `
     query ($id: Int) {
       Character(id: $id) {
