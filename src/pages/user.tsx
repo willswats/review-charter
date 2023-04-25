@@ -1,8 +1,8 @@
 import Head from "next/head";
 
-import { NavBar, InputText } from "@/components";
+import { NavBar, FormInputText } from "@/components";
 
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 import styles from "@/styles/User.module.css";
 
@@ -18,17 +18,9 @@ export default function User() {
 
   const [characterIds, setCharacterIds] = useState<string[]>([]);
   const [characters, setCharacters] = useState<character[]>([]);
-  const [inputTextValue, setInputTextValue] = useState("");
+  const [formInputTextValue, setFormInputTextValue] = useState("");
 
   const aniListUrl: string = "https://graphql.anilist.co";
-
-  const handleFetchOnClick = () => {
-    fetchUserFavouriteCharacterIds(inputTextValue);
-    characterIds.forEach((id) => {
-      fetchCharacter(parseInt(id));
-    });
-    console.log(characters);
-  };
 
   const fetchUserFavouriteCharacterIds = async (name: string) => {
     setCharacterIds([]);
@@ -136,8 +128,17 @@ export default function User() {
     }
   };
 
+  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    fetchUserFavouriteCharacterIds(formInputTextValue);
+    characterIds.forEach((id) => {
+      fetchCharacter(parseInt(id));
+    });
+    console.log(characters);
+  };
+
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputTextValue(event.target.value);
+    setFormInputTextValue(event.target.value);
   };
 
   return (
@@ -151,12 +152,12 @@ export default function User() {
 
       <NavBar />
       <main className={styles["user"]}>
-        <InputText
+        <FormInputText
           labelText="Enter username:"
-          inputValue={inputTextValue}
+          inputValue={formInputTextValue}
+          submitHandler={submitHandler}
           changeHandler={changeHandler}
         />
-        <button onClick={handleFetchOnClick}>Fetch</button>
         <h1>Characters</h1>
         {characters.map((item, index) => {
           return (
