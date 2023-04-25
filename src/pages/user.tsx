@@ -7,8 +7,17 @@ import { ChangeEvent, useState } from "react";
 import styles from "@/styles/User.module.css";
 
 export default function User() {
+  interface character {
+    first: string | null;
+    middle: string | null;
+    last: string | null;
+    full: string | null;
+    native: string | null;
+    userPreferred: string | null;
+  }
+
   const [characterIds, setCharacterIds] = useState<string[]>([]);
-  const [characters, setCharacters] = useState<any>();
+  const [characters, setCharacters] = useState<character[]>([]);
   const [inputTextValue, setInputTextValue] = useState("");
 
   const aniListUrl: string = "https://graphql.anilist.co";
@@ -18,6 +27,7 @@ export default function User() {
     characterIds.forEach((id) => {
       fetchCharacter(parseInt(id));
     });
+    console.log(characters);
   };
 
   const fetchUserFavouriteCharacterIds = async (name: string) => {
@@ -74,6 +84,7 @@ export default function User() {
   };
 
   const fetchCharacter = async (id: number) => {
+    setCharacters([]);
     const queryCharacter: string = `
     query ($id: Int) {
       Character(id: $id) {
@@ -112,7 +123,9 @@ export default function User() {
     try {
       const response = await fetch(aniListUrl, options);
       const data = await response.json();
-      console.log(data);
+      setCharacters((prevCharacters: character[]) => {
+        return [...prevCharacters, data.data.Character.name];
+      });
     } catch (e) {
       console.log(e);
     }
@@ -139,6 +152,22 @@ export default function User() {
           changeHandler={changeHandler}
         />
         <button onClick={handleFetchOnClick}>Fetch</button>
+        <h1>Characters</h1>
+        {characters.map((item, index) => {
+          return (
+            <div key={index}>
+              <h2>Character</h2>
+              <ul>
+                <li>First: {item.first}</li>
+                <li>Last: {item.last}</li>
+                <li>Middle: {item.middle}</li>
+                <li>Full: {item.full}</li>
+                <li>User preferred: {item.userPreferred}</li>
+                <li>Native: {item.native}</li>
+              </ul>
+            </div>
+          );
+        })}
       </main>
     </>
   );
