@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { NavBar, FormInputText, PieChart } from "@/components";
 
 import styles from "@/styles/User.module.css";
@@ -10,14 +10,11 @@ interface formatItem {
 }
 
 export default function User() {
-  const [userData, setUserData] = useState<any>([]);
   const [formInputTextValue, setFormInputTextValue] = useState<string>("");
   const [formatLabels, setFormatLabels] = useState<string[]>([]);
   const [formatCounts, setFormatCounts] = useState<number[]>([]);
 
   const fetchUser = async (name: string) => {
-    setUserData([]);
-
     const url: string = "https://graphql.anilist.co";
 
     const query: string = `
@@ -114,10 +111,8 @@ query ($name: String) {
     try {
       const response = await fetch(url, options);
       const data = await response.json();
-      setUserData(data);
 
       const formats = data.data.User.statistics.anime.formats;
-      console.log(data.data.User.name);
 
       const formatLabels: string[] = [];
       const formatCounts: number[] = [];
@@ -162,7 +157,7 @@ query ($name: String) {
         />
         <h1></h1>
         <PieChart
-          label="Number of format type:"
+          label="Number of type"
           labelArray={formatLabels}
           dataArray={formatCounts}
         />
