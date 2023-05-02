@@ -1,43 +1,93 @@
 import Head from "next/head";
-
-import { NavBar, FormInputText } from "@/components";
-
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { NavBar, FormInputText, PieChart } from "@/components";
 
 import styles from "@/styles/User.module.css";
 
+interface formatItem {
+  format: string;
+  count: number;
+}
+
 export default function User() {
-  interface character {
-    first: string | null;
-    middle: string | null;
-    last: string | null;
-    full: string | null;
-    native: string | null;
-    userPreferred: string | null;
-  }
+  const [userData, setUserData] = useState<any>([]);
+  const [formInputTextValue, setFormInputTextValue] = useState<string>("");
+  const [formatLabels, setFormatLabels] = useState<string[]>([]);
+  const [formatCounts, setFormatCounts] = useState<number[]>([]);
 
-  const [characterIds, setCharacterIds] = useState<string[]>([]);
-  const [characters, setCharacters] = useState<character[]>([]);
-  const [formInputTextValue, setFormInputTextValue] = useState("");
+  const fetchUser = async (name: string) => {
+    setUserData([]);
 
-  const aniListUrl: string = "https://graphql.anilist.co";
+    const url: string = "https://graphql.anilist.co";
 
-  const fetchUserFavouriteCharacterIds = async (name: string) => {
-    setCharacterIds([]);
-
-    const queryUserFavouriteCharacterIds: string = `
-    query ($name: String) {
-      User(name: $name) {
-        favourites {
-          characters {
-            nodes {
-              id
-            }
-          }
+    const query: string = `
+query ($name: String) {
+  User(name: $name) {
+    name
+    about
+    avatar {
+      large
+      medium
+    }
+    bannerImage
+    statistics {
+      anime {
+        minutesWatched
+        episodesWatched
+        meanScore
+        scores {
+          score
+          count
+        }
+        count
+        statuses {
+          status
+          count
+        }
+        formats {
+          format
+          count
+        }
+        genres {
+          genre
+          count
+        }
+        releaseYears {
+          releaseYear
+          count
         }
       }
-    } 
-    `;
+      manga {
+        count
+        minutesWatched
+        chaptersRead
+        meanScore
+        scores {
+          score
+          count
+        }
+        count
+        statuses {
+          status
+          count
+        }
+        genres {
+          genre
+          count
+        }
+        releaseYears {
+          releaseYear
+          count
+        }
+        formats {
+          format
+          count
+        }
+      }
+    }
+  }
+}
+`;
 
     const variables: { name: string } = {
       name: name,
@@ -56,73 +106,29 @@ export default function User() {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        query: queryUserFavouriteCharacterIds,
-        variables: variables,
+        query,
+        variables,
       }),
     };
 
     try {
-      const response = await fetch(aniListUrl, options);
+      const response = await fetch(url, options);
       const data = await response.json();
+      setUserData(data);
 
-      if (data.data.User !== null) {
-        const nodes = data.data.User.favourites.characters.nodes;
-        const idArray: string[] = [];
-        nodes.forEach((node: { id: string }) => {
-          idArray.push(node.id);
-        });
+      const formats = data.data.User.statistics.anime.formats;
+      console.log(data.data.User.name);
 
-        setCharacterIds(idArray);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
+      const formatLabels: string[] = [];
+      const formatCounts: number[] = [];
 
-  const fetchCharacter = async (id: number) => {
-    setCharacters([]);
-
-    const queryCharacter: string = `
-    query ($id: Int) {
-      Character(id: $id) {
-        name {
-          first
-          middle
-          last
-          full
-          native
-          userPreferred
-        }
-      }
-    }
-    `;
-
-    const variables: { id: number } = {
-      id: id,
-    };
-
-    const options: {
-      method: string;
-      headers: { "Content-Type": string; Accept: string };
-      body: string;
-    } = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        query: queryCharacter,
-        variables: variables,
-      }),
-    };
-
-    try {
-      const response = await fetch(aniListUrl, options);
-      const data = await response.json();
-      setCharacters((prevCharacters: character[]) => {
-        return [...prevCharacters, data.data.Character.name];
+      formats.forEach((formatItem: formatItem) => {
+        formatLabels.push(formatItem.format);
+        formatCounts.push(formatItem.count);
       });
+
+      setFormatLabels(formatLabels);
+      setFormatCounts(formatCounts);
     } catch (e) {
       console.log(e);
     }
@@ -130,11 +136,7 @@ export default function User() {
 
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    fetchUserFavouriteCharacterIds(formInputTextValue);
-    characterIds.forEach((id) => {
-      fetchCharacter(parseInt(id));
-    });
-    console.log(characters);
+    fetchUser(formInputTextValue);
   };
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -158,22 +160,12 @@ export default function User() {
           submitHandler={submitHandler}
           changeHandler={changeHandler}
         />
-        <h1>Characters</h1>
-        {characters.map((item, index) => {
-          return (
-            <div key={index}>
-              <h2>Character</h2>
-              <ul>
-                <li>First: {item.first}</li>
-                <li>Last: {item.last}</li>
-                <li>Middle: {item.middle}</li>
-                <li>Full: {item.full}</li>
-                <li>User preferred: {item.userPreferred}</li>
-                <li>Native: {item.native}</li>
-              </ul>
-            </div>
-          );
-        })}
+        <h1></h1>
+        <PieChart
+          label="Number of format type:"
+          labelArray={formatLabels}
+          dataArray={formatCounts}
+        />
       </main>
     </>
   );
