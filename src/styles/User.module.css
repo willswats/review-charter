@@ -4,3 +4,9 @@
   padding: 6rem;
   min-height: 100vh;
 }
+
+.user__avatar {
+  display: flex;
+  width: 10rem;
+  height: 10rem;
+}

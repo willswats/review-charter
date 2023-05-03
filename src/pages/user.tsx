@@ -11,6 +11,8 @@ interface formatItem {
 
 export default function User() {
   const [formInputTextValue, setFormInputTextValue] = useState<string>("");
+  const [userName, setUserName] = useState<string>("");
+  const [avatarUrl, setAvatarUrl] = useState<string>("");
   const [formatLabels, setFormatLabels] = useState<string[]>([]);
   const [formatCounts, setFormatCounts] = useState<number[]>([]);
 
@@ -21,12 +23,9 @@ export default function User() {
 query ($name: String) {
   User(name: $name) {
     name
-    about
     avatar {
       large
-      medium
     }
-    bannerImage
     statistics {
       anime {
         minutesWatched
@@ -124,6 +123,8 @@ query ($name: String) {
 
       setFormatLabels(formatLabels);
       setFormatCounts(formatCounts);
+      setUserName(data.data.User.name);
+      setAvatarUrl(data.data.User.avatar.large);
     } catch (e) {
       console.log(e);
     }
@@ -155,7 +156,10 @@ query ($name: String) {
           submitHandler={submitHandler}
           changeHandler={changeHandler}
         />
-        <h1></h1>
+        {avatarUrl.length > 0 && (
+          <img className={styles["user__avatar"]} src={avatarUrl} />
+        )}
+        <h1>{userName}</h1>
         <PieChart
           label="Number of type"
           labelArray={formatLabels}
