@@ -13,6 +13,7 @@ interface formatItem {
 
 export default function User() {
   const [formInputTextValue, setFormInputTextValue] = useState<string>("");
+
   const [userName, setUserName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string>("");
   const [formatLabels, setFormatLabels] = useState<string[]>([]);
@@ -57,10 +58,10 @@ export default function User() {
         formatCounts.push(formatItem.count);
       });
 
-      setFormatLabels(formatLabels);
-      setFormatCounts(formatCounts);
       setUserName(data.data.User.name);
       setAvatarUrl(data.data.User.avatar.large);
+      setFormatLabels(formatLabels);
+      setFormatCounts(formatCounts);
     } catch (e) {
       console.log(e);
     }
