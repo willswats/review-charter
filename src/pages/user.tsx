@@ -1,23 +1,23 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState } from "react";
 
-import { NavBar, FormInputText, PieChart } from "@/components";
+import {
+  NavBar,
+  FormInputText,
+  PieChartFormat,
+  formatItem,
+} from "@/components";
+
 import { userQuery } from "@/utils";
 
 import styles from "@/styles/User.module.css";
-
-interface formatItem {
-  format: string;
-  count: number;
-}
 
 export default function User() {
   const [formInputTextValue, setFormInputTextValue] = useState<string>("");
 
   const [userName, setUserName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string>("");
-  const [formatLabels, setFormatLabels] = useState<string[]>([]);
-  const [formatCounts, setFormatCounts] = useState<number[]>([]);
+  const [animeFormats, setAnimeFormats] = useState<formatItem[]>([]);
 
   const fetchUser = async (name: string) => {
     const url: string = "https://graphql.anilist.co";
@@ -28,7 +28,10 @@ export default function User() {
 
     interface options {
       method: string;
-      headers: { "Content-Type": string; Accept: string };
+      headers: {
+        "Content-Type": string;
+        Accept: string;
+      };
       body: string;
     }
 
@@ -48,20 +51,9 @@ export default function User() {
       const response = await fetch(url, options);
       const data = await response.json();
 
-      const formats = data.data.User.statistics.anime.formats;
-
-      const formatLabels: string[] = [];
-      const formatCounts: number[] = [];
-
-      formats.forEach((formatItem: formatItem) => {
-        formatLabels.push(formatItem.format);
-        formatCounts.push(formatItem.count);
-      });
-
-      setUserName(data.data.User.name);
       setAvatarUrl(data.data.User.avatar.large);
-      setFormatLabels(formatLabels);
-      setFormatCounts(formatCounts);
+      setUserName(data.data.User.name);
+      setAnimeFormats(data.data.User.statistics.anime.formats);
     } catch (e) {
       console.log(e);
     }
@@ -93,15 +85,11 @@ export default function User() {
           submitHandler={submitHandler}
           changeHandler={changeHandler}
         />
-        {avatarUrl.length > 0 && (
+        {avatarUrl && (
           <img className={styles["user__avatar"]} src={avatarUrl} />
         )}
         <h1>{userName}</h1>
-        <PieChart
-          label="Number of type"
-          labelArray={formatLabels}
-          dataArray={formatCounts}
-        />
+        <PieChartFormat formats={animeFormats} />
       </main>
     </>
   );
