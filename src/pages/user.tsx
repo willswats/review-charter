@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState } from "react";
+
 import { NavBar, FormInputText, PieChart } from "@/components";
+import { userQuery } from "@/utils";
 
 import styles from "@/styles/User.module.css";
 
@@ -19,72 +21,6 @@ export default function User() {
   const fetchUser = async (name: string) => {
     const url: string = "https://graphql.anilist.co";
 
-    const query: string = `
-query ($name: String) {
-  User(name: $name) {
-    name
-    avatar {
-      large
-    }
-    statistics {
-      anime {
-        minutesWatched
-        episodesWatched
-        meanScore
-        scores {
-          score
-          count
-        }
-        count
-        statuses {
-          status
-          count
-        }
-        formats {
-          format
-          count
-        }
-        genres {
-          genre
-          count
-        }
-        releaseYears {
-          releaseYear
-          count
-        }
-      }
-      manga {
-        count
-        minutesWatched
-        chaptersRead
-        meanScore
-        scores {
-          score
-          count
-        }
-        count
-        statuses {
-          status
-          count
-        }
-        genres {
-          genre
-          count
-        }
-        releaseYears {
-          releaseYear
-          count
-        }
-        formats {
-          format
-          count
-        }
-      }
-    }
-  }
-}
-`;
-
     const variables: { name: string } = {
       name: name,
     };
@@ -102,8 +38,8 @@ query ($name: String) {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        query,
-        variables,
+        query: userQuery,
+        variables: variables,
       }),
     };
 
