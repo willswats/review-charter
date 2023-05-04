@@ -15,11 +15,18 @@ import styles from "@/styles/User.module.css";
 export default function User() {
   const [formInputTextValue, setFormInputTextValue] = useState<string>("");
 
+  const [errorMessage, setErrorMessage] = useState<string>("");
+
   const [userName, setUserName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string>("");
   const [animeFormats, setAnimeFormats] = useState<formatItem[]>([]);
 
   const fetchUser = async (name: string) => {
+    setErrorMessage("");
+    setUserName("");
+    setAvatarUrl("");
+    setAnimeFormats([]);
+
     const url: string = "https://graphql.anilist.co";
 
     const variables: { name: string } = {
@@ -51,9 +58,13 @@ export default function User() {
       const response = await fetch(url, options);
       const data = await response.json();
 
-      setAvatarUrl(data.data.User.avatar.large);
-      setUserName(data.data.User.name);
-      setAnimeFormats(data.data.User.statistics.anime.formats);
+      if (data.data.User !== null) {
+        setAvatarUrl(data.data.User.avatar.large);
+        setUserName(data.data.User.name);
+        setAnimeFormats(data.data.User.statistics.anime.formats);
+      } else {
+        setErrorMessage(`There is no user named "${formInputTextValue}"`);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -85,6 +96,7 @@ export default function User() {
           submitHandler={submitHandler}
           changeHandler={changeHandler}
         />
+        <p>{errorMessage}</p>
         {avatarUrl && (
           <img className={styles["user__avatar"]} src={avatarUrl} />
         )}
