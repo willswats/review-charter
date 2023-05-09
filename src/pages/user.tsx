@@ -27,6 +27,12 @@ export default function User() {
 
   const [userName, setUserName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string>("");
+
+  const [animeCount, setAnimeCount] = useState<string>("");
+  const [animeEpisodesWatched, setAnimeEpisodesWatched] = useState<string>("");
+  const [animeMinutesWatched, setAnimeMinutesWatched] = useState<string>("");
+  const [animeMeanScore, setAnimeMeanScore] = useState<string>("");
+
   const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
   const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
   const [animeCountries, setAnimeCountries] = useState<countriesItem[]>([]);
@@ -37,8 +43,15 @@ export default function User() {
 
   const fetchUser = async (name: string) => {
     setErrorMessage("");
+
     setUserName("");
     setAvatarUrl("");
+
+    setAnimeCount("");
+    setAnimeEpisodesWatched("");
+    setAnimeMinutesWatched("");
+    setAnimeMeanScore("");
+
     setAnimeStatuses([]);
     setAnimeFormats([]);
     setAnimeCountries([]);
@@ -79,6 +92,14 @@ export default function User() {
       if (data.data.User !== null) {
         setAvatarUrl(data.data.User.avatar.large);
         setUserName(data.data.User.name);
+
+        setAnimeCount(data.data.User.statistics.anime.count);
+        setAnimeEpisodesWatched(
+          data.data.User.statistics.anime.episodesWatched
+        );
+        setAnimeMinutesWatched(data.data.User.statistics.anime.minutesWatched);
+        setAnimeMeanScore(data.data.User.statistics.anime.meanScore);
+
         setAnimeStatuses(data.data.User.statistics.anime.statuses);
         setAnimeFormats(data.data.User.statistics.anime.formats);
         setAnimeCountries(data.data.User.statistics.anime.countries);
@@ -124,6 +145,9 @@ export default function User() {
           <img className={styles["user__avatar"]} src={avatarUrl} />
         )}
         <h1>{userName}</h1>
+        <p>Total anime: {animeCount}</p>
+        <p>Episodes watched: {animeEpisodesWatched}</p>
+        <p>Days watched: {parseFloat(animeMinutesWatched) / 60 / 24}</p>
         {animeStatuses.length > 0 && (
           <>
             <h2>Statuses</h2>
@@ -145,6 +169,7 @@ export default function User() {
         {animeScores.length > 0 && (
           <>
             <h2>Scores</h2>
+            <p>Mean score: {animeMeanScore}</p>
             <BarChartScores scores={animeScores} />
           </>
         )}
