@@ -8,3 +8,5 @@ export * from "./PieChartFormats";
 export * from "./PieChartCountries";
 export * from "./BarChart";
 export * from "./BarChartScores";
+export * from "./LineChart";
+export * from "./LineChartReleaseYears";

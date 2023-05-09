@@ -8,9 +8,11 @@ import {
   PieChartFormats,
   PieChartCountries,
   BarChartScores,
+  LineChartReleaseYears,
   statusesItem,
   formatsItem,
   countriesItem,
+  releaseYearsItem,
   scoresItem,
 } from "@/components";
 
@@ -27,8 +29,11 @@ export default function User() {
   const [avatarUrl, setAvatarUrl] = useState<string>("");
   const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
   const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
-  const [animeScores, setAnimeScores] = useState<scoresItem[]>([]);
   const [animeCountries, setAnimeCountries] = useState<countriesItem[]>([]);
+  const [animeScores, setAnimeScores] = useState<scoresItem[]>([]);
+  const [animeReleaseYears, setAnimeReleaseYears] = useState<
+    releaseYearsItem[]
+  >([]);
 
   const fetchUser = async (name: string) => {
     setErrorMessage("");
@@ -36,7 +41,9 @@ export default function User() {
     setAvatarUrl("");
     setAnimeStatuses([]);
     setAnimeFormats([]);
+    setAnimeCountries([]);
     setAnimeScores([]);
+    setAnimeReleaseYears([]);
 
     const url: string = "https://graphql.anilist.co";
 
@@ -76,6 +83,7 @@ export default function User() {
         setAnimeFormats(data.data.User.statistics.anime.formats);
         setAnimeCountries(data.data.User.statistics.anime.countries);
         setAnimeScores(data.data.User.statistics.anime.scores);
+        setAnimeReleaseYears(data.data.User.statistics.anime.releaseYears);
         console.log(data);
       } else {
         setErrorMessage(`There is no user named "${formInputTextValue}"`);
@@ -138,6 +146,12 @@ export default function User() {
           <>
             <h2>Scores</h2>
             <BarChartScores scores={animeScores} />
+          </>
+        )}
+        {animeReleaseYears.length > 0 && (
+          <>
+            <h2>Release Years</h2>
+            <LineChartReleaseYears releaseYears={animeReleaseYears} />
           </>
         )}
       </main>
