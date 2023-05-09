@@ -33,7 +33,7 @@ export default function User() {
     setAvatarUrl("");
     setAnimeFormats([]);
     setAnimeStatuses([]);
-    setAnimeScores([])
+    setAnimeScores([]);
 
     const url: string = "https://graphql.anilist.co";
 
@@ -71,7 +71,7 @@ export default function User() {
         setUserName(data.data.User.name);
         setAnimeFormats(data.data.User.statistics.anime.formats);
         setAnimeStatuses(data.data.User.statistics.anime.statuses);
-        setAnimeScores(data.data.User.statistics.anime.scores)
+        setAnimeScores(data.data.User.statistics.anime.scores);
         console.log(data);
       } else {
         setErrorMessage(`There is no user named "${formInputTextValue}"`);
@@ -124,7 +124,12 @@ export default function User() {
             <PieChartStatuses statuses={animeStatuses} />
           </>
         )}
-        <BarChartScores scores={animeScores} />
+        {animeScores.length > 0 && (
+          <>
+            <h2>Scores</h2>
+            <BarChartScores scores={animeScores} />
+          </>
+        )}
       </main>
     </>
   );
