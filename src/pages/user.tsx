@@ -6,8 +6,10 @@ import {
   FormInputText,
   PieChartFormats,
   PieChartStatuses,
+  BarChartScores,
   formatsItem,
   statusesItem,
+  scoresItem,
 } from "@/components";
 
 import { userQuery } from "@/utils";
@@ -23,12 +25,15 @@ export default function User() {
   const [avatarUrl, setAvatarUrl] = useState<string>("");
   const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
   const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
+  const [animeScores, setAnimeScores] = useState<scoresItem[]>([]);
 
   const fetchUser = async (name: string) => {
     setErrorMessage("");
     setUserName("");
     setAvatarUrl("");
     setAnimeFormats([]);
+    setAnimeStatuses([]);
+    setAnimeScores([])
 
     const url: string = "https://graphql.anilist.co";
 
@@ -66,6 +71,7 @@ export default function User() {
         setUserName(data.data.User.name);
         setAnimeFormats(data.data.User.statistics.anime.formats);
         setAnimeStatuses(data.data.User.statistics.anime.statuses);
+        setAnimeScores(data.data.User.statistics.anime.scores)
         console.log(data);
       } else {
         setErrorMessage(`There is no user named "${formInputTextValue}"`);
@@ -118,6 +124,7 @@ export default function User() {
             <PieChartStatuses statuses={animeStatuses} />
           </>
         )}
+        <BarChartScores scores={animeScores} />
       </main>
     </>
   );

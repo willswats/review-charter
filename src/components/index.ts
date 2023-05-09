@@ -5,3 +5,5 @@ export * from "./FormInputText";
 export * from "./PieChart";
 export * from "./PieChartFormats";
 export * from "./PieChartStatuses";
+export * from "./BarChart";
+export * from "./BarChartScores";

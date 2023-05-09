@@ -7,6 +7,7 @@ query ($name: String) {
     }
     statistics {
       anime {
+        count
         minutesWatched
         episodesWatched
         meanScore
@@ -14,7 +15,6 @@ query ($name: String) {
           score
           count
         }
-        count
         statuses {
           status
           count
@@ -23,16 +23,8 @@ query ($name: String) {
           format
           count
         }
-        genres {
-          genre
-          count
-        }
         releaseYears {
           releaseYear
-          count
-        }
-        countries {
-          country
           count
         }
       }
@@ -45,7 +37,6 @@ query ($name: String) {
           score
           count
         }
-        count
         statuses {
           status
           count
@@ -54,16 +45,8 @@ query ($name: String) {
           format
           count
         }
-        genres {
-          genre
-          count
-        }
         releaseYears {
           releaseYear
-          count
-        }
-        countries {
-          country
           count
         }
       }
