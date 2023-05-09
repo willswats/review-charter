@@ -31,7 +31,6 @@ export default function User() {
   const [animeCount, setAnimeCount] = useState<string>("");
   const [animeEpisodesWatched, setAnimeEpisodesWatched] = useState<string>("");
   const [animeMinutesWatched, setAnimeMinutesWatched] = useState<string>("");
-  const [animeMeanScore, setAnimeMeanScore] = useState<string>("");
 
   const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
   const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
@@ -50,7 +49,6 @@ export default function User() {
     setAnimeCount("");
     setAnimeEpisodesWatched("");
     setAnimeMinutesWatched("");
-    setAnimeMeanScore("");
 
     setAnimeStatuses([]);
     setAnimeFormats([]);
@@ -98,7 +96,6 @@ export default function User() {
           data.data.User.statistics.anime.episodesWatched
         );
         setAnimeMinutesWatched(data.data.User.statistics.anime.minutesWatched);
-        setAnimeMeanScore(data.data.User.statistics.anime.meanScore);
 
         setAnimeStatuses(data.data.User.statistics.anime.statuses);
         setAnimeFormats(data.data.User.statistics.anime.formats);
@@ -169,7 +166,6 @@ export default function User() {
         {animeScores.length > 0 && (
           <>
             <h2>Scores</h2>
-            <p>Mean score: {animeMeanScore}</p>
             <BarChartScores scores={animeScores} />
           </>
         )}
