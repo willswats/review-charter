@@ -26,15 +26,6 @@ interface BarChartProps {
   dataArray: number[];
 }
 
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-  },
-};
-
 export const BarChart = ({ label, labelArray, dataArray }: BarChartProps) => {
   const data = {
     labels: labelArray,
@@ -49,7 +40,7 @@ export const BarChart = ({ label, labelArray, dataArray }: BarChartProps) => {
 
   return (
     <div className={styles["bar-chart"]}>
-      <Bar options={options} data={data} />
+      <Bar data={data} />
     </div>
   );
 };

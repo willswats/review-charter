@@ -122,7 +122,6 @@ export default function User() {
             <PieChartStatuses statuses={animeStatuses} />
           </>
         )}
-        {}
         {animeFormats.length > 0 && (
           <>
             <h2>Formats</h2>
