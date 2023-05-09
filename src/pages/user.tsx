@@ -4,8 +4,10 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import {
   NavBar,
   FormInputText,
-  PieChartFormat,
-  formatItem,
+  PieChartFormats,
+  PieChartStatuses,
+  formatsItem,
+  statusesItem,
 } from "@/components";
 
 import { userQuery } from "@/utils";
@@ -19,7 +21,8 @@ export default function User() {
 
   const [userName, setUserName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string>("");
-  const [animeFormats, setAnimeFormats] = useState<formatItem[]>([]);
+  const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
+  const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
 
   const fetchUser = async (name: string) => {
     setErrorMessage("");
@@ -62,6 +65,8 @@ export default function User() {
         setAvatarUrl(data.data.User.avatar.large);
         setUserName(data.data.User.name);
         setAnimeFormats(data.data.User.statistics.anime.formats);
+        setAnimeStatuses(data.data.User.statistics.anime.statuses);
+        console.log(data);
       } else {
         setErrorMessage(`There is no user named "${formInputTextValue}"`);
       }
@@ -101,7 +106,18 @@ export default function User() {
           <img className={styles["user__avatar"]} src={avatarUrl} />
         )}
         <h1>{userName}</h1>
-        <PieChartFormat formats={animeFormats} />
+        {animeFormats.length > 0 && (
+          <>
+            <h2>Formats</h2>
+            <PieChartFormats formats={animeFormats} />
+          </>
+        )}
+        {animeStatuses.length > 0 && (
+          <>
+            <h2>Statuses</h2>
+            <PieChartStatuses statuses={animeStatuses} />
+          </>
+        )}
       </main>
     </>
   );

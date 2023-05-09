@@ -31,6 +31,10 @@ query ($name: String) {
           releaseYear
           count
         }
+        countries {
+          country
+          count
+        }
       }
       manga {
         count
@@ -46,6 +50,10 @@ query ($name: String) {
           status
           count
         }
+        formats {
+          format
+          count
+        }
         genres {
           genre
           count
@@ -54,8 +62,8 @@ query ($name: String) {
           releaseYear
           count
         }
-        formats {
-          format
+        countries {
+          country
           count
         }
       }
