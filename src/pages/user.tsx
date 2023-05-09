@@ -4,11 +4,13 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import {
   NavBar,
   FormInputText,
-  PieChartFormats,
   PieChartStatuses,
+  PieChartFormats,
+  PieChartCountries,
   BarChartScores,
-  formatsItem,
   statusesItem,
+  formatsItem,
+  countriesItem,
   scoresItem,
 } from "@/components";
 
@@ -23,16 +25,17 @@ export default function User() {
 
   const [userName, setUserName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string>("");
-  const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
   const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
+  const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
   const [animeScores, setAnimeScores] = useState<scoresItem[]>([]);
+  const [animeCountries, setAnimeCountries] = useState<countriesItem[]>([]);
 
   const fetchUser = async (name: string) => {
     setErrorMessage("");
     setUserName("");
     setAvatarUrl("");
-    setAnimeFormats([]);
     setAnimeStatuses([]);
+    setAnimeFormats([]);
     setAnimeScores([]);
 
     const url: string = "https://graphql.anilist.co";
@@ -69,8 +72,9 @@ export default function User() {
       if (data.data.User !== null) {
         setAvatarUrl(data.data.User.avatar.large);
         setUserName(data.data.User.name);
-        setAnimeFormats(data.data.User.statistics.anime.formats);
         setAnimeStatuses(data.data.User.statistics.anime.statuses);
+        setAnimeFormats(data.data.User.statistics.anime.formats);
+        setAnimeCountries(data.data.User.statistics.anime.countries);
         setAnimeScores(data.data.User.statistics.anime.scores);
         console.log(data);
       } else {
@@ -112,16 +116,23 @@ export default function User() {
           <img className={styles["user__avatar"]} src={avatarUrl} />
         )}
         <h1>{userName}</h1>
+        {animeStatuses.length > 0 && (
+          <>
+            <h2>Statuses</h2>
+            <PieChartStatuses statuses={animeStatuses} />
+          </>
+        )}
+        {}
         {animeFormats.length > 0 && (
           <>
             <h2>Formats</h2>
             <PieChartFormats formats={animeFormats} />
           </>
         )}
-        {animeStatuses.length > 0 && (
+        {animeCountries.length > 0 && (
           <>
-            <h2>Statuses</h2>
-            <PieChartStatuses statuses={animeStatuses} />
+            <h2>Countries</h2>
+            <PieChartCountries countries={animeCountries} />
           </>
         )}
         {animeScores.length > 0 && (

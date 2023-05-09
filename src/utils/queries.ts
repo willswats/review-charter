@@ -27,6 +27,10 @@ query ($name: String) {
           releaseYear
           count
         }
+        countries {
+          country
+          count
+        }
       }
       manga {
         count
@@ -47,6 +51,10 @@ query ($name: String) {
         }
         releaseYears {
           releaseYear
+          count
+        }
+        countries {
+          country
           count
         }
       }
