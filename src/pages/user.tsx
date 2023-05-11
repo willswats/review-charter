@@ -41,6 +41,10 @@ export default function User() {
   >([]);
 
   const fetchUser = async (name: string) => {
+    const userName = formInputTextValue;
+
+    setFormInputTextValue("");
+
     setErrorMessage("");
 
     setUserName("");
@@ -104,7 +108,7 @@ export default function User() {
         setAnimeReleaseYears(data.data.User.statistics.anime.releaseYears);
         console.log(data);
       } else {
-        setErrorMessage(`There is no user named "${formInputTextValue}"`);
+        setErrorMessage(`There is no user named "${userName}"`);
       }
     } catch (e) {
       console.log(e);
