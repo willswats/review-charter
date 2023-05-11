@@ -9,6 +9,10 @@ a {
   all: unset;
 }
 
+a:focus {
+  outline: #37a1d9 solid 1px;
+}
+
 body {
   color: #9fadbd;
   background-color: #0b1622;
@@ -21,9 +25,17 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: #37a1d9 solid 1px;
+}
+
 input {
   color: #000;
   border: none;
+}
+
+input:focus {
+  outline: #37a1d9 solid 1px;
 }
 
 svg {
