@@ -7,6 +7,26 @@
   min-height: 100vh;
 }
 
+.home__container {
+  display: flex;
+  flex-direction: column;
+  padding: 10rem;
+  border-radius: 50px;
+  background-color: #151f2e;
+}
+
 .home__title {
   font-size: 4rem;
+  color: #37a1d9;
+}
+
+.home__description {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.home__button-container {
+  display: flex;
+  justify-content: center;
 }

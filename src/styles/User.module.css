@@ -5,8 +5,42 @@
   min-height: 100vh;
 }
 
+.user__top {
+  display: flex;
+  justify-content: center;
+}
+
 .user__avatar {
   display: flex;
   width: 10rem;
   height: 10rem;
+}
+
+.user__pie-charts {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.user__pie-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.user__bar-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.user__line-chart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }

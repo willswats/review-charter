@@ -15,9 +15,15 @@ export default function Home() {
       </Head>
 
       <main className={styles.home}>
-        <h1 className={styles["home__title"]}>Review Charter</h1>
-        <p>Visualise AniList data in multiple charts.</p>
-        <LinkButton href="/user" text="Chart a User" />
+        <div className={styles["home__container"]}>
+          <h1 className={styles["home__title"]}>Review Charter</h1>
+          <p className={styles["home__description"]}>
+            Visualise AniList data in multiple charts.
+          </p>
+          <div className={styles["home__button-container"]}>
+            <LinkButton href="/user" text="Chart a User" />
+          </div>
+        </div>
       </main>
     </>
   );

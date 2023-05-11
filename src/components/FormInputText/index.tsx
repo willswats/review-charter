@@ -3,22 +3,26 @@ import { ChangeEvent, FormEvent } from "react";
 import styles from "./styles.module.css";
 
 interface FormInputTextProps {
-  labelText: string;
+  placeHolder: string;
   inputValue: string;
   submitHandler: (event: FormEvent<HTMLFormElement>) => void;
   changeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const FormInputText = ({
-  labelText,
+  placeHolder,
   inputValue,
   submitHandler,
   changeHandler,
 }: FormInputTextProps) => {
   return (
     <form onSubmit={submitHandler}>
-      <label>{labelText}</label>
-      <input onChange={changeHandler} value={inputValue} />
+      <input
+        className={styles["form-input-text__input"]}
+        onChange={changeHandler}
+        value={inputValue}
+        placeholder={placeHolder}
+      />
     </form>
   );
 };

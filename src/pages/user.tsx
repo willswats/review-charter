@@ -131,50 +131,68 @@ export default function User() {
 
       <NavBar />
       <main className={styles["user"]}>
-        <FormInputText
-          labelText="Enter username:"
-          inputValue={formInputTextValue}
-          submitHandler={submitHandler}
-          changeHandler={changeHandler}
-        />
+        <div className={styles["user__top"]}>
+          <FormInputText
+            placeHolder="Username..."
+            inputValue={formInputTextValue}
+            submitHandler={submitHandler}
+            changeHandler={changeHandler}
+          />
+        </div>
         <p>{errorMessage}</p>
         {avatarUrl && (
           <img className={styles["user__avatar"]} src={avatarUrl} />
         )}
         <h1>{userName}</h1>
-        <p>Total anime: {animeCount}</p>
-        <p>Episodes watched: {animeEpisodesWatched}</p>
-        <p>Days watched: {parseFloat(animeMinutesWatched) / 60 / 24}</p>
-        {animeStatuses.length > 0 && (
-          <>
-            <h2>Statuses</h2>
-            <PieChartStatuses statuses={animeStatuses} />
-          </>
+        {animeCount && <p>Total anime: {animeCount}</p>}
+        {animeEpisodesWatched && (
+          <p>Episodes watched: {animeEpisodesWatched}</p>
         )}
-        {animeFormats.length > 0 && (
-          <>
-            <h2>Formats</h2>
-            <PieChartFormats formats={animeFormats} />
-          </>
+        {animeMinutesWatched && (
+          <p>Days watched: {parseFloat(animeMinutesWatched) / 60 / 24}</p>
         )}
-        {animeCountries.length > 0 && (
-          <>
-            <h2>Countries</h2>
-            <PieChartCountries countries={animeCountries} />
-          </>
-        )}
-        {animeScores.length > 0 && (
-          <>
-            <h2>Scores</h2>
-            <BarChartScores scores={animeScores} />
-          </>
-        )}
-        {animeReleaseYears.length > 0 && (
-          <>
-            <h2>Release Years</h2>
-            <LineChartReleaseYears releaseYears={animeReleaseYears} />
-          </>
-        )}
+        <div className={styles["user__pie-charts"]}>
+          <div className={styles["user__pie-chart"]}>
+            {animeStatuses.length > 0 && (
+              <>
+                <h2>Statuses</h2>
+                <PieChartStatuses statuses={animeStatuses} />
+              </>
+            )}
+          </div>
+          <div className={styles["user__pie-chart"]}>
+            {animeFormats.length > 0 && (
+              <>
+                <h2>Formats</h2>
+                <PieChartFormats formats={animeFormats} />
+              </>
+            )}
+          </div>
+          <div className={styles["user__pie-chart"]}>
+            {animeCountries.length > 0 && (
+              <>
+                <h2>Countries</h2>
+                <PieChartCountries countries={animeCountries} />
+              </>
+            )}
+          </div>
+        </div>
+        <div className={styles["user__bar-chart"]}>
+          {animeScores.length > 0 && (
+            <>
+              <h2>Scores</h2>
+              <BarChartScores scores={animeScores} />
+            </>
+          )}
+        </div>
+        <div className={styles["user__line-chart"]}>
+          {animeReleaseYears.length > 0 && (
+            <>
+              <h2>Release Years</h2>
+              <LineChartReleaseYears releaseYears={animeReleaseYears} />
+            </>
+          )}
+        </div>
       </main>
     </>
   );
