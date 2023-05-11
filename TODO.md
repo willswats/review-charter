@@ -9,3 +9,4 @@
 ## Styling
 
 - [ ] Mobile responsive breakpoints
+- [ ] Add banner
