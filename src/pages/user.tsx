@@ -135,7 +135,7 @@ export default function User() {
 
       <NavBar />
       <main className={styles["user"]}>
-        <div className={styles["user__top"]}>
+        <div className={styles["user__controls"]}>
           <FormInputText
             placeHolder="Username..."
             inputValue={formInputTextValue}
@@ -144,17 +144,29 @@ export default function User() {
           />
         </div>
         <p>{errorMessage}</p>
-        {avatarUrl && (
-          <img className={styles["user__avatar"]} src={avatarUrl} />
-        )}
-        <h1>{userName}</h1>
-        {animeCount && <p>Total anime: {animeCount}</p>}
-        {animeEpisodesWatched && (
-          <p>Episodes watched: {animeEpisodesWatched}</p>
-        )}
-        {animeMinutesWatched && (
-          <p>Days watched: {parseFloat(animeMinutesWatched) / 60 / 24}</p>
-        )}
+        <div className={styles["user__avatar-name-container"]}>
+          {avatarUrl && (
+            <img className={styles["user__avatar"]} src={avatarUrl} />
+          )}
+          <h1>{userName}</h1>
+        </div>
+        <div className={styles["user__statistics"]}>
+          {animeCount && (
+            <div className={styles["user__statistic"]}>
+              {animeCount} Total Anime
+            </div>
+          )}
+          {animeEpisodesWatched && (
+            <div className={styles["user__statistic"]}>
+              {animeEpisodesWatched} Episodes Watched
+            </div>
+          )}
+          {animeMinutesWatched && (
+            <div className={styles["user__statistic"]}>
+              {parseFloat(animeMinutesWatched) / 60 / 24} Days Watched
+            </div>
+          )}
+        </div>
         <div className={styles["user__pie-charts"]}>
           <div className={styles["user__pie-chart"]}>
             {animeStatuses.length > 0 && (
