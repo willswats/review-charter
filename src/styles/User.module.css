@@ -29,41 +29,9 @@
   margin-bottom: 2rem;
 }
 
-.user__statistic {
-  display: flex;
-  flex-direction: column;
-  background-color: #151f2e;
-  padding: 2rem;
-  border-radius: 20px;
-}
-
 .user__pie-charts {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 2rem;
-}
-
-.user__pie-chart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
-.user__bar-chart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.user__line-chart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin-bottom: 2rem;
 }
 

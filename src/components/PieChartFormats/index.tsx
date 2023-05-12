@@ -19,10 +19,13 @@ export const PieChartFormats = ({ formats }: PieChartFormatsProps) => {
   });
 
   return (
-    <PieChart
-      label="Number of type"
-      labelArray={formatsLabels}
-      dataArray={formatsCounts}
-    />
+    <div>
+      <h2>Formats</h2>
+      <PieChart
+        label="Number of type"
+        labelArray={formatsLabels}
+        dataArray={formatsCounts}
+      />
+    </div>
   );
 };

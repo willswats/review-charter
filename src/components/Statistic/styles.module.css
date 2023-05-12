@@ -1,0 +1,9 @@
+.statistic {
+  display: flex;
+  flex-direction: column;
+}
+
+.statistic__statistic {
+  color: #37a1d9;
+  font-size: 2rem;
+}

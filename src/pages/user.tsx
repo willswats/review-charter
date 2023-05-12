@@ -2,6 +2,7 @@ import Head from "next/head";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import {
+  // Components
   NavBar,
   FormInputText,
   PieChartStatuses,
@@ -9,6 +10,8 @@ import {
   PieChartCountries,
   BarChartScores,
   LineChartReleaseYears,
+  Statistic,
+  // Interfaces
   statusesItem,
   formatsItem,
   countriesItem,
@@ -30,7 +33,7 @@ export default function User() {
 
   const [animeCount, setAnimeCount] = useState<string>("");
   const [animeEpisodesWatched, setAnimeEpisodesWatched] = useState<string>("");
-  const [animeMinutesWatched, setAnimeMinutesWatched] = useState<string>("");
+  const [animeDaysWatched, setAnimeDaysWatched] = useState<string>("");
 
   const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
   const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
@@ -52,7 +55,7 @@ export default function User() {
 
     setAnimeCount("");
     setAnimeEpisodesWatched("");
-    setAnimeMinutesWatched("");
+    setAnimeDaysWatched("");
 
     setAnimeStatuses([]);
     setAnimeFormats([]);
@@ -99,7 +102,11 @@ export default function User() {
         setAnimeEpisodesWatched(
           data.data.User.statistics.anime.episodesWatched
         );
-        setAnimeMinutesWatched(data.data.User.statistics.anime.minutesWatched);
+        setAnimeDaysWatched(
+          Math.round(
+            parseFloat(data.data.User.statistics.anime.minutesWatched) / 60 / 24
+          ).toString()
+        );
 
         setAnimeStatuses(data.data.User.statistics.anime.statuses);
         setAnimeFormats(data.data.User.statistics.anime.formats);
@@ -152,63 +159,33 @@ export default function User() {
         </div>
         <div className={styles["user__statistics"]}>
           {animeCount && (
-            <div className={styles["user__statistic"]}>
-              {animeCount} Total Anime
-            </div>
+            <Statistic statistic={animeCount} text="Total Anime" />
           )}
           {animeEpisodesWatched && (
-            <div className={styles["user__statistic"]}>
-              {animeEpisodesWatched} Episodes Watched
-            </div>
+            <Statistic
+              statistic={animeEpisodesWatched}
+              text="Episodes Watched"
+            />
           )}
-          {animeMinutesWatched && (
-            <div className={styles["user__statistic"]}>
-              {parseFloat(animeMinutesWatched) / 60 / 24} Days Watched
-            </div>
+          {animeDaysWatched && (
+            <Statistic statistic={animeDaysWatched} text="Days Watched" />
           )}
         </div>
         <div className={styles["user__pie-charts"]}>
-          <div className={styles["user__pie-chart"]}>
-            {animeStatuses.length > 0 && (
-              <>
-                <h2>Statuses</h2>
-                <PieChartStatuses statuses={animeStatuses} />
-              </>
-            )}
-          </div>
-          <div className={styles["user__pie-chart"]}>
-            {animeFormats.length > 0 && (
-              <>
-                <h2>Formats</h2>
-                <PieChartFormats formats={animeFormats} />
-              </>
-            )}
-          </div>
-          <div className={styles["user__pie-chart"]}>
-            {animeCountries.length > 0 && (
-              <>
-                <h2>Countries</h2>
-                <PieChartCountries countries={animeCountries} />
-              </>
-            )}
-          </div>
-        </div>
-        <div className={styles["user__bar-chart"]}>
-          {animeScores.length > 0 && (
-            <>
-              <h2>Scores</h2>
-              <BarChartScores scores={animeScores} />
-            </>
+          {animeStatuses.length > 0 && (
+            <PieChartStatuses statuses={animeStatuses} />
+          )}
+          {animeFormats.length > 0 && (
+            <PieChartFormats formats={animeFormats} />
+          )}
+          {animeCountries.length > 0 && (
+            <PieChartCountries countries={animeCountries} />
           )}
         </div>
-        <div className={styles["user__line-chart"]}>
-          {animeReleaseYears.length > 0 && (
-            <>
-              <h2>Release Years</h2>
-              <LineChartReleaseYears releaseYears={animeReleaseYears} />
-            </>
-          )}
-        </div>
+        {animeScores.length > 0 && <BarChartScores scores={animeScores} />}
+        {animeReleaseYears.length > 0 && (
+          <LineChartReleaseYears releaseYears={animeReleaseYears} />
+        )}
       </main>
     </>
   );

@@ -21,10 +21,13 @@ export const BarChartScores = ({ scores }: BarChartScoresProps) => {
   });
 
   return (
-    <BarChart
-      label="Number of scores"
-      labelArray={labelArray}
-      dataArray={dataArray}
-    />
+    <div>
+      <h2>Scores</h2>
+      <BarChart
+        label="Number of scores"
+        labelArray={labelArray}
+        dataArray={dataArray}
+      />
+    </div>
   );
 };

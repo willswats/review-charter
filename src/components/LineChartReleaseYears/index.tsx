@@ -25,10 +25,13 @@ export const LineChartReleaseYears = ({
   });
 
   return (
-    <LineChart
-      label="Number of type"
-      labelArray={labelArray}
-      dataArray={dataArray}
-    />
+    <div>
+      <h2>Release Years</h2>
+      <LineChart
+        label="Number of type"
+        labelArray={labelArray}
+        dataArray={dataArray}
+      />
+    </div>
   );
 };

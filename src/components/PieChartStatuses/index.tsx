@@ -19,10 +19,13 @@ export const PieChartStatuses = ({ statuses }: PieChartStatusesProps) => {
   });
 
   return (
-    <PieChart
-      label="Number of type"
-      labelArray={statusesLabels}
-      dataArray={statusesCounts}
-    />
+    <div>
+      <h2>Statuses</h2>
+      <PieChart
+        label="Number of type"
+        labelArray={statusesLabels}
+        dataArray={statusesCounts}
+      />
+    </div>
   );
 };

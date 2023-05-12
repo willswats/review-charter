@@ -19,10 +19,13 @@ export const PieChartCountries = ({ countries }: PieChartCountriesProps) => {
   });
 
   return (
-    <PieChart
-      label="Number of type:"
-      labelArray={labelArray}
-      dataArray={dataArray}
-    />
+    <div>
+      <h2>Countries</h2>
+      <PieChart
+        label="Number of type:"
+        labelArray={labelArray}
+        dataArray={dataArray}
+      />
+    </div>
   );
 };
