@@ -5,4 +5,7 @@
   align-items: center;
   margin-bottom: 2rem;
   width: 100rem;
+  background-color: #151f2e;
+  border-radius: 20px;
+  padding: 1rem;
 }
