@@ -2,7 +2,9 @@
 
 ## High Priority
 
+- [ ] Statistic SVGs
 - [ ] Refresh button
+- [ ] Mobile responsive
 - [ ] Move from useState to useReducer
 - [ ] Anime / Manga button
 
