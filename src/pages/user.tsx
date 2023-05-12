@@ -11,6 +11,7 @@ import {
   BarChartScores,
   LineChartReleaseYears,
   Statistic,
+  UserInfo,
   // Interfaces
   statusesItem,
   formatsItem,
@@ -28,8 +29,8 @@ export default function User() {
 
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const [userName, setUserName] = useState<string>("");
   const [avatarUrl, setAvatarUrl] = useState<string>("");
+  const [userName, setUserName] = useState<string>("");
 
   const [animeCount, setAnimeCount] = useState<string>("");
   const [animeEpisodesWatched, setAnimeEpisodesWatched] = useState<string>("");
@@ -50,8 +51,8 @@ export default function User() {
 
     setErrorMessage("");
 
-    setUserName("");
     setAvatarUrl("");
+    setUserName("");
 
     setAnimeCount("");
     setAnimeEpisodesWatched("");
@@ -151,12 +152,7 @@ export default function User() {
           />
         </div>
         <p>{errorMessage}</p>
-        <div className={styles["user__avatar-name-container"]}>
-          {avatarUrl && (
-            <img className={styles["user__avatar"]} src={avatarUrl} />
-          )}
-          <h1>{userName}</h1>
-        </div>
+        {avatarUrl && <UserInfo avatarUrl={avatarUrl} userName={userName} />}
         <div className={styles["user__statistics"]}>
           {animeCount && (
             <Statistic statistic={animeCount} text="Total Anime" />

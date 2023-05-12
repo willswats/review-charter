@@ -11,3 +11,4 @@ export * from "./BarChartScores";
 export * from "./LineChart";
 export * from "./LineChartReleaseYears";
 export * from "./Statistic";
+export * from "./UserInfo";
