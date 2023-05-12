@@ -1,5 +1,7 @@
 import { LineChart } from "@/components";
 
+import styles from "./styles.module.css";
+
 export interface releaseYearsItem {
   releaseYear: string;
   count: number;
@@ -25,7 +27,7 @@ export const LineChartReleaseYears = ({
   });
 
   return (
-    <div>
+    <div className={styles["line-chart-release-years"]}>
       <h2>Release Years</h2>
       <LineChart
         label="Number of type"

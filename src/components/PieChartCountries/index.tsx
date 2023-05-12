@@ -1,5 +1,7 @@
 import { PieChart } from "@/components";
 
+import styles from "./styles.module.css";
+
 export interface countriesItem {
   country: string;
   count: number;
@@ -19,7 +21,7 @@ export const PieChartCountries = ({ countries }: PieChartCountriesProps) => {
   });
 
   return (
-    <div>
+    <div className={styles["pie-chart-countries"]}>
       <h2>Countries</h2>
       <PieChart
         label="Number of type:"

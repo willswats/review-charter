@@ -1,5 +1,7 @@
 import { BarChart } from "@/components";
 
+import styles from "./styles.module.css";
+
 export interface scoresItem {
   score: number;
   count: number;
@@ -21,7 +23,7 @@ export const BarChartScores = ({ scores }: BarChartScoresProps) => {
   });
 
   return (
-    <div>
+    <div className={styles["bar-chart-scores"]}>
       <h2>Scores</h2>
       <BarChart
         label="Number of scores"

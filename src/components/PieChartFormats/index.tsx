@@ -1,5 +1,7 @@
 import { PieChart } from "@/components";
 
+import styles from "./styles.module.css";
+
 export interface formatsItem {
   format: string;
   count: number;
@@ -19,7 +21,7 @@ export const PieChartFormats = ({ formats }: PieChartFormatsProps) => {
   });
 
   return (
-    <div>
+    <div className={styles["pie-chart-formats"]}>
       <h2>Formats</h2>
       <PieChart
         label="Number of type"

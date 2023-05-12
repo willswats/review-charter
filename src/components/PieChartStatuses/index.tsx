@@ -1,5 +1,7 @@
 import { PieChart } from "@/components";
 
+import styles from "./styles.module.css";
+
 export interface statusesItem {
   status: string;
   count: number;
@@ -19,7 +21,7 @@ export const PieChartStatuses = ({ statuses }: PieChartStatusesProps) => {
   });
 
   return (
-    <div>
+    <div className={styles["pie-chart-statuses"]}>
       <h2>Statuses</h2>
       <PieChart
         label="Number of type"
