@@ -1,17 +1,16 @@
 # TODO
 
-## Features
+## High Priority
 
-- [ ] Anime / Manga button
 - [ ] Refresh button
-- [ ] Loading indicators
-
-## Styling
-
-- [ ] Mobile responsive breakpoints
-- [ ] Add banner
-
-## Refactor
-
 - [ ] Move from useState to useReducer
+- [ ] Anime / Manga button
+
+## Medium Priority
+
 - [ ] Remove specific charts
+
+## Low Priority
+
+- [ ] Loading indicators
+- [ ] Banner
