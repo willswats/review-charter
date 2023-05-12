@@ -10,3 +10,8 @@
 
 - [ ] Mobile responsive breakpoints
 - [ ] Add banner
+
+## Refactor
+
+- [ ] Move from useState to useReducer
+- [ ] Remove specific charts
