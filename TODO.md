@@ -14,3 +14,4 @@
 
 - [ ] Loading indicators
 - [ ] Banner
+- [ ] Preserve state between pages
