@@ -16,3 +16,4 @@
 - [ ] Banner
 - [ ] Preserve state between pages
 - [ ] Change global strings to objects
+- [ ] Add favicons and manifest
