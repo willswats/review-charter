@@ -8,9 +8,8 @@ query ($name: String) {
     statistics {
       anime {
         count
-        minutesWatched
         episodesWatched
-        meanScore
+        minutesWatched
         scores {
           score
           count
@@ -34,9 +33,8 @@ query ($name: String) {
       }
       manga {
         count
-        minutesWatched
         chaptersRead
-        meanScore
+        volumesRead
         scores {
           score
           count

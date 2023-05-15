@@ -35,10 +35,22 @@ interface Anime {
   releaseYears: releaseYearsItem[];
 }
 
+interface Manga {
+  count: string;
+  chaptersRead: string;
+  volumesRead: string;
+  statuses: statusesItem[];
+  formats: formatsItem[];
+  countries: countriesItem[];
+  scores: scoresItem[];
+  releaseYears: releaseYearsItem[];
+}
+
 interface State {
   avatarUrl: string;
   userName: string;
   anime: Anime;
+  manga: Manga;
   errorMessage: string;
 }
 
@@ -55,15 +67,31 @@ const initialState: State = {
     countries: [],
     releaseYears: [],
   },
+  manga: {
+    count: "",
+    chaptersRead: "",
+    volumesRead: "",
+    statuses: [],
+    formats: [],
+    scores: [],
+    countries: [],
+    releaseYears: [],
+  },
   errorMessage: "",
 };
 
 type SetAvatarUrl = { type: "set-avatar-url"; payload: string };
 type SetUserName = { type: "set-user-name"; payload: string };
 type SetAnime = { type: "set-anime"; payload: Anime };
+type SetManga = { type: "set-manga"; payload: Manga };
 type SetErrorMessage = { type: "set-error-message"; payload: string };
 
-type UserActions = SetAvatarUrl | SetUserName | SetAnime | SetErrorMessage;
+type UserActions =
+  | SetAvatarUrl
+  | SetUserName
+  | SetAnime
+  | SetManga
+  | SetErrorMessage;
 
 const reducer = (state: State, { type, payload }: UserActions): State => {
   switch (type) {
@@ -81,6 +109,11 @@ const reducer = (state: State, { type, payload }: UserActions): State => {
       return {
         ...state,
         anime: payload,
+      };
+    case "set-manga":
+      return {
+        ...state,
+        manga: payload,
       };
     case "set-error-message":
       return {
@@ -140,6 +173,7 @@ export default function User() {
       if (data.data.User !== null) {
         const avatarUrl = data.data.User.avatar.large;
         const userName = data.data.User.name;
+
         const anime = {
           count: data.data.User.statistics.anime.count,
           episodesWatched: data.data.User.statistics.anime.episodesWatched,
@@ -153,9 +187,21 @@ export default function User() {
           releaseYears: data.data.User.statistics.anime.releaseYears,
         };
 
+        const manga = {
+          count: data.data.User.statistics.manga.count,
+          chaptersRead: data.data.User.statistics.manga.chaptersRead,
+          volumesRead: data.data.User.statistics.manga.volumesRead,
+          statuses: data.data.User.statistics.manga.statuses,
+          formats: data.data.User.statistics.manga.formats,
+          scores: data.data.User.statistics.manga.scores,
+          countries: data.data.User.statistics.manga.countries,
+          releaseYears: data.data.User.statistics.manga.releaseYears,
+        };
+
         dispatch({ type: "set-avatar-url", payload: avatarUrl });
         dispatch({ type: "set-user-name", payload: userName });
         dispatch({ type: "set-anime", payload: anime });
+        dispatch({ type: "set-manga", payload: manga });
 
         console.log(data);
       } else {
