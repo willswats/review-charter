@@ -2,18 +2,18 @@
 
 ## High Priority
 
-- [ ] Statistic SVGs
-- [ ] Refresh button
 - [ ] Mobile responsive
 - [ ] Move from useState to useReducer
-- [ ] Anime / Manga button
 
 ## Medium Priority
 
-- [ ] Remove specific charts
+- [ ] Refresh button
+- [ ] Anime / Manga button
+- [ ] Statistic SVGs
 
 ## Low Priority
 
 - [ ] Loading indicators
 - [ ] Banner
 - [ ] Preserve state between pages
+- [ ] Remove specific charts
