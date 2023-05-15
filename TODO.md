@@ -3,7 +3,6 @@
 ## High Priority
 
 - [ ] Mobile responsive
-- [ ] Move from useState to useReducer
 
 ## Medium Priority
 

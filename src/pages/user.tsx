@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useReducer } from "react";
 
 import { NavBar, FormInputText } from "@/components";
 
@@ -24,45 +24,87 @@ import {
 
 import styles from "@/styles/User.module.css";
 
+interface Anime {
+  count: string;
+  episodesWatched: string;
+  daysWatched: string;
+  statuses: statusesItem[];
+  formats: formatsItem[];
+  countries: countriesItem[];
+  scores: scoresItem[];
+  releaseYears: releaseYearsItem[];
+}
+
+interface State {
+  avatarUrl: string;
+  userName: string;
+  anime: Anime;
+  errorMessage: string;
+}
+
+const initialState: State = {
+  avatarUrl: "",
+  userName: "",
+  anime: {
+    count: "",
+    episodesWatched: "",
+    daysWatched: "",
+    statuses: [],
+    formats: [],
+    scores: [],
+    countries: [],
+    releaseYears: [],
+  },
+  errorMessage: "",
+};
+
+type SetAvatarUrl = { type: "set-avatar-url"; payload: string };
+type SetUserName = { type: "set-user-name"; payload: string };
+type SetAnime = { type: "set-anime"; payload: Anime };
+type SetErrorMessage = { type: "set-error-message"; payload: string };
+
+type UserActions = SetAvatarUrl | SetUserName | SetAnime | SetErrorMessage;
+
+const reducer = (state: State, { type, payload }: UserActions): State => {
+  switch (type) {
+    case "set-avatar-url":
+      return {
+        ...state,
+        avatarUrl: payload,
+      };
+    case "set-user-name":
+      return {
+        ...state,
+        userName: payload,
+      };
+    case "set-anime":
+      return {
+        ...state,
+        anime: payload,
+      };
+    case "set-error-message":
+      return {
+        ...state,
+        errorMessage: payload,
+      };
+  }
+};
+
 export default function User() {
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [formInputTextValue, setFormInputTextValue] = useState<string>("");
-
-  const [errorMessage, setErrorMessage] = useState<string>("");
-
-  const [avatarUrl, setAvatarUrl] = useState<string>("");
-  const [userName, setUserName] = useState<string>("");
-
-  const [animeCount, setAnimeCount] = useState<string>("");
-  const [animeEpisodesWatched, setAnimeEpisodesWatched] = useState<string>("");
-  const [animeDaysWatched, setAnimeDaysWatched] = useState<string>("");
-
-  const [animeStatuses, setAnimeStatuses] = useState<statusesItem[]>([]);
-  const [animeFormats, setAnimeFormats] = useState<formatsItem[]>([]);
-  const [animeCountries, setAnimeCountries] = useState<countriesItem[]>([]);
-  const [animeScores, setAnimeScores] = useState<scoresItem[]>([]);
-  const [animeReleaseYears, setAnimeReleaseYears] = useState<
-    releaseYearsItem[]
-  >([]);
 
   const fetchUser = async (name: string) => {
     const userName = formInputTextValue;
-
     setFormInputTextValue("");
 
-    setErrorMessage("");
-
-    setAvatarUrl("");
-    setUserName("");
-
-    setAnimeCount("");
-    setAnimeEpisodesWatched("");
-    setAnimeDaysWatched("");
-
-    setAnimeStatuses([]);
-    setAnimeFormats([]);
-    setAnimeCountries([]);
-    setAnimeScores([]);
-    setAnimeReleaseYears([]);
+    dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
+    dispatch({ type: "set-user-name", payload: initialState.userName });
+    dispatch({ type: "set-anime", payload: initialState.anime });
+    dispatch({
+      type: "set-error-message",
+      payload: initialState.errorMessage,
+    });
 
     const url: string = "https://graphql.anilist.co";
 
@@ -96,27 +138,29 @@ export default function User() {
       const data = await response.json();
 
       if (data.data.User !== null) {
-        setAvatarUrl(data.data.User.avatar.large);
-        setUserName(data.data.User.name);
-
-        setAnimeCount(data.data.User.statistics.anime.count);
-        setAnimeEpisodesWatched(
-          data.data.User.statistics.anime.episodesWatched
-        );
-        setAnimeDaysWatched(
-          Math.round(
+        const avatarUrl = data.data.User.avatar.large;
+        const userName = data.data.User.name;
+        const anime = {
+          count: data.data.User.statistics.anime.count,
+          episodesWatched: data.data.User.statistics.anime.episodesWatched,
+          daysWatched: Math.round(
             parseFloat(data.data.User.statistics.anime.minutesWatched) / 60 / 24
-          ).toString()
-        );
+          ).toString(),
+          statuses: data.data.User.statistics.anime.statuses,
+          formats: data.data.User.statistics.anime.formats,
+          scores: data.data.User.statistics.anime.scores,
+          countries: data.data.User.statistics.anime.countries,
+          releaseYears: data.data.User.statistics.anime.releaseYears,
+        };
 
-        setAnimeStatuses(data.data.User.statistics.anime.statuses);
-        setAnimeFormats(data.data.User.statistics.anime.formats);
-        setAnimeCountries(data.data.User.statistics.anime.countries);
-        setAnimeScores(data.data.User.statistics.anime.scores);
-        setAnimeReleaseYears(data.data.User.statistics.anime.releaseYears);
+        dispatch({ type: "set-avatar-url", payload: avatarUrl });
+        dispatch({ type: "set-user-name", payload: userName });
+        dispatch({ type: "set-anime", payload: anime });
+
         console.log(data);
       } else {
-        setErrorMessage(`There is no user named "${userName}"`);
+        const errorMessage = `There is no user named "${userName}"`;
+        dispatch({ type: "set-error-message", payload: errorMessage });
       }
     } catch (e) {
       console.log(e);
@@ -151,36 +195,43 @@ export default function User() {
             changeHandler={changeHandler}
           />
         </div>
-        <p>{errorMessage}</p>
-        {avatarUrl && <UserInfo avatarUrl={avatarUrl} userName={userName} />}
+        <p>{state.errorMessage}</p>
+        {state.avatarUrl && (
+          <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
+        )}
         <div className={styles["user__statistics"]}>
-          {animeCount && (
-            <UserStatistic statistic={animeCount} text="Total Anime" />
+          {state.anime.count && (
+            <UserStatistic statistic={state.anime.count} text="Total Anime" />
           )}
-          {animeEpisodesWatched && (
+          {state.anime.episodesWatched && (
             <UserStatistic
-              statistic={animeEpisodesWatched}
+              statistic={state.anime.episodesWatched}
               text="Episodes Watched"
             />
           )}
-          {animeDaysWatched && (
-            <UserStatistic statistic={animeDaysWatched} text="Days Watched" />
+          {state.anime.daysWatched && (
+            <UserStatistic
+              statistic={state.anime.daysWatched}
+              text="Days Watched"
+            />
           )}
         </div>
         <div className={styles["user__pie-charts"]}>
-          {animeStatuses.length > 0 && (
-            <PieChartStatuses statuses={animeStatuses} />
+          {state.anime.statuses.length > 0 && (
+            <PieChartStatuses statuses={state.anime.statuses} />
           )}
-          {animeFormats.length > 0 && (
-            <PieChartFormats formats={animeFormats} />
+          {state.anime.formats.length > 0 && (
+            <PieChartFormats formats={state.anime.formats} />
           )}
-          {animeCountries.length > 0 && (
-            <PieChartCountries countries={animeCountries} />
+          {state.anime.countries.length > 0 && (
+            <PieChartCountries countries={state.anime.countries} />
           )}
         </div>
-        {animeScores.length > 0 && <BarChartScores scores={animeScores} />}
-        {animeReleaseYears.length > 0 && (
-          <LineChartReleaseYears releaseYears={animeReleaseYears} />
+        {state.anime.scores.length > 0 && (
+          <BarChartScores scores={state.anime.scores} />
+        )}
+        {state.anime.releaseYears.length > 0 && (
+          <LineChartReleaseYears releaseYears={state.anime.releaseYears} />
         )}
       </main>
     </>
