@@ -6,12 +6,7 @@ import { NavBar, FormInputText } from "@/components";
 import {
   //Components
   UserInfo,
-  UserStatistic,
-  PieChartStatuses,
-  PieChartFormats,
-  PieChartCountries,
-  BarChartScores,
-  LineChartReleaseYears,
+  UserAnime,
   // Interfaces
   statusesItem,
   formatsItem,
@@ -24,7 +19,7 @@ import {
 
 import styles from "@/styles/User.module.css";
 
-interface Anime {
+export interface Anime {
   count: string;
   episodesWatched: string;
   daysWatched: string;
@@ -35,7 +30,7 @@ interface Anime {
   releaseYears: releaseYearsItem[];
 }
 
-interface Manga {
+export interface Manga {
   count: string;
   chaptersRead: string;
   volumesRead: string;
@@ -245,40 +240,7 @@ export default function User() {
         {state.avatarUrl && (
           <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
         )}
-        <div className={styles["user__statistics"]}>
-          {state.anime.count && (
-            <UserStatistic statistic={state.anime.count} text="Total Anime" />
-          )}
-          {state.anime.episodesWatched && (
-            <UserStatistic
-              statistic={state.anime.episodesWatched}
-              text="Episodes Watched"
-            />
-          )}
-          {state.anime.daysWatched && (
-            <UserStatistic
-              statistic={state.anime.daysWatched}
-              text="Days Watched"
-            />
-          )}
-        </div>
-        <div className={styles["user__pie-charts"]}>
-          {state.anime.statuses.length > 0 && (
-            <PieChartStatuses statuses={state.anime.statuses} />
-          )}
-          {state.anime.formats.length > 0 && (
-            <PieChartFormats formats={state.anime.formats} />
-          )}
-          {state.anime.countries.length > 0 && (
-            <PieChartCountries countries={state.anime.countries} />
-          )}
-        </div>
-        {state.anime.scores.length > 0 && (
-          <BarChartScores scores={state.anime.scores} />
-        )}
-        {state.anime.releaseYears.length > 0 && (
-          <LineChartReleaseYears releaseYears={state.anime.releaseYears} />
-        )}
+        <UserAnime anime={state.anime} />
       </main>
     </>
   );

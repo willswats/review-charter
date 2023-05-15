@@ -1,5 +1,6 @@
 export * from "./components/UserInfo";
 export * from "./components/UserStatistic";
+export * from "./components/UserAnime";
 export * from "./components/PieChartStatuses";
 export * from "./components/PieChartFormats";
 export * from "./components/PieChartCountries";
