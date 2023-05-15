@@ -1,4 +1,4 @@
-.statistic {
+.user-statistic {
   display: flex;
   background-color: #151f2e;
   border-radius: 20px;
@@ -7,7 +7,7 @@
   margin-bottom: 1rem;
 }
 
-.statistic__statistic {
+.user-statistic__statistic {
   color: #37a1d9;
   font-size: 2rem;
 }

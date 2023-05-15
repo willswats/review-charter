@@ -1,26 +1,26 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState } from "react";
 
+import { NavBar, FormInputText } from "@/components";
+
 import {
-  // Components
-  NavBar,
-  FormInputText,
+  //Components
+  UserInfo,
+  UserStatistic,
   PieChartStatuses,
   PieChartFormats,
   PieChartCountries,
   BarChartScores,
   LineChartReleaseYears,
-  Statistic,
-  UserInfo,
   // Interfaces
   statusesItem,
   formatsItem,
   countriesItem,
   releaseYearsItem,
   scoresItem,
-} from "@/components";
-
-import { userQuery } from "@/utils";
+  // Utils
+  userQuery,
+} from "@/features/user";
 
 import styles from "@/styles/User.module.css";
 
@@ -155,16 +155,16 @@ export default function User() {
         {avatarUrl && <UserInfo avatarUrl={avatarUrl} userName={userName} />}
         <div className={styles["user__statistics"]}>
           {animeCount && (
-            <Statistic statistic={animeCount} text="Total Anime" />
+            <UserStatistic statistic={animeCount} text="Total Anime" />
           )}
           {animeEpisodesWatched && (
-            <Statistic
+            <UserStatistic
               statistic={animeEpisodesWatched}
               text="Episodes Watched"
             />
           )}
           {animeDaysWatched && (
-            <Statistic statistic={animeDaysWatched} text="Days Watched" />
+            <UserStatistic statistic={animeDaysWatched} text="Days Watched" />
           )}
         </div>
         <div className={styles["user__pie-charts"]}>
