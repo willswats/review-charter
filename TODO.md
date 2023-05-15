@@ -3,6 +3,7 @@
 ## High Priority
 
 - [ ] Refresh button
+- [ ] Handle empty data for anime and manga
 - [ ] Statistic SVGs
 - [ ] Mobile responsive
 
