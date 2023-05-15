@@ -8,9 +8,11 @@
   background-color: #151f2e;
 }
 .mode-button:hover {
+  color: #249bd9;
   background-color: rgba(0, 0, 0, 0.5);
 }
 
 .mode-button--active {
+  color: #249bd9;
   background-color: rgba(0, 0, 0, 0.5);
 }
