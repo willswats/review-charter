@@ -7,6 +7,7 @@ import {
   //Components
   UserInfo,
   UserAnime,
+  UserManga,
   // Interfaces
   statusesItem,
   formatsItem,
@@ -241,6 +242,7 @@ export default function User() {
           <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
         )}
         <UserAnime anime={state.anime} />
+        <UserManga manga={state.manga} />
       </main>
     </>
   );

@@ -1,15 +1,15 @@
-.user-anime__statistics {
+.user-manga__statistics {
   display: flex;
   justify-content: space-between;
 }
 
-.user-anime__pie-charts {
+.user-manga__pie-charts {
   display: flex;
   justify-content: space-between;
 }
 
 @media screen and (max-width: 1200px) {
-  .user-anime__pie-charts {
+  .user-manga__pie-charts {
     flex-direction: column;
   }
 }

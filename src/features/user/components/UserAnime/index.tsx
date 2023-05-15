@@ -31,7 +31,7 @@ export const UserAnime = ({ anime }: UserAnimeProps) => {
           <UserStatistic statistic={anime.daysWatched} text="Days Watched" />
         )}
       </div>
-      <div className={styles["user__pie-charts"]}>
+      <div className={styles["user-anime__pie-charts"]}>
         {anime.statuses.length > 0 && (
           <PieChartStatuses statuses={anime.statuses} />
         )}
