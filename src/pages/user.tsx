@@ -6,7 +6,7 @@ import { NavBar, FormInputText } from "@/components";
 import {
   //Components
   UserInfo,
-  UserModes,
+  UserModeButtons,
   UserAnime,
   UserManga,
   // Interfaces
@@ -240,13 +240,18 @@ export default function User() {
       <NavBar />
       <main className={styles["user"]}>
         <div className={styles["user__controls"]}>
-          <FormInputText
-            placeHolder="Username..."
-            inputValue={formInputTextValue}
-            submitHandler={submitHandler}
-            changeHandler={changeHandler}
-          />
-          <UserModes mode={state.mode} dispatch={dispatch} />
+          <div className={styles["user__controls-left"]}>refresh</div>
+          <div className={styles["user__controls-middle"]}>
+            <FormInputText
+              placeHolder="Username..."
+              inputValue={formInputTextValue}
+              submitHandler={submitHandler}
+              changeHandler={changeHandler}
+            />
+          </div>
+          <div className={styles["user__controls-right"]}>
+            <UserModeButtons mode={state.mode} dispatch={dispatch} />
+          </div>
         </div>
         <p>{state.errorMessage}</p>
         {state.avatarUrl && (

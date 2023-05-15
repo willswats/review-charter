@@ -7,5 +7,25 @@
 
 .user__controls {
   display: flex;
+}
+
+.user__controls-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
+}
+
+.user__controls-middle {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.user__controls-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 200px;
 }

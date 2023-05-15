@@ -1,0 +1,9 @@
+.user-mode-buttons {
+  display: flex;
+}
+
+.user-mode-buttons__content {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+}
