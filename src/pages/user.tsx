@@ -6,6 +6,7 @@ import { NavBar, FormInputText } from "@/components";
 import {
   //Components
   UserInfo,
+  UserModes,
   UserAnime,
   UserManga,
   // Interfaces
@@ -47,6 +48,7 @@ interface State {
   userName: string;
   anime: Anime;
   manga: Manga;
+  mode: string;
   errorMessage: string;
 }
 
@@ -73,20 +75,23 @@ const initialState: State = {
     countries: [],
     releaseYears: [],
   },
+  mode: "ANIME",
   errorMessage: "",
 };
 
-type SetAvatarUrl = { type: "set-avatar-url"; payload: string };
-type SetUserName = { type: "set-user-name"; payload: string };
-type SetAnime = { type: "set-anime"; payload: Anime };
-type SetManga = { type: "set-manga"; payload: Manga };
-type SetErrorMessage = { type: "set-error-message"; payload: string };
+export type SetAvatarUrl = { type: "set-avatar-url"; payload: string };
+export type SetUserName = { type: "set-user-name"; payload: string };
+export type SetAnime = { type: "set-anime"; payload: Anime };
+export type SetManga = { type: "set-manga"; payload: Manga };
+export type SetMode = { type: "set-mode"; payload: string };
+export type SetErrorMessage = { type: "set-error-message"; payload: string };
 
 type UserActions =
   | SetAvatarUrl
   | SetUserName
   | SetAnime
   | SetManga
+  | SetMode
   | SetErrorMessage;
 
 const reducer = (state: State, { type, payload }: UserActions): State => {
@@ -110,6 +115,11 @@ const reducer = (state: State, { type, payload }: UserActions): State => {
       return {
         ...state,
         manga: payload,
+      };
+    case "set-mode":
+      return {
+        ...state,
+        mode: payload,
       };
     case "set-error-message":
       return {
@@ -236,13 +246,14 @@ export default function User() {
             submitHandler={submitHandler}
             changeHandler={changeHandler}
           />
+          <UserModes mode={state.mode} dispatch={dispatch} />
         </div>
         <p>{state.errorMessage}</p>
         {state.avatarUrl && (
           <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
         )}
-        <UserAnime anime={state.anime} />
-        <UserManga manga={state.manga} />
+        {state.mode === "ANIME" && <UserAnime anime={state.anime} />}
+        {state.mode === "MANGA" && <UserManga manga={state.manga} />}
       </main>
     </>
   );

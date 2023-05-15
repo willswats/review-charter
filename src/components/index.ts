@@ -1,4 +1,5 @@
 export * from "./LinkButton";
+export * from "./ModeButton";
 export * from "./NavBar";
 export * from "./NavBarLink";
 export * from "./FormInputText";
