@@ -28,7 +28,7 @@ export const UserManga = ({ manga }: UserMangaProps) => {
           <UserStatistic statistic={manga.volumesRead} text="Volumes Read" />
         )}
       </div>
-      <div className={styles["user__pie-charts"]}>
+      <div className={styles["user-manga__pie-charts"]}>
         {manga.statuses.length > 0 && (
           <PieChartStatuses statuses={manga.statuses} />
         )}
