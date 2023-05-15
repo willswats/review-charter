@@ -14,3 +14,4 @@
 
 - [ ] Banner
 - [ ] Preserve state between pages
+- [ ] Change global strings to objects
