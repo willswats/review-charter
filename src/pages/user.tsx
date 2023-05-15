@@ -240,7 +240,7 @@ export default function User() {
       <NavBar />
       <main className={styles["user"]}>
         <div className={styles["user__controls"]}>
-          <div className={styles["user__controls-left"]}>refresh</div>
+          <div className={styles["user__controls-left"]}></div>
           <div className={styles["user__controls-middle"]}>
             <FormInputText
               placeHolder="Username..."
