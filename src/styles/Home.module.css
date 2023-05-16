@@ -26,6 +26,12 @@
   font-size: 1.2rem;
 }
 
+.home__description-link {
+  color: #37a1d9;
+  text-decoration: underline;
+  margin: 0px 5px;
+}
+
 .home__button-container {
   display: flex;
   justify-content: center;

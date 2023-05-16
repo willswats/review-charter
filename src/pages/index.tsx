@@ -18,7 +18,14 @@ export default function Home() {
         <div className={styles["home__container"]}>
           <h1 className={styles["home__title"]}>Review Charter</h1>
           <p className={styles["home__description"]}>
-            Visualise AniList data in multiple charts.
+            Visualise
+            <a
+              className={styles["home__description-link"]}
+              href="https://anilist.co"
+            >
+              AniList
+            </a>
+            data in multiple charts.
           </p>
           <div className={styles["home__button-container"]}>
             <LinkButton href="/user" text="Chart a User" />
