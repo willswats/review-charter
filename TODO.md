@@ -2,18 +2,20 @@
 
 ## High Priority
 
-- [ ] Refresh button
 - [ ] Handle empty data for anime and manga
 - [ ] Statistic SVGs
+- [ ] Loading indicators
+- [ ] Hover mouse on charts and categories
+- [ ] Find users in an alternative way, e.g. most popular or active users
 - [ ] Mobile responsive
 
 ## Medium Priority
 
-- [ ] Loading indicators
+- [ ] Refresh button
+- [ ] Banner
 
 ## Low Priority
 
-- [ ] Banner
 - [ ] Preserve state between pages
-- [ ] Change global strings to objects
 - [ ] Add favicons and manifest
+- [ ] Change global strings to objects
