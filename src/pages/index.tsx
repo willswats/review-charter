@@ -22,6 +22,8 @@ export default function Home() {
             <a
               className={styles["home__description-link"]}
               href="https://anilist.co"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               AniList
             </a>
