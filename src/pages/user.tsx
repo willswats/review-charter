@@ -237,7 +237,9 @@ export default function User() {
 
   const submitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    fetchUser(formInputTextValue);
+    if (formInputTextValue !== "") {
+      fetchUser(formInputTextValue);
+    }
   };
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
