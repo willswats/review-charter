@@ -18,16 +18,16 @@ export const UserAnime = ({ anime }: UserAnimeProps) => {
   return (
     <>
       <div className={styles["user-anime__statistics"]}>
-        {anime.count && (
+        {parseFloat(anime.count) >= 0 && (
           <UserStatistic statistic={anime.count} text="Total Anime" />
         )}
-        {anime.episodesWatched && (
+        {parseFloat(anime.episodesWatched) >= 0 && (
           <UserStatistic
             statistic={anime.episodesWatched}
             text="Episodes Watched"
           />
         )}
-        {anime.daysWatched && (
+        {parseFloat(anime.daysWatched) >= 0 && (
           <UserStatistic statistic={anime.daysWatched} text="Days Watched" />
         )}
       </div>

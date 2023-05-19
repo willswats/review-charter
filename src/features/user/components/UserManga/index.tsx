@@ -18,13 +18,13 @@ export const UserManga = ({ manga }: UserMangaProps) => {
   return (
     <>
       <div className={styles["user-manga__statistics"]}>
-        {manga.count && (
+        {parseFloat(manga.count) >= 0 && (
           <UserStatistic statistic={manga.count} text="Total Manga" />
         )}
-        {manga.chaptersRead && (
+        {parseFloat(manga.chaptersRead) >= 0 && (
           <UserStatistic statistic={manga.chaptersRead} text="Chapters Read" />
         )}
-        {manga.volumesRead && (
+        {parseFloat(manga.volumesRead) >= 0 && (
           <UserStatistic statistic={manga.volumesRead} text="Volumes Read" />
         )}
       </div>
