@@ -2,8 +2,8 @@
 
 ## High Priority
 
+- [ ] Fix bug: manga selected causes data to not be wiped immediately when searching for new user
 - [ ] Hover mouse on charts and categories
-- [ ] Simplify / improve labels on hover
 - [ ] Larger text on hover
 
 ## Medium Priority
