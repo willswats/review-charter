@@ -1,0 +1,17 @@
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #151f2e;
+  border-radius: 25px;
+  padding: 0.5rem;
+}
+
+.search__input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 200px;
+  color: #9fadbd;
+  font-size: 1.25rem;
+}

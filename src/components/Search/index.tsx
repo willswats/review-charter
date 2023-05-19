@@ -1,28 +1,32 @@
 import { ChangeEvent, FormEvent } from "react";
+import Image from "next/image";
 
 import styles from "./styles.module.css";
 
-interface FormInputTextProps {
+interface SearchProps {
   placeHolder: string;
   inputValue: string;
   submitHandler: (event: FormEvent<HTMLFormElement>) => void;
   changeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const FormInputText = ({
+export const Search = ({
   placeHolder,
   inputValue,
   submitHandler,
   changeHandler,
-}: FormInputTextProps) => {
+}: SearchProps) => {
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={submitHandler} className={styles["search"]}>
       <input
-        className={styles["form-input-text__input"]}
+        className={styles["search__input"]}
         onChange={changeHandler}
         value={inputValue}
         placeholder={placeHolder}
       />
+      <button>
+        <Image src="search-line.svg" width={30} height={30} alt="search" />
+      </button>
     </form>
   );
 };

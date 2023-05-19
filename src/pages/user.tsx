@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState, useReducer } from "react";
 
-import { NavBar, FormInputText, LoadingIndicator } from "@/components";
+import { NavBar, Search, LoadingIndicator } from "@/components";
 
 import {
   //Components
@@ -140,11 +140,11 @@ const reducer = (state: State, { type, payload }: UserActions): State => {
 
 export default function User() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [formInputTextValue, setFormInputTextValue] = useState<string>("");
+  const [formInputTextValue, setSearchValue] = useState<string>("");
 
   const fetchUser = async (name: string) => {
     const userName = formInputTextValue;
-    setFormInputTextValue("");
+    setSearchValue("");
 
     dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
     dispatch({ type: "set-user-name", payload: initialState.userName });
@@ -241,7 +241,7 @@ export default function User() {
   };
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setFormInputTextValue(event.target.value);
+    setSearchValue(event.target.value);
   };
 
   return (
@@ -258,7 +258,7 @@ export default function User() {
         <div className={styles["user__controls"]}>
           <div className={styles["user__controls-left"]}></div>
           <div className={styles["user__controls-middle"]}>
-            <FormInputText
+            <Search
               placeHolder="Username..."
               inputValue={formInputTextValue}
               submitHandler={submitHandler}
