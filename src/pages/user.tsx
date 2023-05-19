@@ -253,7 +253,11 @@ export default function User() {
             <UserModeButtons mode={state.mode} dispatch={dispatch} />
           </div>
         </div>
-        <p>{state.errorMessage}</p>
+        {state.errorMessage && (
+          <div className={styles["user__error-message"]}>
+            {state.errorMessage}
+          </div>
+        )}
         {state.avatarUrl && (
           <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
         )}

@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { LinkButton } from "@/components";
+import { NavBar, LinkButton } from "@/components";
 
 import styles from "@/styles/Home.module.css";
 
@@ -14,6 +14,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <NavBar />
       <main className={styles.home}>
         <div className={styles["home__container"]}>
           <h1 className={styles["home__title"]}>Review Charter</h1>

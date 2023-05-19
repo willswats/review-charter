@@ -29,3 +29,12 @@
   align-items: center;
   width: 200px;
 }
+
+.user__error-message {
+  display: flex;
+  background-color: #151f2e;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
