@@ -4,7 +4,7 @@
   align-items: center;
   background-color: #151f2e;
   border-radius: 25px;
-  padding: 0.5rem;
+  padding: 0.75rem;
 }
 
 .search__input {
@@ -13,5 +13,11 @@
   outline: none;
   width: 200px;
   color: #9fadbd;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.search__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
