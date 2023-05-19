@@ -20,5 +20,6 @@
 - [ ] Add favicons and manifest
 - [ ] Change global strings to objects
 - [ ] Preserve state between pages
+- [ ] Make loading icons for each piece of data
 - [ ] Find users in an alternative way, e.g. most popular or active users
 - [ ] Use the url for usernames (allow use of forward and back in the browser for users)
