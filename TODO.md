@@ -2,7 +2,6 @@
 
 ## High Priority
 
-- [ ] Handle empty data for anime and manga
 - [ ] Loading indicators
 - [ ] A submit button to fetch the data
 - [ ] Hover mouse on charts and categories
