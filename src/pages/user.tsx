@@ -1,14 +1,12 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState, useReducer } from "react";
 
-import { NavBar, Search, LoadingIndicator } from "@/components";
+import { NavBar, Search } from "@/components";
 
 import {
   //Components
-  UserInfo,
   UserModeButtons,
-  UserAnime,
-  UserManga,
+  UserContent,
   // Interfaces
   statusesItem,
   formatsItem,
@@ -43,7 +41,7 @@ export interface Manga {
   releaseYears: releaseYearsItem[];
 }
 
-interface State {
+export interface State {
   avatarUrl: string;
   userName: string;
   anime: Anime;
@@ -271,30 +269,7 @@ export default function User() {
             <UserModeButtons mode={state.mode} dispatch={dispatch} />
           </div>
         </div>
-
-        {state.errorMessage && (
-          <div className={styles["user__error-message"]}>
-            {state.errorMessage}
-          </div>
-        )}
-
-        {state.loading && (
-          <div className={styles["user__loading-indicator"]}>
-            <LoadingIndicator />
-          </div>
-        )}
-
-        {!state.errorMessage && !state.loading && !state.userName && (
-          <div className={styles["user__instructions"]}>
-            Enter a username into the input to chart a user.
-          </div>
-        )}
-
-        {state.avatarUrl && (
-          <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
-        )}
-        {state.mode === "ANIME" && <UserAnime anime={state.anime} />}
-        {state.mode === "MANGA" && <UserManga manga={state.manga} />}
+        <UserContent state={state} />
       </main>
     </>
   );
