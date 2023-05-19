@@ -2,8 +2,6 @@
 
 ## High Priority
 
-- [ ] A submit button to fetch the data
-- [ ] Finish user controls styling
 - [ ] Hover mouse on charts and categories
 - [ ] Simplify / improve labels on hover
 - [ ] Larger text on hover
