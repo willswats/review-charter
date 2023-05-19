@@ -33,18 +33,26 @@ export const UserAnime = ({ anime }: UserAnimeProps) => {
       </div>
       <div className={styles["user-anime__pie-charts"]}>
         {anime.statuses.length > 0 && (
-          <PieChartStatuses statuses={anime.statuses} />
+          <PieChartStatuses label="Number of anime" statuses={anime.statuses} />
         )}
         {anime.formats.length > 0 && (
-          <PieChartFormats formats={anime.formats} />
+          <PieChartFormats label="Number of anime" formats={anime.formats} />
         )}
         {anime.countries.length > 0 && (
-          <PieChartCountries countries={anime.countries} />
+          <PieChartCountries
+            label="Number of anime"
+            countries={anime.countries}
+          />
         )}
       </div>
-      {anime.scores.length > 0 && <BarChartScores scores={anime.scores} />}
+      {anime.scores.length > 0 && (
+        <BarChartScores label="Number of scores" scores={anime.scores} />
+      )}
       {anime.releaseYears.length > 0 && (
-        <LineChartReleaseYears releaseYears={anime.releaseYears} />
+        <LineChartReleaseYears
+          label="Number of anime"
+          releaseYears={anime.releaseYears}
+        />
       )}
     </>
   );

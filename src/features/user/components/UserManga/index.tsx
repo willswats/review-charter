@@ -30,18 +30,26 @@ export const UserManga = ({ manga }: UserMangaProps) => {
       </div>
       <div className={styles["user-manga__pie-charts"]}>
         {manga.statuses.length > 0 && (
-          <PieChartStatuses statuses={manga.statuses} />
+          <PieChartStatuses label="Number of manga" statuses={manga.statuses} />
         )}
         {manga.formats.length > 0 && (
-          <PieChartFormats formats={manga.formats} />
+          <PieChartFormats label="Number of manga" formats={manga.formats} />
         )}
         {manga.countries.length > 0 && (
-          <PieChartCountries countries={manga.countries} />
+          <PieChartCountries
+            label="Number of manga"
+            countries={manga.countries}
+          />
         )}
       </div>
-      {manga.scores.length > 0 && <BarChartScores scores={manga.scores} />}
+      {manga.scores.length > 0 && (
+        <BarChartScores label="Number of scores" scores={manga.scores} />
+      )}
       {manga.releaseYears.length > 0 && (
-        <LineChartReleaseYears releaseYears={manga.releaseYears} />
+        <LineChartReleaseYears
+          label="Number of manga"
+          releaseYears={manga.releaseYears}
+        />
       )}
     </>
   );

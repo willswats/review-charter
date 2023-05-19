@@ -8,10 +8,14 @@ export interface statusesItem {
 }
 
 interface PieChartStatusesProps {
+  label: string;
   statuses: statusesItem[];
 }
 
-export const PieChartStatuses = ({ statuses }: PieChartStatusesProps) => {
+export const PieChartStatuses = ({
+  label,
+  statuses,
+}: PieChartStatusesProps) => {
   const statusesLabels: string[] = [];
   const statusesCounts: number[] = [];
 
@@ -24,7 +28,7 @@ export const PieChartStatuses = ({ statuses }: PieChartStatusesProps) => {
     <div className={styles["pie-chart-statuses"]}>
       <h2>Statuses</h2>
       <PieChart
-        label="Number of type"
+        label={label}
         labelArray={statusesLabels}
         dataArray={statusesCounts}
       />

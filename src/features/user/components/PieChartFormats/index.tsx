@@ -8,10 +8,11 @@ export interface formatsItem {
 }
 
 interface PieChartFormatsProps {
+  label: string;
   formats: formatsItem[];
 }
 
-export const PieChartFormats = ({ formats }: PieChartFormatsProps) => {
+export const PieChartFormats = ({ label, formats }: PieChartFormatsProps) => {
   const formatsLabels: string[] = [];
   const formatsCounts: number[] = [];
 
@@ -24,7 +25,7 @@ export const PieChartFormats = ({ formats }: PieChartFormatsProps) => {
     <div className={styles["pie-chart-formats"]}>
       <h2>Formats</h2>
       <PieChart
-        label="Number of type"
+        label={label}
         labelArray={formatsLabels}
         dataArray={formatsCounts}
       />

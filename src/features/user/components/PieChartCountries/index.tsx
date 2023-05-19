@@ -8,10 +8,14 @@ export interface countriesItem {
 }
 
 interface PieChartCountriesProps {
+  label: string;
   countries: countriesItem[];
 }
 
-export const PieChartCountries = ({ countries }: PieChartCountriesProps) => {
+export const PieChartCountries = ({
+  label,
+  countries,
+}: PieChartCountriesProps) => {
   const labelArray: string[] = [];
   const dataArray: number[] = [];
 
@@ -23,11 +27,7 @@ export const PieChartCountries = ({ countries }: PieChartCountriesProps) => {
   return (
     <div className={styles["pie-chart-countries"]}>
       <h2>Countries</h2>
-      <PieChart
-        label="Number of type:"
-        labelArray={labelArray}
-        dataArray={dataArray}
-      />
+      <PieChart label={label} labelArray={labelArray} dataArray={dataArray} />
     </div>
   );
 };

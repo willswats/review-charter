@@ -8,10 +8,11 @@ export interface scoresItem {
 }
 
 interface BarChartScoresProps {
+  label: string;
   scores: scoresItem[];
 }
 
-export const BarChartScores = ({ scores }: BarChartScoresProps) => {
+export const BarChartScores = ({ label, scores }: BarChartScoresProps) => {
   const labelArray: string[] = [];
   const dataArray: number[] = [];
 
@@ -25,11 +26,7 @@ export const BarChartScores = ({ scores }: BarChartScoresProps) => {
   return (
     <div className={styles["bar-chart-scores"]}>
       <h2>Scores</h2>
-      <BarChart
-        label="Number of scores"
-        labelArray={labelArray}
-        dataArray={dataArray}
-      />
+      <BarChart label={label} labelArray={labelArray} dataArray={dataArray} />
     </div>
   );
 };
