@@ -225,7 +225,7 @@ export default function User() {
       } else {
         dispatch({ type: "set-loading", payload: false });
 
-        const errorMessage = `There is no user named "${userName}"`;
+        const errorMessage = `There is no user named "${userName}".`;
         dispatch({ type: "set-error-message", payload: errorMessage });
       }
     } catch (e) {
