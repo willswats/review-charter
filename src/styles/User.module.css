@@ -38,3 +38,12 @@
   margin-bottom: 1rem;
   font-size: 2rem;
 }
+
+.user__instructions {
+  display: flex;
+  background-color: #151f2e;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}

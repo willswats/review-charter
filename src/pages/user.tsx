@@ -258,6 +258,11 @@ export default function User() {
             {state.errorMessage}
           </div>
         )}
+        {!state.errorMessage && !state.userName && (
+          <div className={styles["user__instructions"]}>
+            Enter a username into the input to chart a user.
+          </div>
+        )}
         {state.avatarUrl && (
           <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
         )}
