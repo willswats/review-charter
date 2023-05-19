@@ -39,6 +39,15 @@
   font-size: 2rem;
 }
 
+.user__loading-indicator {
+  display: flex;
+  justify-content: center;
+  background-color: #151f2e;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
 .user__instructions {
   display: flex;
   background-color: #151f2e;

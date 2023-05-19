@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState, useReducer } from "react";
 
-import { NavBar, FormInputText } from "@/components";
+import { NavBar, FormInputText, LoadingIndicator } from "@/components";
 
 import {
   //Components
@@ -49,6 +49,7 @@ interface State {
   anime: Anime;
   manga: Manga;
   mode: string;
+  loading: boolean;
   errorMessage: string;
 }
 
@@ -76,6 +77,7 @@ const initialState: State = {
     releaseYears: [],
   },
   mode: "ANIME",
+  loading: false,
   errorMessage: "",
 };
 
@@ -84,6 +86,7 @@ export type SetUserName = { type: "set-user-name"; payload: string };
 export type SetAnime = { type: "set-anime"; payload: Anime };
 export type SetManga = { type: "set-manga"; payload: Manga };
 export type SetMode = { type: "set-mode"; payload: string };
+export type SetLoading = { type: "set-loading"; payload: boolean };
 export type SetErrorMessage = { type: "set-error-message"; payload: string };
 
 type UserActions =
@@ -92,6 +95,7 @@ type UserActions =
   | SetAnime
   | SetManga
   | SetMode
+  | SetLoading
   | SetErrorMessage;
 
 const reducer = (state: State, { type, payload }: UserActions): State => {
@@ -121,6 +125,11 @@ const reducer = (state: State, { type, payload }: UserActions): State => {
         ...state,
         mode: payload,
       };
+    case "set-loading":
+      return {
+        ...state,
+        loading: payload,
+      };
     case "set-error-message":
       return {
         ...state,
@@ -140,6 +149,7 @@ export default function User() {
     dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
     dispatch({ type: "set-user-name", payload: initialState.userName });
     dispatch({ type: "set-anime", payload: initialState.anime });
+    dispatch({ type: "set-loading", payload: initialState.loading });
     dispatch({
       type: "set-error-message",
       payload: initialState.errorMessage,
@@ -173,6 +183,8 @@ export default function User() {
     };
 
     try {
+      dispatch({ type: "set-loading", payload: true });
+
       const response = await fetch(url, options);
       const data = await response.json();
 
@@ -204,6 +216,8 @@ export default function User() {
           releaseYears: data.data.User.statistics.manga.releaseYears,
         };
 
+        dispatch({ type: "set-loading", payload: false });
+
         dispatch({ type: "set-avatar-url", payload: avatarUrl });
         dispatch({ type: "set-user-name", payload: userName });
         dispatch({ type: "set-anime", payload: anime });
@@ -211,6 +225,8 @@ export default function User() {
 
         console.log(data);
       } else {
+        dispatch({ type: "set-loading", payload: false });
+
         const errorMessage = `There is no user named "${userName}"`;
         dispatch({ type: "set-error-message", payload: errorMessage });
       }
@@ -253,16 +269,25 @@ export default function User() {
             <UserModeButtons mode={state.mode} dispatch={dispatch} />
           </div>
         </div>
+
         {state.errorMessage && (
           <div className={styles["user__error-message"]}>
             {state.errorMessage}
           </div>
         )}
-        {!state.errorMessage && !state.userName && (
+
+        {state.loading && (
+          <div className={styles["user__loading-indicator"]}>
+            <LoadingIndicator />
+          </div>
+        )}
+
+        {!state.errorMessage && !state.loading && !state.userName && (
           <div className={styles["user__instructions"]}>
             Enter a username into the input to chart a user.
           </div>
         )}
+
         {state.avatarUrl && (
           <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
         )}
