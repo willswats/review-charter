@@ -14,6 +14,7 @@
 - [ ] Add favicons and manifest
 - [ ] Make loading icons for each piece of user data
 - [ ] Change global strings to objects
+- [ ] 404 page
 
 ## Low Priority
 
