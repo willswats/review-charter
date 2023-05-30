@@ -1,8 +1,8 @@
 # Review Charter
 
-[review-charter.vercel.app](https://review-charter.vercel.app)
-
 Visualise AniList data in multiple charts.
+
+[review-charter.vercel.app](https://review-charter.vercel.app)
 
 ## Install
 
