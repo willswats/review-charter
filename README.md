@@ -2,7 +2,18 @@
 
 Visualise AniList data in multiple charts.
 
-[review-charter.vercel.app](https://review-charter.vercel.app)
+## Table of Contents
+
+<!--toc:start-->
+
+- [General Information](#general-information)
+- [Install](#install)
+- [Acknowledgements](#acknowledgements)
+<!--toc:end-->
+
+## General Information
+
+This project was built with [Next.js](https://nextjs.org/). It uses the [AniList API] to fetch data. The data is displayed in charts that were created with [Chart.js](https://www.chartjs.org/) and [react-chartjs-2](https://react-chartjs-2.js.org/).
 
 ## Install
 
