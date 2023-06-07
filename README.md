@@ -13,7 +13,7 @@ Visualise AniList data in multiple charts.
 
 ## General Information
 
-This project was built with [Next.js](https://nextjs.org/). It uses the [AniList API] to fetch data. The data is displayed in charts that were created with [Chart.js](https://www.chartjs.org/) and [react-chartjs-2](https://react-chartjs-2.js.org/).
+This project was built with [Next.js](https://nextjs.org/). It uses the [AniList API](https://anilist.gitbook.io/anilist-apiv2-docs/) to fetch data. The data is displayed in charts that were created with [Chart.js](https://www.chartjs.org/) and [react-chartjs-2](https://react-chartjs-2.js.org/).
 
 ## Install
 
