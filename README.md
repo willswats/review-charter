@@ -2,7 +2,7 @@
 
 Visualise [AniList](https://anilist.co/home) data in multiple charts.
 
-[https://review-charter.vercel.app/](https://review-charter.vercel.app/)
+[review-charter.vercel.app](https://review-charter.vercel.app/)
 
 ## Table of Contents
 
