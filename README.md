@@ -2,7 +2,7 @@
 
 Visualise [AniList](https://anilist.co/home) data in multiple charts.
 
-[https://react-pomodoro-willswats.vercel.app/](https://react-pomodoro-willswats.vercel.app/)
+[https://review-charter.vercel.app/](https://review-charter.vercel.app/)
 
 ## Table of Contents
 
