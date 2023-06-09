@@ -2,24 +2,22 @@
 
 ## High Priority
 
-- [ ] Hover mouse on charts and categories
-- [ ] Larger text on hover
+- [ ] Mobile responsive
+- [ ] Statistic SVGs
 
 ## Medium Priority
 
-- [ ] Mobile responsive
-- [ ] Statistic SVGs
-- [ ] Refresh button
-- [ ] Banner
-- [ ] Add favicons and manifest
-- [ ] Add footer
-- [ ] Make loading icons for each piece of user data
-- [ ] Change global strings to objects
 - [ ] 404 page
+- [ ] Change global strings to objects
+- [ ] Make loading icons for each piece of user data
+- [ ] Hover mouse on charts and categories
 
 ## Low Priority
 
+- [ ] Banner
 - [ ] Preserve state between pages
-- [ ] Find users in an alternative way, e.g. most popular or active users
-- [ ] Use the url for usernames (allow use of forward and back in the browser for users)
+- [ ] Use the url for usernames
+- [ ] Refresh button
+- [ ] Add footer
+- [ ] Add favicons and manifest
 - [ ] Add renovate bot
