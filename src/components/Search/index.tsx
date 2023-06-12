@@ -25,7 +25,7 @@ export const Search = ({
         placeholder={placeHolder}
       />
       <button className={styles["search__button"]}>
-        <Image src="search-line.svg" width={30} height={30} alt="search" />
+        <Image src="search-line.svg" width={25} height={25} alt="search" />
       </button>
     </form>
   );

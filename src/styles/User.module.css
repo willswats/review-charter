@@ -29,3 +29,8 @@
   justify-content: flex-end;
   width: 200px;
 }
+@media screen and (max-width: 768px) {
+  .user {
+    padding: 6rem 2rem;
+  }
+}
