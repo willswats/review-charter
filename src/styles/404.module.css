@@ -1,0 +1,21 @@
+.four-zero-four {
+  display: flex;
+  flex-direction: column;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.four-zero-four__text {
+  display: flex;
+  background-color: #151f2e;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .four-zero-four__text {
+    font-size: 1rem;
+  }
+}
