@@ -10,6 +10,7 @@
 
 ## Medium Priority
 
+- [ ] Add link to AniList user
 - [ ] Statistic SVGs
 - [ ] Banner
 - [ ] Change global strings to objects
