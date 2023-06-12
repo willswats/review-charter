@@ -5,6 +5,7 @@
   padding: 1rem;
   border-radius: 20px;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .user-info__avatar {
@@ -12,4 +13,10 @@
   width: 10rem;
   height: 10rem;
   margin-right: 1rem;
+}
+
+.user-info__link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
