@@ -3,7 +3,6 @@
 ## High Priority
 
 - [ ] Add footer
-- [ ] Add renovate bot
 - [ ] 404 page
 
 ## Medium Priority
