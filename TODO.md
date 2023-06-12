@@ -3,9 +3,7 @@
 ## High Priority
 
 - [ ] Add footer
-- [ ] Add favicons and manifest
 - [ ] Add renovate bot
-- [ ] Change font
 - [ ] 404 page
 
 ## Medium Priority
