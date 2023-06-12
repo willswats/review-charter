@@ -21,3 +21,5 @@
 - [ ] Add footer
 - [ ] Add favicons and manifest
 - [ ] Add renovate bot
+- [ ] Change font
+- [ ] Make charts scrollable on mobile size
