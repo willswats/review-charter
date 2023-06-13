@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SvgLinkRound from "public/assets/link-round.svg";
 
 import styles from "./styles.module.css";
 
@@ -16,12 +16,7 @@ export const UserInfo = ({ avatarUrl, userName }: UserInfo) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Image
-          src="assets/link-round.svg"
-          width={25}
-          height={25}
-          alt="AniList link"
-        />
+        <SvgLinkRound />
       </a>
       <img className={styles["user-info__avatar"]} src={avatarUrl} />
       <h1>{userName} </h1>
