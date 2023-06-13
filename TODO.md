@@ -2,14 +2,14 @@
 
 ## High Priority
 
-- [ ] Hover mouse on charts and categories
-- [ ] Make charts scrollable on mobile size
-
-## Medium Priority
-
 - [ ] Add statistic SVGs
 - [ ] Add banner
 - [ ] Add footer
+
+## Medium Priority
+
+- [ ] Hover mouse on charts and categories
+- [ ] Make charts scrollable on mobile size
 
 ## Low Priority
 
