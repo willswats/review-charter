@@ -17,6 +17,8 @@ import {
   userQuery,
 } from "@/features/user";
 
+import SvgRefresh from "public/assets/refresh.svg";
+
 import styles from "@/styles/User.module.css";
 
 export interface Anime {
@@ -220,8 +222,6 @@ export default function User() {
         dispatch({ type: "set-user-name", payload: userName });
         dispatch({ type: "set-anime", payload: anime });
         dispatch({ type: "set-manga", payload: manga });
-
-        console.log(data);
       } else {
         dispatch({ type: "set-loading", payload: false });
 
@@ -253,7 +253,16 @@ export default function User() {
       <NavBar />
       <main className={styles["user"]}>
         <div className={styles["user__controls"]}>
-          <div className={styles["user__controls-left"]}></div>
+          <div className={styles["user__controls-left"]}>
+            <button
+              className={styles["user__controls-left-button"]}
+              onClick={() => {
+                fetchUser(state.userName);
+              }}
+            >
+              <SvgRefresh />
+            </button>
+          </div>
           <div className={styles["user__controls-middle"]}>
             <Search
               placeHolder="Username..."
