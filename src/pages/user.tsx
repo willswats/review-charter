@@ -268,7 +268,9 @@ export default function User() {
             <button
               className={styles["user__controls-left-button"]}
               onClick={() => {
-                fetchUser(state.userName);
+                if (state.userName.length > 0) {
+                  fetchUser(state.userName);
+                }
               }}
             >
               <SvgRefresh />
