@@ -14,6 +14,5 @@
 
 - [ ] Banner
 - [ ] Change global strings to objects
-- [ ] Refresh button
 - [ ] Preserve state between pages or use the url for usernames
 - [ ] Make loading icons for each piece of user data
