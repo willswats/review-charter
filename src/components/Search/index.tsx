@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent } from "react";
-import Image from "next/image";
+
+import SvgSearchLine from "public/assets/search-line.svg";
 
 import styles from "./styles.module.css";
 
@@ -25,12 +26,7 @@ export const Search = ({
         placeholder={placeHolder}
       />
       <button className={styles["search__button"]}>
-        <Image
-          src="assets/search-line.svg"
-          width={25}
-          height={25}
-          alt="search"
-        />
+        <SvgSearchLine />
       </button>
     </form>
   );
