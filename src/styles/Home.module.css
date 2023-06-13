@@ -9,7 +9,7 @@
 .home__container {
   display: flex;
   flex-direction: column;
-  padding: 8rem 4rem 8rem;
+  padding: 8rem;
   border-radius: 50px;
   background-color: #151f2e;
 }
@@ -48,6 +48,6 @@
   }
 
   .home__container {
-    padding: 6rem 4rem;
+    padding: 6rem;
   }
 }
