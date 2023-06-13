@@ -14,4 +14,5 @@
 ## Low Priority
 
 - [ ] Change global strings to objects
-- [ ] Preserve state between pages or use the url for usernames
+- [ ] Preserve state between pages
+- [ ] Use the url for usernames
