@@ -254,14 +254,7 @@ export default function User() {
       <main className={styles["user"]}>
         <div className={styles["user__controls"]}>
           <div className={styles["user__controls-left"]}>
-            <button
-              className={styles["user__controls-left-button"]}
-              onClick={() => {
-                fetchUser(state.userName);
-              }}
-            >
-              <SvgRefresh />
-            </button>
+            <UserModeButtons mode={state.mode} dispatch={dispatch} />
           </div>
           <div className={styles["user__controls-middle"]}>
             <Search
@@ -272,7 +265,14 @@ export default function User() {
             />
           </div>
           <div className={styles["user__controls-right"]}>
-            <UserModeButtons mode={state.mode} dispatch={dispatch} />
+            <button
+              className={styles["user__controls-left-button"]}
+              onClick={() => {
+                fetchUser(state.userName);
+              }}
+            >
+              <SvgRefresh />
+            </button>
           </div>
         </div>
         <UserContent state={state} />

@@ -7,6 +7,7 @@
   transition: background-color 0.1s;
   background-color: #151f2e;
 }
+
 .mode-button:hover {
   color: #249bd9;
   background-color: rgba(0, 0, 0, 0.5);
