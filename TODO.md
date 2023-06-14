@@ -2,9 +2,9 @@
 
 ## High Priority
 
-- [ ] Add statistic SVGs
 - [ ] Add banner
 - [ ] Add footer
+- [ ] Add "This user does not have any anime/manga to chart."
 
 ## Medium Priority
 
