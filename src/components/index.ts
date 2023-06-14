@@ -1,5 +1,6 @@
 export * from "./LinkButton";
 export * from "./ModeButton";
+export * from "./SvgButton";
 export * from "./NavBar";
 export * from "./NavBarLink";
 export * from "./Search";

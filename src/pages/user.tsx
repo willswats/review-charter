@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState, useReducer } from "react";
 
-import { NavBar, Search } from "@/components";
+import { NavBar, Search, SvgButton } from "@/components";
 
 import {
   //Components
@@ -244,6 +244,12 @@ export default function User() {
     setSearchValue(event.target.value);
   };
 
+  const refreshButtonClickHandler = () => {
+    if (state.userName.length > 0) {
+      fetchUser(state.userName);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -265,16 +271,12 @@ export default function User() {
             />
           </div>
           <div className={styles["user__controls-right"]}>
-            <button
-              className={styles["user__controls-left-button"]}
-              onClick={() => {
-                if (state.userName.length > 0) {
-                  fetchUser(state.userName);
-                }
-              }}
-            >
-              <SvgRefresh />
-            </button>
+            <span className={styles["user__controls-right-link"]}>
+              <SvgButton
+                svg={<SvgRefresh />}
+                clickHandler={refreshButtonClickHandler}
+              />
+            </span>
           </div>
         </div>
         <UserContent state={state} />
