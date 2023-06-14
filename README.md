@@ -26,6 +26,6 @@ I built this project for an assignment, moreover, I wanted to improve upon the A
 
 ## Acknowledgements
 
-The SVGs are from [svgrepo](https://svgrepo.com).
+The SVGs are from [Remix Icon](https://remixicon.com/).
 
 The font is [Roboto](https://fonts.google.com/specimen/Roboto).
