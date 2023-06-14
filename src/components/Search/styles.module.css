@@ -6,6 +6,7 @@
   border-radius: 25px;
   overflow: hidden;
   height: 3rem;
+  padding: 0.75rem;
 }
 
 .search__input {
@@ -15,7 +16,6 @@
   width: 200px;
   color: #9fadbd;
   font-size: 1.5rem;
-  padding: 0.75rem;
 }
 
 .search__button svg {

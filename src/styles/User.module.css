@@ -44,6 +44,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  margin: 0 1rem;
 }
 
 .user__controls-right {
