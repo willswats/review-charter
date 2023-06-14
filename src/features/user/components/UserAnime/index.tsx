@@ -9,7 +9,7 @@ import {
 import { Anime } from "@/pages/user";
 
 import SvgTv from "public/assets/tv.svg";
-import SvgPlay from "public/assets/play-line.svg";
+import SvgPlay from "public/assets/play-circle.svg";
 import SvgCalendar from "public/assets/calendar-line.svg";
 
 import styles from "./styles.module.css";
