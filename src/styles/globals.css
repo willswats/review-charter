@@ -39,8 +39,8 @@ input {
   border: none;
 }
 
-svg {
-  fill: #fff;
+svg path {
+  fill: #9fadbd;
 }
 
 input[type="number"] {
