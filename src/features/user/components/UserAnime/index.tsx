@@ -8,27 +8,40 @@ import {
 } from "@/features/user";
 import { Anime } from "@/pages/user";
 
+import SvgTv from "public/assets/tv.svg";
+import SvgPlay from "public/assets/play-line.svg";
+import SvgCalendar from "public/assets/calendar-line.svg";
+
+import styles from "./styles.module.css";
+
 interface UserAnimeProps {
   anime: Anime;
 }
-
-import styles from "./styles.module.css";
 
 export const UserAnime = ({ anime }: UserAnimeProps) => {
   return (
     <>
       <div className={styles["user-anime__statistics"]}>
         {parseFloat(anime.count) >= 0 && (
-          <UserStatistic statistic={anime.count} text="Total Anime" />
+          <UserStatistic
+            statistic={anime.count}
+            text="Total Anime"
+            svg={<SvgTv />}
+          />
         )}
         {parseFloat(anime.episodesWatched) >= 0 && (
           <UserStatistic
             statistic={anime.episodesWatched}
             text="Episodes Watched"
+            svg={<SvgPlay />}
           />
         )}
         {parseFloat(anime.daysWatched) >= 0 && (
-          <UserStatistic statistic={anime.daysWatched} text="Days Watched" />
+          <UserStatistic
+            statistic={anime.daysWatched}
+            text="Days Watched"
+            svg={<SvgCalendar />}
+          />
         )}
       </div>
       <div className={styles["user-anime__pie-charts"]}>
