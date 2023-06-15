@@ -41,9 +41,14 @@ export const LineChart = ({ label, labelArray, dataArray }: LineChartProps) => {
     ],
   };
 
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+  };
+
   return (
     <div className={styles["line-chart"]}>
-      <Line data={data} />
+      <Line data={data} options={options} />
     </div>
   );
 };

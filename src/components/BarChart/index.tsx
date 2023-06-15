@@ -38,9 +38,14 @@ export const BarChart = ({ label, labelArray, dataArray }: BarChartProps) => {
     ],
   };
 
+  const options = {
+    maintainAspectRatio: false,
+    responsive: true,
+  };
+
   return (
     <div className={styles["bar-chart"]}>
-      <Bar data={data} />
+      <Bar data={data} options={options} />
     </div>
   );
 };
