@@ -3,6 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
   width: 100%;
+  height: 50rem;
+}
+
+@media screen and (max-width: 768px) {
+  .line-chart {
+    height: 20rem;
+  }
 }
