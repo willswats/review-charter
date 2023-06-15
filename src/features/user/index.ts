@@ -1,6 +1,7 @@
 export * from "./components/UserInfo";
 export * from "./components/UserStatistic";
 export * from "./components/UserModeButtons";
+export * from "./components/UserRefreshButton";
 export * from "./components/UserAnime";
 export * from "./components/UserManga";
 export * from "./components/UserContent";

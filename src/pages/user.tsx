@@ -1,11 +1,12 @@
 import Head from "next/head";
 import { ChangeEvent, FormEvent, useState, useReducer } from "react";
 
-import { NavBar, Search, SvgButton } from "@/components";
+import { NavBar, Search } from "@/components";
 
 import {
   //Components
   UserModeButtons,
+  UserRefreshButton,
   UserContent,
   // Interfaces
   statusesItem,
@@ -16,8 +17,6 @@ import {
   // Utils
   userQuery,
 } from "@/features/user";
-
-import SvgRefresh from "public/assets/refresh.svg";
 
 import styles from "@/styles/User.module.css";
 
@@ -233,14 +232,14 @@ export default function User() {
     }
   };
 
-  const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+  const searchSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (formInputTextValue !== "") {
       fetchUser(formInputTextValue);
     }
   };
 
-  const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const searchChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 
@@ -266,17 +265,12 @@ export default function User() {
             <Search
               placeHolder="Username..."
               inputValue={formInputTextValue}
-              submitHandler={submitHandler}
-              changeHandler={changeHandler}
+              submitHandler={searchSubmitHandler}
+              changeHandler={searchChangeHandler}
             />
           </div>
           <div className={styles["user__controls-right"]}>
-            <span className={styles["user__controls-right-link"]}>
-              <SvgButton
-                svg={<SvgRefresh />}
-                clickHandler={refreshButtonClickHandler}
-              />
-            </span>
+            <UserRefreshButton clickHandler={refreshButtonClickHandler} />
           </div>
         </div>
         <UserContent state={state} />
