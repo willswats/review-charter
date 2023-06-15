@@ -2,10 +2,10 @@
 
 ## High Priority
 
-- [ ] Add banner
-- [ ] Add footer
 - [ ] Add "This user does not have any anime/manga to chart."
 - [ ] Make bar and line chart smaller in height
+- [ ] Add footer
+- [ ] Add banner
 
 ## Medium Priority
 
