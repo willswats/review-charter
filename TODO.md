@@ -3,7 +3,7 @@
 ## High Priority
 
 - [ ] Add "This user does not have any anime/manga to chart."
-- [ ] Make bar and line chart smaller in height
+- [ ] Better responsive design
 - [ ] Add footer
 - [ ] Add banner
 
