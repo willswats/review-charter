@@ -6,4 +6,5 @@
   width: 100%;
   height: 4rem;
   background-color: #152232;
+  z-index: 1;
 }
