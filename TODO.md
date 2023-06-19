@@ -2,7 +2,6 @@
 
 ## High Priority
 
-- [ ] Add banner
 - [ ] Add footer
 
 ## Medium Priority
