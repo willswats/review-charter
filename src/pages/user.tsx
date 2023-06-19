@@ -221,6 +221,7 @@ export default function User() {
         dispatch({ type: "set-user-name", payload: userName });
         dispatch({ type: "set-anime", payload: anime });
         dispatch({ type: "set-manga", payload: manga });
+        console.log(data);
       } else {
         dispatch({ type: "set-loading", payload: false });
 

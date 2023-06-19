@@ -31,8 +31,22 @@ export const UserContent = ({ state }: UserContentProps) => {
     return (
       <>
         <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
-        {state.mode === "ANIME" && <UserAnime anime={state.anime} />}
-        {state.mode === "MANGA" && <UserManga manga={state.manga} />}
+        {state.mode === "ANIME" && parseFloat(state.anime.count) > 0 && (
+          <UserAnime anime={state.anime} />
+        )}
+        {state.mode === "ANIME" && parseFloat(state.anime.count) <= 0 && (
+          <div className={styles["user-content__instructions"]}>
+            This user does not have any anime to chart.
+          </div>
+        )}
+        {state.mode === "MANGA" && parseFloat(state.manga.count) > 0 && (
+          <UserManga manga={state.manga} />
+        )}
+        {state.mode === "MANGA" && parseFloat(state.manga.count) <= 0 && (
+          <div className={styles["user-content__instructions"]}>
+            This user does not have any manga to chart.
+          </div>
+        )}
       </>
     );
   }
