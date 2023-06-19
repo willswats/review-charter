@@ -39,9 +39,22 @@ export const PieChart = ({ label, labelArray, dataArray }: PieChartProps) => {
     ],
   };
 
+  const options = {
+    plugins: {
+      legend: {
+        onHover: (event: any) => {
+          event.native.target.style.cursor = "pointer";
+        },
+        onLeave: (event: any) => {
+          event.native.target.style.cursor = "default";
+        },
+      },
+    },
+  };
+
   return (
     <div className={styles["pie-chart"]}>
-      <Pie data={data} />
+      <Pie data={data} options={options} />
     </div>
   );
 };

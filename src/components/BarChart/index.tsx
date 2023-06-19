@@ -41,6 +41,16 @@ export const BarChart = ({ label, labelArray, dataArray }: BarChartProps) => {
   const options = {
     maintainAspectRatio: false,
     responsive: true,
+    plugins: {
+      legend: {
+        onHover: (event: any) => {
+          event.native.target.style.cursor = "pointer";
+        },
+        onLeave: (event: any) => {
+          event.native.target.style.cursor = "default";
+        },
+      },
+    },
   };
 
   return (

@@ -7,9 +7,7 @@
 
 ## Medium Priority
 
-- [ ] Hover mouse on charts and categories
-
-## Low Priority
-
 - [ ] Change global strings to objects
 - [ ] Add footer
+
+## Low Priority
