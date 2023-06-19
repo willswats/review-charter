@@ -2,7 +2,6 @@
 
 ## High Priority
 
-- [ ] Add "This user does not have any anime/manga to chart."
 - [ ] Add banner
 - [ ] Add footer
 
