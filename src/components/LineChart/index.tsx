@@ -44,6 +44,11 @@ export const LineChart = ({ label, labelArray, dataArray }: LineChartProps) => {
   const options = {
     maintainAspectRatio: false,
     responsive: true,
+    elements: {
+      line: {
+        borderWidth: 2,
+      },
+    },
     plugins: {
       legend: {
         onHover: (event: any) => {

@@ -33,6 +33,7 @@ export const BarChart = ({ label, labelArray, dataArray }: BarChartProps) => {
       {
         label: label,
         data: dataArray,
+        borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
@@ -41,6 +42,11 @@ export const BarChart = ({ label, labelArray, dataArray }: BarChartProps) => {
   const options = {
     maintainAspectRatio: false,
     responsive: true,
+    elements: {
+      bar: {
+        borderWidth: 2,
+      },
+    },
     plugins: {
       legend: {
         onHover: (event: any) => {
