@@ -30,7 +30,11 @@ export const UserContent = ({ state }: UserContentProps) => {
   } else {
     return (
       <>
-        <UserInfo avatarUrl={state.avatarUrl} userName={state.userName} />
+        <UserInfo
+          avatarUrl={state.avatarUrl}
+          bannerUrl={state.bannerUrl}
+          userName={state.userName}
+        />
         {state.mode === "ANIME" && parseFloat(state.anime.count) > 0 && (
           <UserAnime anime={state.anime} />
         )}

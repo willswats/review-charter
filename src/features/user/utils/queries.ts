@@ -5,6 +5,7 @@ query ($name: String) {
     avatar {
       large
     }
+    bannerImage
     statistics {
       anime {
         count

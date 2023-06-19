@@ -44,6 +44,7 @@ export interface Manga {
 
 export interface State {
   avatarUrl: string;
+  bannerUrl: string;
   userName: string;
   anime: Anime;
   manga: Manga;
@@ -54,6 +55,7 @@ export interface State {
 
 const initialState: State = {
   avatarUrl: "",
+  bannerUrl: "",
   userName: "",
   anime: {
     count: "",
@@ -81,6 +83,7 @@ const initialState: State = {
 };
 
 export type SetAvatarUrl = { type: "set-avatar-url"; payload: string };
+export type SetBannerUrl = { type: "set-banner-url"; payload: string };
 export type SetUserName = { type: "set-user-name"; payload: string };
 export type SetAnime = { type: "set-anime"; payload: Anime };
 export type SetManga = { type: "set-manga"; payload: Manga };
@@ -90,6 +93,7 @@ export type SetErrorMessage = { type: "set-error-message"; payload: string };
 
 type UserActions =
   | SetAvatarUrl
+  | SetBannerUrl
   | SetUserName
   | SetAnime
   | SetManga
@@ -103,6 +107,11 @@ const reducer = (state: State, { type, payload }: UserActions): State => {
       return {
         ...state,
         avatarUrl: payload,
+      };
+    case "set-banner-url":
+      return {
+        ...state,
+        bannerUrl: payload,
       };
     case "set-user-name":
       return {
@@ -146,6 +155,7 @@ export default function User() {
     setSearchValue("");
 
     dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
+    dispatch({ type: "set-banner-url", payload: initialState.bannerUrl });
     dispatch({ type: "set-user-name", payload: initialState.userName });
     dispatch({ type: "set-anime", payload: initialState.anime });
     dispatch({ type: "set-loading", payload: initialState.loading });
@@ -189,6 +199,7 @@ export default function User() {
 
       if (data.data.User !== null) {
         const avatarUrl = data.data.User.avatar.large;
+        const bannerUrl = data.data.User.bannerImage;
         const userName = data.data.User.name;
 
         const anime = {
@@ -218,6 +229,7 @@ export default function User() {
         dispatch({ type: "set-loading", payload: false });
 
         dispatch({ type: "set-avatar-url", payload: avatarUrl });
+        dispatch({ type: "set-banner-url", payload: bannerUrl });
         dispatch({ type: "set-user-name", payload: userName });
         dispatch({ type: "set-anime", payload: anime });
         dispatch({ type: "set-manga", payload: manga });
