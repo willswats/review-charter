@@ -146,7 +146,7 @@ const reducer = (state: State, { type, payload }: UserActions): State => {
   }
 };
 
-export default function User() {
+export default function UserHome() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [formInputTextValue, setSearchValue] = useState<string>("");
 

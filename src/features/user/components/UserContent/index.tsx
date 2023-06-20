@@ -1,6 +1,6 @@
 import { LoadingIndicator } from "@/components";
 import { UserInfo, UserAnime, UserManga } from "@/features/user";
-import { State } from "@/pages/user";
+import { State } from "@/pages/user/index";
 
 import styles from "./styles.module.css";
 
