@@ -30,8 +30,21 @@
   width: 200px;
 }
 
+.user__instructions {
+  display: flex;
+  background-color: #151f2e;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 768px) {
   .user {
     padding: 6rem 2rem 2rem 2rem;
+  }
+
+  .user-content__instructions {
+    font-size: 1rem;
   }
 }
