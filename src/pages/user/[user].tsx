@@ -1,12 +1,11 @@
 import { useRouter } from "next/router";
 import { LoadingIndicator } from "@/components";
-import { Dispatch, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import {
   UserInfo,
   UserAnime,
   UserManga,
-  State,
-  UserActions,
+  UserLayout,
   fetchUser,
   reducer,
   initialState,
@@ -14,15 +13,11 @@ import {
 
 import styles from "@/styles/[user].module.css";
 
-interface UserProps {
-  state: State;
-  dispatch: Dispatch<UserActions>;
-}
-
 export default function User() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const router = useRouter();
+
   let user = router.query.user;
 
   useEffect(() => {
@@ -33,23 +28,31 @@ export default function User() {
 
   if (state.errorMessage) {
     return (
-      <div className={styles["user__error-message"]}>{state.errorMessage}</div>
+      <UserLayout title={"user"}>
+        <div className={styles["user__error-message"]}>
+          {state.errorMessage}
+        </div>
+      </UserLayout>
     );
   } else if (state.loading) {
     return (
-      <div className={styles["user__loading-indicator"]}>
-        <LoadingIndicator />
-      </div>
+      <UserLayout title={"user"}>
+        <div className={styles["user__loading-indicator"]}>
+          <LoadingIndicator />
+        </div>
+      </UserLayout>
     );
   } else if (!state.userName) {
     return (
-      <div className={styles["user__instructions"]}>
-        Enter a username into the input to chart a user.
-      </div>
+      <UserLayout title={"user"}>
+        <div className={styles["user__instructions"]}>
+          Enter a username into the input to chart a user.
+        </div>
+      </UserLayout>
     );
   } else {
     return (
-      <>
+      <UserLayout title={"user"}>
         <UserInfo
           avatarUrl={state.avatarUrl}
           bannerUrl={state.bannerUrl}
@@ -71,7 +74,7 @@ export default function User() {
             This user does not have any manga to chart.
           </div>
         )}
-      </>
+      </UserLayout>
     );
   }
 }

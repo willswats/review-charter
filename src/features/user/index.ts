@@ -9,6 +9,8 @@ export * from "./components/PieChartFormats";
 export * from "./components/PieChartCountries";
 export * from "./components/BarChartScores";
 export * from "./components/LineChartReleaseYears";
+export * from "./components/UserLayout";
+export * from "./components/UserControls";
 
 export * from "./utils/queries";
 export * from "./utils/fetchUser";
