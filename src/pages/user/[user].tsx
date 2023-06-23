@@ -26,15 +26,7 @@ export default function User() {
     }
   }, [user]);
 
-  if (state.errorMessage) {
-    return (
-      <UserLayout title={"user"}>
-        <div className={styles["user__error-message"]}>
-          {state.errorMessage}
-        </div>
-      </UserLayout>
-    );
-  } else if (state.loading) {
+  if (state.loading) {
     return (
       <UserLayout title={"user"}>
         <div className={styles["user__loading-indicator"]}>
@@ -42,11 +34,11 @@ export default function User() {
         </div>
       </UserLayout>
     );
-  } else if (!state.userName) {
+  } else if (state.errorMessage) {
     return (
       <UserLayout title={"user"}>
-        <div className={styles["user__instructions"]}>
-          Enter a username into the input to chart a user.
+        <div className={styles["user__error-message"]}>
+          {state.errorMessage}
         </div>
       </UserLayout>
     );

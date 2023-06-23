@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { ModeButton } from "@/components";
-import { SetMode } from "@/pages/user";
+import { SetMode } from "@/features/user";
 
 import styles from "./styles.module.css";
 
