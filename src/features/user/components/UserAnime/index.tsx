@@ -1,11 +1,13 @@
 import {
+  // Interfaces
+  Anime,
+  // Components
   UserStatistic,
   PieChartStatuses,
   PieChartFormats,
   PieChartCountries,
   BarChartScores,
   LineChartReleaseYears,
-  Anime,
 } from "@/features/user";
 
 import SvgTv from "public/assets/tv.svg";

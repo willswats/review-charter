@@ -1,22 +1,26 @@
 import { useRouter } from "next/router";
-import { LoadingIndicator } from "@/components";
 import { useEffect, useReducer } from "react";
+
+import { LoadingIndicator } from "@/components";
 import {
+  // Interfaces
+  initialState,
+  // Functions
+  reducer,
+  fetchUser,
+  // Components
+  UserLayout,
   UserInfo,
   UserAnime,
   UserManga,
-  UserLayout,
-  fetchUser,
-  reducer,
-  initialState,
+  UserControls,
 } from "@/features/user";
 
 import styles from "@/styles/[user].module.css";
 
 export default function User() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-
   const router = useRouter();
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   let user = router.query.user;
 
@@ -29,6 +33,7 @@ export default function User() {
   if (state.loading) {
     return (
       <UserLayout title={"user"}>
+        <UserControls state={state} dispatch={dispatch} />
         <div className={styles["user__loading-indicator"]}>
           <LoadingIndicator />
         </div>
@@ -37,6 +42,7 @@ export default function User() {
   } else if (state.errorMessage) {
     return (
       <UserLayout title={"user"}>
+        <UserControls state={state} dispatch={dispatch} />
         <div className={styles["user__error-message"]}>
           {state.errorMessage}
         </div>
@@ -45,6 +51,7 @@ export default function User() {
   } else {
     return (
       <UserLayout title={"user"}>
+        <UserControls state={state} dispatch={dispatch} />
         <UserInfo
           avatarUrl={state.avatarUrl}
           bannerUrl={state.bannerUrl}

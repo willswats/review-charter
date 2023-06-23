@@ -10,6 +10,7 @@ interface NavBarLinkProps {
 
 export const NavBarLink = ({ url, text }: NavBarLinkProps) => {
   const { asPath } = useRouter();
+
   return (
     <Link
       className={`${styles["nav-bar-link"]}

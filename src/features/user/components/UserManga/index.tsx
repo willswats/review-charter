@@ -1,11 +1,13 @@
 import {
+  // Interfaces
+  Manga,
+  // Components
   UserStatistic,
   PieChartStatuses,
   PieChartFormats,
   PieChartCountries,
   BarChartScores,
   LineChartReleaseYears,
-  Manga,
 } from "@/features/user";
 
 import styles from "./styles.module.css";

@@ -1,33 +1,46 @@
-import { ChangeEvent, FormEvent, useState, useReducer } from "react";
+import { ChangeEvent, FormEvent, Dispatch, useState } from "react";
 import { useRouter } from "next/router";
 
 import { Search } from "@/components";
-import { reducer, initialState } from "@/features/user";
-
-import { UserModeButtons, UserRefreshButton } from "@/features/user";
+import {
+  // Interfaces
+  State,
+  // Types
+  UserActions,
+  // Components
+  UserModeButtons,
+  UserRefreshButton,
+} from "@/features/user";
 
 import styles from "./styles.module.css";
 
-export const UserControls = () => {
-  const router = useRouter();
+interface UserControlsProps {
+  state: State;
+  dispatch: Dispatch<UserActions>;
+}
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+export const UserControls = ({ state, dispatch }: UserControlsProps) => {
+  const router = useRouter();
   const [formInputTextValue, setSearchValue] = useState<string>("");
 
   const searchSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (router.query.user) {
-      router.push(`${formInputTextValue}`);
+      router.push(formInputTextValue);
     } else {
       router.push(`user/${formInputTextValue}`);
     }
+    setSearchValue("");
   };
 
   const searchChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
   };
 
-  const refreshButtonClickHandler = () => {};
+  const refreshButtonClickHandler = () => {
+    if (state.userName.length > 0) {
+    }
+  };
 
   return (
     <div className={styles["user__controls"]}>

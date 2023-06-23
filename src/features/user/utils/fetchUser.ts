@@ -1,5 +1,12 @@
-import { Dispatch, SetStateAction } from "react";
-import { initialState, UserActions, userQuery } from "@/features/user";
+import { Dispatch } from "react";
+import {
+  // Interfaces
+  initialState,
+  // Types
+  UserActions,
+  // Strings
+  userQuery,
+} from "@/features/user";
 
 interface fetchUser {
   name: string;
@@ -7,9 +14,6 @@ interface fetchUser {
 }
 
 export const fetchUser = async ({ name, dispatch }: fetchUser) => {
-  // const userName = formInputTextValue;
-  // setSearchValue("");
-
   dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
   dispatch({ type: "set-banner-url", payload: initialState.bannerUrl });
   dispatch({ type: "set-user-name", payload: initialState.userName });
