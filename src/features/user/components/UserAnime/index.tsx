@@ -5,8 +5,8 @@ import {
   PieChartCountries,
   BarChartScores,
   LineChartReleaseYears,
+  Anime,
 } from "@/features/user";
-import { Anime } from "@/pages/user";
 
 import SvgTv from "public/assets/tv.svg";
 import SvgPlay from "public/assets/play-circle.svg";

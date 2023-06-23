@@ -5,8 +5,8 @@ import {
   PieChartCountries,
   BarChartScores,
   LineChartReleaseYears,
+  Manga,
 } from "@/features/user";
-import { Manga } from "@/pages/user";
 
 import styles from "./styles.module.css";
 
