@@ -29,7 +29,6 @@ export default function User() {
         name: user.toString(),
         dispatch: userContext.dispatch,
       });
-      console.log(user);
     }
   }, [user]);
 
