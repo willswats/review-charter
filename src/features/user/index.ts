@@ -15,4 +15,5 @@ export * from "./components/UserLayout";
 export * from "./utils/queries";
 export * from "./utils/fetchUser";
 
-export * from "./reducers/user";
+export * from "./context/UserContext";
+export * from "./reducers/UserReducer";

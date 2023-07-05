@@ -1,12 +1,22 @@
-import { createContext, Dispatch, useContext } from "react";
-import { UserActions, State } from "@/features/user";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  Dispatch,
+  ReactNode,
+} from "react";
+import { State, UserActions, initialState, reducer } from "@/features/user";
 
-type UserContextType = {
+interface IUserContext {
   state: State;
   dispatch: Dispatch<UserActions>;
-};
+}
 
-export const UserContext = createContext<UserContextType | null>(null);
+interface IUserContextProvider {
+  children: ReactNode;
+}
+
+export const UserContext = createContext<IUserContext | null>(null);
 
 export const useUserContext = () => {
   const currentUserContext = useContext(UserContext);
@@ -18,4 +28,14 @@ export const useUserContext = () => {
   }
 
   return currentUserContext;
+};
+
+export const UserContextProvider = ({ children }: IUserContextProvider) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <UserContext.Provider value={{ state, dispatch }}>
+      {children}
+    </UserContext.Provider>
+  );
 };

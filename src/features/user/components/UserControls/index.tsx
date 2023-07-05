@@ -21,14 +21,14 @@ interface UserControlsProps {
 
 export const UserControls = ({ state, dispatch }: UserControlsProps) => {
   const router = useRouter();
-  const [formInputTextValue, setSearchValue] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>("");
 
   const searchSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (router.query.user) {
-      router.push(formInputTextValue);
+      router.push(searchValue);
     } else {
-      router.push(`user/${formInputTextValue}`);
+      router.push(`user/${searchValue}`);
     }
     setSearchValue("");
   };
@@ -50,7 +50,7 @@ export const UserControls = ({ state, dispatch }: UserControlsProps) => {
       <div className={styles["user__controls-middle"]}>
         <Search
           placeHolder="Username..."
-          inputValue={formInputTextValue}
+          inputValue={searchValue}
           submitHandler={searchSubmitHandler}
           changeHandler={searchChangeHandler}
         />

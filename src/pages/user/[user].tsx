@@ -11,15 +11,15 @@ import {
   UserAnime,
   UserManga,
   UserControls,
+  // Hooks
+  useUserContext,
 } from "@/features/user";
-
-import { useUserContext } from "@/features/user/context/UserContext";
 
 import styles from "@/styles/[user].module.css";
 
 export default function User() {
   const router = useRouter();
-  const currentUserContext = useUserContext();
+  const userContext = useUserContext();
 
   let user = router.query.user;
 
@@ -27,32 +27,33 @@ export default function User() {
     if (user !== undefined) {
       fetchUser({
         name: user.toString(),
-        dispatch: currentUserContext.dispatch,
+        dispatch: userContext.dispatch,
       });
+      console.log(user);
     }
   }, [user]);
 
-  if (currentUserContext.state.loading) {
+  if (userContext.state.loading) {
     return (
       <UserLayout title={"user"}>
         <UserControls
-          state={currentUserContext.state}
-          dispatch={currentUserContext.dispatch}
+          state={userContext.state}
+          dispatch={userContext.dispatch}
         />
         <div className={styles["user__loading-indicator"]}>
           <LoadingIndicator />
         </div>
       </UserLayout>
     );
-  } else if (currentUserContext.state.errorMessage) {
+  } else if (userContext.state.errorMessage) {
     return (
       <UserLayout title={"user"}>
         <UserControls
-          state={currentUserContext.state}
-          dispatch={currentUserContext.dispatch}
+          state={userContext.state}
+          dispatch={userContext.dispatch}
         />
         <div className={styles["user__error-message"]}>
-          {currentUserContext.state.errorMessage}
+          {userContext.state.errorMessage}
         </div>
       </UserLayout>
     );
@@ -60,30 +61,30 @@ export default function User() {
     return (
       <UserLayout title={"user"}>
         <UserControls
-          state={currentUserContext.state}
-          dispatch={currentUserContext.dispatch}
+          state={userContext.state}
+          dispatch={userContext.dispatch}
         />
         <UserInfo
-          avatarUrl={currentUserContext.state.avatarUrl}
-          bannerUrl={currentUserContext.state.bannerUrl}
-          userName={currentUserContext.state.userName}
+          avatarUrl={userContext.state.avatarUrl}
+          bannerUrl={userContext.state.bannerUrl}
+          userName={userContext.state.userName}
         />
-        {currentUserContext.state.mode === "ANIME" &&
-          parseFloat(currentUserContext.state.anime.count) > 0 && (
-            <UserAnime anime={currentUserContext.state.anime} />
+        {userContext.state.mode === "ANIME" &&
+          parseFloat(userContext.state.anime.count) > 0 && (
+            <UserAnime anime={userContext.state.anime} />
           )}
-        {currentUserContext.state.mode === "ANIME" &&
-          parseFloat(currentUserContext.state.anime.count) <= 0 && (
+        {userContext.state.mode === "ANIME" &&
+          parseFloat(userContext.state.anime.count) <= 0 && (
             <div className={styles["user__instructions"]}>
               This user does not have any anime to chart.
             </div>
           )}
-        {currentUserContext.state.mode === "MANGA" &&
-          parseFloat(currentUserContext.state.manga.count) > 0 && (
-            <UserManga manga={currentUserContext.state.manga} />
+        {userContext.state.mode === "MANGA" &&
+          parseFloat(userContext.state.manga.count) > 0 && (
+            <UserManga manga={userContext.state.manga} />
           )}
-        {currentUserContext.state.mode === "MANGA" &&
-          parseFloat(currentUserContext.state.manga.count) <= 0 && (
+        {userContext.state.mode === "MANGA" &&
+          parseFloat(userContext.state.manga.count) <= 0 && (
             <div className={styles["user__instructions"]}>
               This user does not have any manga to chart.
             </div>

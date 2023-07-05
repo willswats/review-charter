@@ -1,18 +1,13 @@
-import { UserLayout, UserControls } from "@/features/user";
-
-import { useUserContext } from "@/features/user/context/UserContext";
+import { UserLayout, UserControls, useUserContext } from "@/features/user";
 
 import styles from "@/styles/User.module.css";
 
 export default function UserHome() {
-  const currentUserContext = useUserContext();
+  const userContext = useUserContext();
 
   return (
     <UserLayout title={"user"}>
-      <UserControls
-        state={currentUserContext.state}
-        dispatch={currentUserContext.dispatch}
-      />
+      <UserControls state={userContext.state} dispatch={userContext.dispatch} />
       <div className={styles["user__instructions"]}>
         Enter a username into the input to chart a user.
       </div>

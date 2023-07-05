@@ -85,7 +85,6 @@ export const fetchUser = async ({ name, dispatch }: fetchUser) => {
         countries: data.data.User.statistics.manga.countries,
         releaseYears: data.data.User.statistics.manga.releaseYears,
       };
-
       dispatch({ type: "set-loading", payload: false });
 
       dispatch({ type: "set-avatar-url", payload: avatarUrl });
