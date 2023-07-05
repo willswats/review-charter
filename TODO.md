@@ -2,7 +2,9 @@
 
 ## High Priority
 
-- [ ] Use the url for usernames (on submit, router.push the form to [user].tsx, and then fetch on that page)
+- [ ] Fix two fetches on first search
+- [ ] Fix janky transition on first search (loading state does not seem to be first)
+- [ ] Highlight nav user when on dynamic user page
 - [ ] Preserve state between pages
 
 ## Medium Priority
