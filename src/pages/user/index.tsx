@@ -1,18 +1,9 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import { UserLayout, UserControls, useUserContext } from "@/features/user";
 
 import styles from "@/styles/User.module.css";
 
 export default function UserHome() {
-  const router = useRouter();
   const userContext = useUserContext();
-
-  useEffect(() => {
-    if (userContext.state.userName !== "") {
-      router.push(`/user/${userContext.state.userName}`);
-    }
-  }, []);
 
   return (
     <UserLayout title={"user"}>

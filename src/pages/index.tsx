@@ -1,6 +1,7 @@
 import Head from "next/head";
 
-import { NavBar, LinkButton } from "@/components";
+import { LinkButton } from "@/components";
+import { NavBar } from "@/features/user";
 
 import styles from "@/styles/Home.module.css";
 

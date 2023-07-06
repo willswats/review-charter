@@ -25,6 +25,12 @@ export default function User() {
 
   useEffect(() => {
     if (user !== undefined) {
+      if (
+        userContext.state.userName.toLowerCase() ==
+        user.toString().toLowerCase()
+      ) {
+        return;
+      }
       fetchUser({
         name: user.toString(),
         dispatch: userContext.dispatch,

@@ -11,6 +11,7 @@ export * from "./components/BarChartScores";
 export * from "./components/LineChartReleaseYears";
 export * from "./components/UserControls";
 export * from "./components/UserLayout";
+export * from "./components/UserNavBar";
 
 export * from "./utils/queries";
 export * from "./utils/fetchUser";
