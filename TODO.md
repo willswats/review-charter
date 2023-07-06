@@ -2,8 +2,8 @@
 
 ## High Priority
 
-- [ ] Prevent "/" in search from re-routing
 - [ ] Highlight nav user when on user page and when a user is not found
+- [ ] Prevent "/" in search from re-routing
 
 ## Medium Priority
 
