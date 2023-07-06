@@ -1,5 +1,4 @@
 import {
-  // Interfaces
   statusesItem,
   formatsItem,
   countriesItem,
