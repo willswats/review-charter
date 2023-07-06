@@ -24,13 +24,10 @@ export default function User() {
   let user = router.query.user;
 
   useEffect(() => {
-    if (user !== undefined) {
-      if (
-        userContext.state.userName.toLowerCase() ==
-        user.toString().toLowerCase()
-      ) {
-        return;
-      }
+    if (
+      user !== undefined &&
+      userContext.state.userName.toLowerCase() !== user.toString().toLowerCase()
+    ) {
       fetchUser({
         name: user.toString(),
         dispatch: userContext.dispatch,
