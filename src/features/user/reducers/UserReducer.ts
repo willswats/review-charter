@@ -69,7 +69,7 @@ export const initialState: State = {
 };
 
 export type SetAvatarUrl = { type: "set-avatar-url"; payload: string };
-export type SetBannerUrl = { type: "set-banner-url"; payload: string };
+export type SetBannerUrl = { type: "set-banner-url"; payload: string | null };
 export type SetUserName = { type: "set-user-name"; payload: string };
 export type SetAnime = { type: "set-anime"; payload: Anime };
 export type SetManga = { type: "set-manga"; payload: Manga };
