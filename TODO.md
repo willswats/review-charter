@@ -2,9 +2,8 @@
 
 ## High Priority
 
-- [ ] Look into peformance of useContext
-- [ ] Prevent weird characters in search causing issues
-- [ ] Highlight nav user when on dynamic user page
+- [ ] Prevent "/" in search from re-routing
+- [ ] Highlight nav user when on user page and when a user is not found
 
 ## Medium Priority
 
@@ -13,6 +12,3 @@
 - [ ] Add footer
 
 ## Low Priority
-
-- [ ] Refactor code for less prop drilling
-- [ ] Refactor fetchUser to not use dispatch
