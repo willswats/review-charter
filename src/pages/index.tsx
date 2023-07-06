@@ -1,13 +1,13 @@
 import Head from "next/head";
 
-import { LinkButton } from "@/components";
-import { NavBar } from "@/features/user";
+import { LinkButton, NavBar } from "@/components";
 import { useUserContext } from "@/features/user";
 
 import styles from "@/styles/Home.module.css";
 
 export default function Home() {
-  const userContext = useUserContext();
+  const { state } = useUserContext();
+  const { userName } = state;
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function Home() {
         <title>Review Charter</title>
       </Head>
 
-      <NavBar />
+      <NavBar userName={userName} />
       <main className={styles.home}>
         <div className={styles["home__container"]}>
           <h1 className={styles["home__title"]}>Review Charter</h1>
@@ -32,10 +32,7 @@ export default function Home() {
             data in multiple charts.
           </p>
           <div className={styles["home__button-container"]}>
-            <LinkButton
-              href={`/user/${userContext.state.userName}`}
-              text="Chart a User"
-            />
+            <LinkButton href={`/user/${userName}`} text="Chart a User" />
           </div>
         </div>
       </main>

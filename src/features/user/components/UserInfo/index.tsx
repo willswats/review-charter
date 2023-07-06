@@ -1,16 +1,14 @@
 import { SvgLink } from "@/components/SvgLink";
+import { useUserContext } from "@/features/user";
 
 import SvgLinkRound from "public/assets/link-round.svg";
 
 import styles from "./styles.module.css";
 
-interface UserInfo {
-  avatarUrl: string;
-  bannerUrl: string;
-  userName: string;
-}
+export const UserInfo = () => {
+  const { state } = useUserContext();
+  const { bannerUrl, avatarUrl, userName } = state;
 
-export const UserInfo = ({ avatarUrl, bannerUrl, userName }: UserInfo) => {
   return (
     <div className={styles["user-info"]}>
       {bannerUrl !== null && (
@@ -24,7 +22,7 @@ export const UserInfo = ({ avatarUrl, bannerUrl, userName }: UserInfo) => {
           />
         </span>
         <img className={styles["user-info__avatar"]} src={avatarUrl} />
-        <h1 className={styles["user-info__username"]}>{userName} </h1>
+        <h1 className={styles["user-info__username"]}>{userName}</h1>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 
-import { NavBar, useUserContext } from "@/features/user";
+import { NavBar } from "@/components";
+import { useUserContext } from "@/features/user";
 
 import styles from "./styles.module.css";
 
@@ -10,14 +11,15 @@ interface LayoutProps {
 }
 
 export const UserLayout = ({ children }: LayoutProps) => {
-  const userContext = useUserContext();
+  const { state } = useUserContext();
+  const { loading, userName } = state;
 
   let titleStart = "User";
 
-  if (userContext.state.loading == true) {
+  if (loading == true) {
     titleStart = "Loading...";
-  } else if (userContext.state.userName.length > 0) {
-    titleStart = `${userContext.state.userName}'s Stats`;
+  } else if (userName.length > 0) {
+    titleStart = `${userName}'s Stats`;
   }
 
   return (
@@ -25,7 +27,7 @@ export const UserLayout = ({ children }: LayoutProps) => {
       <Head>
         <title>{titleStart} - Review Charter</title>
       </Head>
-      <NavBar />
+      <NavBar userName={userName} />
       <main className={styles["layout"]}>{children}</main>
     </>
   );

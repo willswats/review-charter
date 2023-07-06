@@ -1,27 +1,16 @@
-import { ChangeEvent, FormEvent, Dispatch, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/router";
 
-import { Search } from "@/components";
-import {
-  // Interfaces
-  State,
-  // Types
-  UserActions,
-  // Components
-  UserModeButtons,
-  UserRefreshButton,
-  fetchUser,
-} from "@/features/user";
+import { Search, RefreshButton } from "@/components";
+import { UserModeButtons, fetchUser, useUserContext } from "@/features/user";
 
 import styles from "./styles.module.css";
 
-interface UserControlsProps {
-  state: State;
-  dispatch: Dispatch<UserActions>;
-}
-
-export const UserControls = ({ state, dispatch }: UserControlsProps) => {
+export const UserControls = () => {
   const router = useRouter();
+  const { state, dispatch } = useUserContext();
+  const { userName } = state;
+
   const [searchValue, setSearchValue] = useState<string>("");
 
   const searchSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
@@ -39,15 +28,18 @@ export const UserControls = ({ state, dispatch }: UserControlsProps) => {
   };
 
   const refreshButtonClickHandler = () => {
-    if (state.userName.length > 0) {
-      fetchUser({ name: state.userName, dispatch });
+    if (userName.length > 0) {
+      fetchUser({
+        name: userName,
+        dispatch,
+      });
     }
   };
 
   return (
     <div className={styles["user__controls"]}>
       <div className={styles["user__controls-left"]}>
-        <UserModeButtons mode={state.mode} dispatch={dispatch} />
+        <UserModeButtons />
       </div>
       <div className={styles["user__controls-middle"]}>
         <Search
@@ -58,7 +50,7 @@ export const UserControls = ({ state, dispatch }: UserControlsProps) => {
         />
       </div>
       <div className={styles["user__controls-right"]}>
-        <UserRefreshButton clickHandler={refreshButtonClickHandler} />
+        <RefreshButton clickHandler={refreshButtonClickHandler} />
       </div>
     </div>
   );

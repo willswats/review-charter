@@ -1,13 +1,11 @@
+import { Statistic } from "@/components";
 import {
-  // Interfaces
-  Anime,
-  // Components
-  UserStatistic,
   PieChartStatuses,
   PieChartFormats,
   PieChartCountries,
   BarChartScores,
   LineChartReleaseYears,
+  useUserContext,
 } from "@/features/user";
 
 import SvgTv from "public/assets/tv.svg";
@@ -16,30 +14,29 @@ import SvgCalendar from "public/assets/calendar-line.svg";
 
 import styles from "./styles.module.css";
 
-interface UserAnimeProps {
-  anime: Anime;
-}
+export const UserAnime = () => {
+  const { state } = useUserContext();
+  const { anime } = state;
 
-export const UserAnime = ({ anime }: UserAnimeProps) => {
   return (
     <>
       <div className={styles["user-anime__statistics"]}>
         {parseFloat(anime.count) >= 0 && (
-          <UserStatistic
+          <Statistic
             statistic={anime.count}
             text="Total Anime"
             svg={<SvgTv />}
           />
         )}
         {parseFloat(anime.episodesWatched) >= 0 && (
-          <UserStatistic
+          <Statistic
             statistic={anime.episodesWatched}
             text="Episodes Watched"
             svg={<SvgPlay />}
           />
         )}
         {parseFloat(anime.daysWatched) >= 0 && (
-          <UserStatistic
+          <Statistic
             statistic={anime.daysWatched}
             text="Days Watched"
             svg={<SvgCalendar />}

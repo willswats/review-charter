@@ -1,18 +1,17 @@
 import { MouseEvent } from "react";
-
 import { SvgButton } from "@/components";
 
 import styles from "./styles.module.css";
 
 import SvgRefresh from "public/assets/refresh.svg";
 
-interface UserRefreshButtonProps {
+interface RefreshButtonProps {
   clickHandler: (event: MouseEvent) => void;
 }
 
-export const UserRefreshButton = ({ clickHandler }: UserRefreshButtonProps) => {
+export const RefreshButton = ({ clickHandler }: RefreshButtonProps) => {
   return (
-    <span className={styles["user-refresh-button"]}>
+    <span className={styles["refresh-button"]}>
       <SvgButton svg={<SvgRefresh />} clickHandler={clickHandler} />
     </span>
   );

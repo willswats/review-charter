@@ -1,4 +1,4 @@
-.user-refresh-button {
+.refresh-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,11 +8,11 @@
   transition: 0.1s;
 }
 
-.user-refresh-button:hover {
+.refresh-button:hover {
   cursor: pointer;
   background-color: #050b11;
 }
 
-.user-refresh-button:hover path {
+.refresh-button:hover path {
   fill: #37a1d9;
 }

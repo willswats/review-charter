@@ -1,4 +1,4 @@
-.user-statistic {
+.statistic {
   display: flex;
   background-color: #151f2e;
   border-radius: 20px;
@@ -7,17 +7,17 @@
   margin-bottom: 1rem;
 }
 
-.user-statistic__top {
+.statistic__top {
   display: flex;
 }
 
-.user-statistic__svg svg {
+.statistic__svg svg {
   width: 2rem;
   height: 2rem;
   margin-right: 0.25rem;
 }
 
-.user-statistic__statistic {
+.statistic__statistic {
   color: #37a1d9;
   font-size: 2rem;
 }

@@ -1,16 +1,12 @@
-import { Dispatch } from "react";
-
 import { ModeButton } from "@/components";
-import { SetMode } from "@/features/user";
+import { useUserContext } from "@/features/user";
 
 import styles from "./styles.module.css";
 
-interface UserModesProps {
-  mode: string;
-  dispatch: Dispatch<SetMode>;
-}
+export const UserModeButtons = () => {
+  const { state, dispatch } = useUserContext();
+  const { mode } = state;
 
-export const UserModeButtons = ({ mode, dispatch }: UserModesProps) => {
   return (
     <div className={styles["user-mode-buttons"]}>
       <div className={styles["user-mode-buttons__content"]}>
