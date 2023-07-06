@@ -10,6 +10,7 @@ import {
   // Components
   UserModeButtons,
   UserRefreshButton,
+  fetchUser,
 } from "@/features/user";
 
 import styles from "./styles.module.css";
@@ -39,6 +40,7 @@ export const UserControls = ({ state, dispatch }: UserControlsProps) => {
 
   const refreshButtonClickHandler = () => {
     if (state.userName.length > 0) {
+      fetchUser({ name: state.userName, dispatch });
     }
   };
 
