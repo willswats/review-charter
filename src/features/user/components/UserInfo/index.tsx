@@ -21,7 +21,9 @@ export const UserInfo = () => {
             href={`https://anilist.co/user/${userName}`}
           />
         </span>
-        <img className={styles["user-info__avatar"]} src={avatarUrl} />
+        {avatarUrl.length > 0 && (
+          <img className={styles["user-info__avatar"]} src={avatarUrl} />
+        )}
         <h1 className={styles["user-info__username"]}>{userName}</h1>
       </div>
     </div>

@@ -30,7 +30,7 @@ export interface Manga {
 
 export interface State {
   avatarUrl: string;
-  bannerUrl: string;
+  bannerUrl: string | null;
   userName: string;
   anime: Anime;
   manga: Manga;
@@ -41,7 +41,7 @@ export interface State {
 
 export const initialState: State = {
   avatarUrl: "",
-  bannerUrl: "",
+  bannerUrl: null,
   userName: "",
   anime: {
     count: "",
