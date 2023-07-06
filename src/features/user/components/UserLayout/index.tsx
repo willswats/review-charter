@@ -1,20 +1,29 @@
 import { ReactNode } from "react";
 import Head from "next/head";
 
-import { NavBar } from "@/features/user";
+import { NavBar, useUserContext } from "@/features/user";
 
 import styles from "./styles.module.css";
 
 interface LayoutProps {
-  title: string;
   children: ReactNode;
 }
 
-export const UserLayout = ({ title, children }: LayoutProps) => {
+export const UserLayout = ({ children }: LayoutProps) => {
+  const userContext = useUserContext();
+
+  let titleStart = "User";
+
+  if (userContext.state.loading == true) {
+    titleStart = "Loading...";
+  } else if (userContext.state.userName.length > 0) {
+    titleStart = `${userContext.state.userName}'s Stats`;
+  }
+
   return (
     <>
       <Head>
-        <title>Review Charter - {title}</title>
+        <title>{titleStart} - Review Charter</title>
       </Head>
       <NavBar />
       <main className={styles["layout"]}>{children}</main>

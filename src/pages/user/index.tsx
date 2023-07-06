@@ -6,7 +6,7 @@ export default function UserHome() {
   const userContext = useUserContext();
 
   return (
-    <UserLayout title={"user"}>
+    <UserLayout>
       <UserControls state={userContext.state} dispatch={userContext.dispatch} />
       <div className={styles["user__instructions"]}>
         Enter a username into the input to chart a user.

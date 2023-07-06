@@ -16,7 +16,7 @@ interface IUserContextProvider {
   children: ReactNode;
 }
 
-export const UserContext = createContext<IUserContext | null>(null);
+const UserContext = createContext<IUserContext | null>(null);
 
 export const useUserContext = () => {
   const currentUserContext = useContext(UserContext);

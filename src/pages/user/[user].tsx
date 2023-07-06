@@ -40,7 +40,7 @@ export default function User() {
 
   if (userContext.state.loading) {
     return (
-      <UserLayout title={"user"}>
+      <UserLayout>
         <UserControls
           state={userContext.state}
           dispatch={userContext.dispatch}
@@ -52,7 +52,7 @@ export default function User() {
     );
   } else if (userContext.state.errorMessage) {
     return (
-      <UserLayout title={"user"}>
+      <UserLayout>
         <UserControls
           state={userContext.state}
           dispatch={userContext.dispatch}
@@ -64,7 +64,7 @@ export default function User() {
     );
   } else {
     return (
-      <UserLayout title={"user"}>
+      <UserLayout>
         <UserControls
           state={userContext.state}
           dispatch={userContext.dispatch}
