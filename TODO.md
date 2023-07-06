@@ -2,6 +2,7 @@
 
 ## High Priority
 
+- [ ] Fix error in console (title)
 - [ ] Highlight nav user when on user page and when a user is not found
 - [ ] Prevent "/" in search from re-routing
 
