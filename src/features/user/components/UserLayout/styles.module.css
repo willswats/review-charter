@@ -1,0 +1,12 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  padding: 6rem 6rem 2rem 6rem;
+  min-height: 100vh;
+}
+
+@media screen and (max-width: 768px) {
+  .layout {
+    padding: 6rem 2rem 2rem 2rem;
+  }
+}

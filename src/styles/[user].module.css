@@ -1,4 +1,4 @@
-.user-content__error-message {
+.user__error-message {
   display: flex;
   background-color: #151f2e;
   padding: 1rem;
@@ -7,7 +7,7 @@
   font-size: 2rem;
 }
 
-.user-content__loading-indicator {
+.user__loading-indicator {
   display: flex;
   justify-content: center;
   background-color: #151f2e;
@@ -16,7 +16,7 @@
   margin-bottom: 1rem;
 }
 
-.user-content__instructions {
+.user__instructions {
   display: flex;
   background-color: #151f2e;
   padding: 1rem;

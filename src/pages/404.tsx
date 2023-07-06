@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { NavBar } from "@/components";
+import { NavBar } from "@/features/user";
 
 import styles from "@/styles/404.module.css";
 

@@ -2,8 +2,10 @@
 
 ## High Priority
 
-- [ ] Preserve state between pages
-- [ ] Use the url for usernames
+- [ ] Cleanup code
+- [ ] Prevent weird characters in search causing issues
+- [ ] Add username to title
+- [ ] Highlight nav user when on dynamic user page
 
 ## Medium Priority
 
