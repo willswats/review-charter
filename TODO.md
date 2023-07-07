@@ -2,7 +2,7 @@
 
 ## High Priority
 
-- [ ] Prevent "/" in search from re-routing
+- [ ] Prevent "/" in search from re-routing (only route to a users page if they exist)
 
 ## Medium Priority
 
