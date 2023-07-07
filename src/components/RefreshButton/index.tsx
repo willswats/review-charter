@@ -11,8 +11,8 @@ interface RefreshButtonProps {
 
 export const RefreshButton = ({ clickHandler }: RefreshButtonProps) => {
   return (
-    <span className={styles["refresh-button"]}>
-      <SvgButton svg={<SvgRefresh />} clickHandler={clickHandler} />
+    <span className={styles["refresh-button"]} onClick={clickHandler}>
+      <SvgButton svg={<SvgRefresh />} />
     </span>
   );
 };
