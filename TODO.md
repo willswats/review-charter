@@ -2,6 +2,7 @@
 
 ## High Priority
 
+- [ ] Fix refresh button click area
 - [ ] Prevent "/" in search from re-routing
 
 ## Medium Priority
