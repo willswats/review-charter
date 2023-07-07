@@ -15,11 +15,17 @@ export const UserControls = () => {
 
   const searchSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (router.query.user) {
-      router.push(searchValue);
-    } else {
-      router.push(`user/${searchValue}`);
-    }
+    if (
+      searchValue.length > 0 &&
+      !searchValue.includes("/") &&
+      !searchValue.includes("\\") &&
+      !searchValue.includes(".")
+    )
+      if (router.query.user) {
+        router.push(searchValue);
+      } else {
+        router.push(`user/${searchValue}`);
+      }
     setSearchValue("");
   };
 
