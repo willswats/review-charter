@@ -15,6 +15,7 @@ export const UserLayout = ({ children }: LayoutProps) => {
   const { loading, userName } = state;
 
   let titleStart = "User";
+  const titleEnd = "- Review Charter";
 
   if (loading == true) {
     titleStart = "Loading...";
@@ -22,10 +23,12 @@ export const UserLayout = ({ children }: LayoutProps) => {
     titleStart = `${userName}'s Stats`;
   }
 
+  let title = `${titleStart} ${titleEnd}`;
+
   return (
     <>
       <Head>
-        <title>{titleStart} - Review Charter</title>
+        <title>{title}</title>
       </Head>
       <NavBar userName={userName} />
       <main className={styles["layout"]}>{children}</main>
