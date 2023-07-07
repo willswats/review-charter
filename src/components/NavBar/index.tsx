@@ -9,8 +9,8 @@ interface NavBarProps {
 export const NavBar = ({ userName }: NavBarProps) => {
   return (
     <nav className={styles["nav-bar"]}>
-      <NavBarLink url="/" text="Home" />
-      <NavBarLink url={`/user/${userName}`} text="User" />
+      <NavBarLink href="/" urlFirstWord="" text="Home" />
+      <NavBarLink href={`/user/${userName}`} urlFirstWord="user" text="User" />
     </nav>
   );
 };
