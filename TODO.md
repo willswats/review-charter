@@ -2,6 +2,7 @@
 
 ## High Priority
 
+- [ ] Fix eraser button by removing dispatch as a dependency of useEffect
 - [ ] Provide feedback for invalid characters in search
 
 ## Medium Priority
