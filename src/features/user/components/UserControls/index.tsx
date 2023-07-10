@@ -16,7 +16,7 @@ export const UserControls = () => {
   const searchSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const regex = /[^A-Za-z0-9]/g;
-    if (searchValue.match(regex) === null) {
+    if (searchValue.length > 0 && searchValue.match(regex) === null) {
       if (router.query.user) {
         router.push(searchValue);
       } else {
