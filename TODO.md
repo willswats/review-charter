@@ -9,6 +9,7 @@
 
 ## Medium Priority
 
+- [ ] Focus search after first search from /user
 - [ ] Search history with up and down arrows
 - [ ] Keyboard shortcuts:
   - [ ] Switch between anime & manga
