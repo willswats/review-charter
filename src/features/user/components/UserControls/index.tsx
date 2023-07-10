@@ -52,7 +52,7 @@ export const UserControls = () => {
         <Search
           placeHolder="Username..."
           inputValue={searchValue}
-          inputRef={searchInputRef}
+          ref={searchInputRef}
           submitHandler={searchSubmitHandler}
           changeHandler={searchChangeHandler}
         />

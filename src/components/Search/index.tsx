@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, LegacyRef } from "react";
+import { ChangeEvent, FormEvent, forwardRef } from "react";
 
 import { SvgButton } from "@/components/SvgButton";
 
@@ -9,28 +9,23 @@ import styles from "./styles.module.css";
 interface SearchProps {
   placeHolder: string;
   inputValue: string;
-  inputRef: LegacyRef<HTMLInputElement>;
   submitHandler: (event: FormEvent<HTMLFormElement>) => void;
   changeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Search = ({
-  placeHolder,
-  inputValue,
-  inputRef,
-  submitHandler,
-  changeHandler,
-}: SearchProps) => {
-  return (
-    <form onSubmit={submitHandler} className={styles["search"]}>
-      <input
-        className={styles["search__input"]}
-        value={inputValue}
-        ref={inputRef}
-        onChange={changeHandler}
-        placeholder={placeHolder}
-      />
-      <SvgButton svg={<SvgSearch />} />
-    </form>
-  );
-};
+export const Search = forwardRef<HTMLInputElement, SearchProps>(
+  ({ placeHolder, inputValue, submitHandler, changeHandler }, ref) => {
+    return (
+      <form onSubmit={submitHandler} className={styles["search"]}>
+        <input
+          className={styles["search__input"]}
+          value={inputValue}
+          ref={ref}
+          onChange={changeHandler}
+          placeholder={placeHolder}
+        />
+        <SvgButton svg={<SvgSearch />} />
+      </form>
+    );
+  }
+);
