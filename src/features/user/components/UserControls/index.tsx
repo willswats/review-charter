@@ -19,7 +19,9 @@ export const UserControls = () => {
       searchValue.length > 0 &&
       !searchValue.includes("/") &&
       !searchValue.includes("\\") &&
-      !searchValue.includes(".")
+      !searchValue.includes(".") &&
+      !searchValue.includes("<") &&
+      !searchValue.includes(">")
     )
       if (router.query.user) {
         router.push(searchValue);
