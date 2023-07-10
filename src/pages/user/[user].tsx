@@ -7,7 +7,6 @@ import {
   UserInfo,
   UserAnime,
   UserManga,
-  UserControls,
   fetchUser,
   useUserContext,
 } from "@/features/user";
@@ -36,7 +35,6 @@ export default function User() {
   if (loading) {
     return (
       <UserLayout>
-        <UserControls />
         <div className={styles["user__loading-indicator"]}>
           <LoadingIndicator />
         </div>
@@ -45,14 +43,12 @@ export default function User() {
   } else if (errorMessage) {
     return (
       <UserLayout>
-        <UserControls />
         <div className={styles["user__error-message"]}>{errorMessage}</div>
       </UserLayout>
     );
   } else {
     return (
       <UserLayout>
-        <UserControls />
         <UserInfo />
         {mode === "ANIME" && parseFloat(anime.count) > 0 && <UserAnime />}
         {mode === "ANIME" && parseFloat(anime.count) <= 0 && (

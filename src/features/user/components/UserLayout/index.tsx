@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import Head from "next/head";
 
 import { NavBar } from "@/components";
-import { useUserContext } from "@/features/user";
+import { UserControls, useUserContext } from "@/features/user";
 
 import styles from "./styles.module.css";
 
@@ -31,7 +31,10 @@ export const UserLayout = ({ children }: LayoutProps) => {
         <title>{title}</title>
       </Head>
       <NavBar userName={userName} />
-      <main className={styles["layout"]}>{children}</main>
+      <main className={styles["layout"]}>
+        <UserControls />
+        {children}
+      </main>
     </>
   );
 };
