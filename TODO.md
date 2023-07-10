@@ -15,5 +15,6 @@
 
 ## Low Priority
 
+- [ ] Search history on up and down arrows
 - [ ] Remove all `console.log()`
 - [ ] Rename interfaces to be following the same naming conventions
