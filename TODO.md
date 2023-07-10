@@ -5,7 +5,7 @@
 - [ ] Fix eraser button by removing dispatch as a dependency of useEffect
 - [ ] Make UserControls responsive with EraserButton
 - [ ] Fix console warning
-- [ ] Provide feedback for invalid characters in search
+- [ ] Dispatch error message to /user for invalid characters in search
 
 ## Medium Priority
 
@@ -13,11 +13,11 @@
   - [ ] Switch between anime & manga
   - [ ] Access search
   - [ ] Refresh
-- [ ] Add footer
+- [ ] Search history on up and down arrows
 - [ ] Change global strings to objects
+- [ ] Add footer
 
 ## Low Priority
 
-- [ ] Search history on up and down arrows
-- [ ] Remove all `console.log()`
 - [ ] Rename interfaces to be following the same naming conventions
+- [ ] Remove all `console.log()`
