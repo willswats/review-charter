@@ -2,6 +2,8 @@
 
 ## High Priority
 
+- [ ] Provide feedback for invalid characters in search
+
 ## Medium Priority
 
 - [ ] Keyboard shortcuts:
