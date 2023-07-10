@@ -30,7 +30,7 @@ export default function User() {
         dispatch: dispatch,
       });
     }
-  }, [user]);
+  }, [user, dispatch, userName]);
 
   if (loading) {
     return (
