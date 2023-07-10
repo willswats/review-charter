@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useRef } from "react";
 import { useRouter } from "next/router";
 
 import { Search, RefreshButton } from "@/components";
@@ -8,6 +8,7 @@ import styles from "./styles.module.css";
 
 export const UserControls = () => {
   const router = useRouter();
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const { state, dispatch } = useUserContext();
   const { userName } = state;
 
@@ -15,6 +16,9 @@ export const UserControls = () => {
 
   const searchSubmitHandler = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    searchInputRef.current?.blur();
+
     const regex = /[^A-Za-z0-9]/g;
     if (searchValue.length > 0 && searchValue.match(regex) === null) {
       if (router.query.user) {
@@ -48,6 +52,7 @@ export const UserControls = () => {
         <Search
           placeHolder="Username..."
           inputValue={searchValue}
+          inputRef={searchInputRef}
           submitHandler={searchSubmitHandler}
           changeHandler={searchChangeHandler}
         />
