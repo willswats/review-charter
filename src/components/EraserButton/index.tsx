@@ -12,8 +12,8 @@ interface EraserButton {
 
 export const EraserButton = ({ clickHandler }: EraserButton) => {
   return (
-    <button className={styles["eraser-button"]} onClick={clickHandler}>
+    <span className={styles["eraser-button"]} onClick={clickHandler}>
       <SvgButton svg={<SvgEraser />} />
-    </button>
+    </span>
   );
 };
