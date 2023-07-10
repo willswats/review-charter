@@ -2,10 +2,15 @@
 
 ## High Priority
 
+- [ ] Fetch the user before re-routing to the user page (don't push username to the url unless they exist)
+- [ ] Error messages:
+  - [ ] Display all error messages on /user
+  - [ ] Display error message for invalid characters
+
 ## Medium Priority
 
 - [ ] Search history with up and down arrows
-- [ ] Keyboard shortcuts
+- [ ] Keyboard shortcuts:
   - [ ] Switch between anime & manga
   - [ ] Access search
   - [ ] Refresh
