@@ -1,0 +1,18 @@
+.eraser-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #151f2e;
+  padding: 0 1rem;
+  border-radius: 10px;
+  transition: 0.1s;
+}
+
+.eraser-button:hover {
+  cursor: pointer;
+  background-color: #050b11;
+}
+
+.eraser-button:hover path {
+  fill: #37a1d9;
+}

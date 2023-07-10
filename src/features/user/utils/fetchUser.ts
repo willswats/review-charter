@@ -13,6 +13,22 @@ interface fetchUser {
   dispatch: Dispatch<UserActions>;
 }
 
+interface resetUser {
+  dispatch: Dispatch<UserActions>;
+}
+
+export const resetUser = ({ dispatch }: resetUser) => {
+  dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
+  dispatch({ type: "set-banner-url", payload: initialState.bannerUrl });
+  dispatch({ type: "set-user-name", payload: initialState.userName });
+  dispatch({ type: "set-anime", payload: initialState.anime });
+  dispatch({ type: "set-loading", payload: initialState.loading });
+  dispatch({
+    type: "set-error-message",
+    payload: initialState.errorMessage,
+  });
+};
+
 export const fetchUser = async ({ name, dispatch }: fetchUser) => {
   dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
   dispatch({ type: "set-banner-url", payload: initialState.bannerUrl });

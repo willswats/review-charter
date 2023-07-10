@@ -1,8 +1,13 @@
 import { ChangeEvent, FormEvent, useState, useRef } from "react";
 import { useRouter } from "next/router";
 
-import { Search, RefreshButton } from "@/components";
-import { UserModeButtons, fetchUser, useUserContext } from "@/features/user";
+import { Search, RefreshButton, EraserButton } from "@/components";
+import {
+  UserModeButtons,
+  fetchUser,
+  resetUser,
+  useUserContext,
+} from "@/features/user";
 
 import styles from "./styles.module.css";
 
@@ -34,6 +39,11 @@ export const UserControls = () => {
     setSearchValue(event.target.value);
   };
 
+  const eraserButtonClickHandler = () => {
+    resetUser({ dispatch });
+    router.push("/user");
+  };
+
   const refreshButtonClickHandler = () => {
     if (userName.length > 0) {
       fetchUser({
@@ -58,6 +68,7 @@ export const UserControls = () => {
         />
       </div>
       <div className={styles["user__controls-right"]}>
+        <EraserButton clickHandler={eraserButtonClickHandler} />
         <RefreshButton clickHandler={refreshButtonClickHandler} />
       </div>
     </div>
