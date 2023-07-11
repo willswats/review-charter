@@ -16,7 +16,7 @@ import SvgBookOpen from "public/assets/book-open.svg";
 
 export const UserManga = () => {
   const { state } = useUserContext();
-  const { manga } = state;
+  const { manga } = state.user;
 
   return (
     <>

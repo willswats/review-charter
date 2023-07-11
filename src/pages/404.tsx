@@ -6,6 +6,7 @@ import styles from "@/styles/404.module.css";
 
 export default function FourZeroFour() {
   const { state } = useUserContext();
+  const { userName } = state.user;
 
   return (
     <>
@@ -13,7 +14,7 @@ export default function FourZeroFour() {
         <title>404 Page Not Found - Review Charter</title>
       </Head>
 
-      <NavBar userName={state.userName} />
+      <NavBar userName={userName} />
 
       <main className={styles["four-zero-four"]}>
         <div className={styles["four-zero-four__text"]}>

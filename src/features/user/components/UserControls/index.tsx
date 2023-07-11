@@ -4,8 +4,7 @@ import { useRouter } from "next/router";
 import { Search, SvgButton } from "@/components";
 import {
   UserModeButtons,
-  fetchUser,
-  resetUser,
+  resetUserData,
   useUserContext,
 } from "@/features/user";
 
@@ -18,7 +17,7 @@ export const UserControls = () => {
   const router = useRouter();
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { state, dispatch } = useUserContext();
-  const { userName } = state;
+  const { userName } = state.user;
 
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -31,10 +30,8 @@ export const UserControls = () => {
     if (searchValue.length > 0 && searchValue.match(regex) === null) {
       if (router.query.user) {
         router.push(searchValue);
-        fetchUser({ name: searchValue, dispatch });
       } else {
         router.push(`user/${searchValue}`);
-        fetchUser({ name: searchValue, dispatch });
       }
     }
     setSearchValue("");
@@ -45,16 +42,12 @@ export const UserControls = () => {
   };
 
   const eraserButtonClickHandler = () => {
-    resetUser({ dispatch });
     router.push("/user");
   };
 
   const refreshButtonClickHandler = () => {
     if (userName.length > 0) {
-      fetchUser({
-        name: userName,
-        dispatch,
-      });
+      resetUserData({ dispatch });
     }
   };
 

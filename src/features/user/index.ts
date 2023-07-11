@@ -12,6 +12,8 @@ export * from "./components/UserLayout";
 
 export * from "./utils/queries";
 export * from "./utils/fetchUser";
+export * from "./utils/setUserData";
+export * from "./utils/resetUserData";
 
 export * from "./context/UserContext";
 export * from "./reducers/UserReducer";

@@ -1,28 +1,10 @@
-import { Dispatch } from "react";
-import { initialState, UserActions, userQuery } from "@/features/user";
+import { userQuery } from "@/features/user";
 
 interface fetchUser {
   name: string;
-  dispatch: Dispatch<UserActions>;
 }
 
-interface resetUser {
-  dispatch: Dispatch<UserActions>;
-}
-
-export const resetUser = ({ dispatch }: resetUser) => {
-  dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
-  dispatch({ type: "set-banner-url", payload: initialState.bannerUrl });
-  dispatch({ type: "set-user-name", payload: initialState.userName });
-  dispatch({ type: "set-anime", payload: initialState.anime });
-  dispatch({ type: "set-loading", payload: initialState.loading });
-  dispatch({
-    type: "set-error-message",
-    payload: initialState.errorMessage,
-  });
-};
-
-export const fetchUser = async ({ name, dispatch }: fetchUser) => {
+export const fetchUser = async ({ name }: fetchUser) => {
   const url: string = "https://graphql.anilist.co";
 
   const variables: { name: string } = {
@@ -51,17 +33,11 @@ export const fetchUser = async ({ name, dispatch }: fetchUser) => {
   };
 
   try {
-    dispatch({ type: "set-loading", payload: true });
-
     const response = await fetch(url, options);
     const data = await response.json();
 
     if (data.data.User !== null) {
       const { User } = data.data;
-
-      const avatarUrl = User.avatar.large;
-      const bannerUrl = User.bannerImage;
-      const userName = User.name;
 
       const anime = {
         count: User.statistics.anime.count,
@@ -86,21 +62,23 @@ export const fetchUser = async ({ name, dispatch }: fetchUser) => {
         countries: User.statistics.manga.countries,
         releaseYears: User.statistics.manga.releaseYears,
       };
-      dispatch({ type: "set-loading", payload: false });
 
-      dispatch({ type: "set-avatar-url", payload: avatarUrl });
-      dispatch({ type: "set-banner-url", payload: bannerUrl });
-      dispatch({ type: "set-user-name", payload: userName });
-      dispatch({ type: "set-anime", payload: anime });
-      dispatch({ type: "set-manga", payload: manga });
+      const user = {
+        avatarUrl: User.avatar.large,
+        bannerUrl: User.bannerImage,
+        userName: User.name,
+        anime,
+        manga,
+      };
+
       console.log(data);
-    } else {
-      dispatch({ type: "set-loading", payload: false });
 
-      const errorMessage = `There is no user named "${name}".`;
-      dispatch({ type: "set-error-message", payload: errorMessage });
+      return user;
+    } else {
+      throw new Error(`There is no user named "${name}".`);
     }
   } catch (e) {
-    console.log(e);
+    const error = e as String;
+    throw new Error(error.toString());
   }
 };
