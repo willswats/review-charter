@@ -1,13 +1,16 @@
 import { ChangeEvent, FormEvent, useState, useRef } from "react";
 import { useRouter } from "next/router";
 
-import { Search, RefreshButton, EraserButton } from "@/components";
+import { Search, SvgButton } from "@/components";
 import {
   UserModeButtons,
   fetchUser,
   resetUser,
   useUserContext,
 } from "@/features/user";
+
+import SvgEraser from "public/assets/eraser-line.svg";
+import SvgRefresh from "public/assets/refresh.svg";
 
 import styles from "./styles.module.css";
 
@@ -28,8 +31,10 @@ export const UserControls = () => {
     if (searchValue.length > 0 && searchValue.match(regex) === null) {
       if (router.query.user) {
         router.push(searchValue);
+        fetchUser({ name: searchValue, dispatch });
       } else {
         router.push(`user/${searchValue}`);
+        fetchUser({ name: searchValue, dispatch });
       }
     }
     setSearchValue("");
@@ -68,8 +73,18 @@ export const UserControls = () => {
         />
       </div>
       <div className={styles["user__controls-right"]}>
-        <EraserButton clickHandler={eraserButtonClickHandler} />
-        <RefreshButton clickHandler={refreshButtonClickHandler} />
+        <span
+          className={styles["user__controls-eraser-button"]}
+          onClick={eraserButtonClickHandler}
+        >
+          <SvgButton svg={<SvgEraser />} />
+        </span>
+        <span
+          className={styles["user__controls-refresh-button"]}
+          onClick={refreshButtonClickHandler}
+        >
+          <SvgButton svg={<SvgRefresh />} />
+        </span>
       </div>
     </div>
   );
