@@ -14,8 +14,8 @@ export const setUserData = async ({ name, dispatch }: SetUserData) => {
     });
     dispatch({ type: "set-user", payload: userData });
   } catch (e) {
-    const error = e as String;
-    dispatch({ type: "set-error-message", payload: error.toString() });
+    const error = e as Error;
+    dispatch({ type: "set-error-message", payload: error.message });
   }
   dispatch({ type: "set-loading", payload: false });
 };

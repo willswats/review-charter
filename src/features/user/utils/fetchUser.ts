@@ -78,7 +78,7 @@ export const fetchUser = async ({ name }: fetchUser) => {
       throw new Error(`There is no user named "${name}".`);
     }
   } catch (e) {
-    const error = e as String;
-    throw new Error(error.toString());
+    const error = e as Error;
+    throw new Error(error.message);
   }
 };
