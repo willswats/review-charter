@@ -2,6 +2,7 @@
 
 ## High Priority
 
+- [ ] Fix Image on mobile appearing blank for a moment
 - [ ] Make Statistics more responsive and include margin
 - [ ] Dispatch error message to /user for invalid characters in search
 
