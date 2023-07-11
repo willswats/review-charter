@@ -2,9 +2,7 @@
 
 ## High Priority
 
-- [ ] Fix eraser button by removing dispatch as a dependency of useEffect
 - [ ] Make UserControls responsive with EraserButton
-- [ ] Fix console warning
 - [ ] Dispatch error message to /user for invalid characters in search
 
 ## Medium Priority
