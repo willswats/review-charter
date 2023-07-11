@@ -1,12 +1,5 @@
 import { Dispatch } from "react";
-import {
-  // Interfaces
-  initialState,
-  // Types
-  UserActions,
-  // Strings
-  userQuery,
-} from "@/features/user";
+import { initialState, UserActions, userQuery } from "@/features/user";
 
 interface fetchUser {
   name: string;
@@ -30,16 +23,6 @@ export const resetUser = ({ dispatch }: resetUser) => {
 };
 
 export const fetchUser = async ({ name, dispatch }: fetchUser) => {
-  dispatch({ type: "set-avatar-url", payload: initialState.avatarUrl });
-  dispatch({ type: "set-banner-url", payload: initialState.bannerUrl });
-  dispatch({ type: "set-user-name", payload: initialState.userName });
-  dispatch({ type: "set-anime", payload: initialState.anime });
-  dispatch({ type: "set-loading", payload: initialState.loading });
-  dispatch({
-    type: "set-error-message",
-    payload: initialState.errorMessage,
-  });
-
   const url: string = "https://graphql.anilist.co";
 
   const variables: { name: string } = {
@@ -74,32 +57,34 @@ export const fetchUser = async ({ name, dispatch }: fetchUser) => {
     const data = await response.json();
 
     if (data.data.User !== null) {
-      const avatarUrl = data.data.User.avatar.large;
-      const bannerUrl = data.data.User.bannerImage;
-      const userName = data.data.User.name;
+      const { User } = data.data;
+
+      const avatarUrl = User.avatar.large;
+      const bannerUrl = User.bannerImage;
+      const userName = User.name;
 
       const anime = {
-        count: data.data.User.statistics.anime.count,
-        episodesWatched: data.data.User.statistics.anime.episodesWatched,
+        count: User.statistics.anime.count,
+        episodesWatched: User.statistics.anime.episodesWatched,
         daysWatched: Math.round(
-          parseFloat(data.data.User.statistics.anime.minutesWatched) / 60 / 24
+          parseFloat(User.statistics.anime.minutesWatched) / 60 / 24
         ).toString(),
-        statuses: data.data.User.statistics.anime.statuses,
-        formats: data.data.User.statistics.anime.formats,
-        scores: data.data.User.statistics.anime.scores,
-        countries: data.data.User.statistics.anime.countries,
-        releaseYears: data.data.User.statistics.anime.releaseYears,
+        statuses: User.statistics.anime.statuses,
+        formats: User.statistics.anime.formats,
+        scores: User.statistics.anime.scores,
+        countries: User.statistics.anime.countries,
+        releaseYears: User.statistics.anime.releaseYears,
       };
 
       const manga = {
-        count: data.data.User.statistics.manga.count,
-        chaptersRead: data.data.User.statistics.manga.chaptersRead,
-        volumesRead: data.data.User.statistics.manga.volumesRead,
-        statuses: data.data.User.statistics.manga.statuses,
-        formats: data.data.User.statistics.manga.formats,
-        scores: data.data.User.statistics.manga.scores,
-        countries: data.data.User.statistics.manga.countries,
-        releaseYears: data.data.User.statistics.manga.releaseYears,
+        count: User.statistics.manga.count,
+        chaptersRead: User.statistics.manga.chaptersRead,
+        volumesRead: User.statistics.manga.volumesRead,
+        statuses: User.statistics.manga.statuses,
+        formats: User.statistics.manga.formats,
+        scores: User.statistics.manga.scores,
+        countries: User.statistics.manga.countries,
+        releaseYears: User.statistics.manga.releaseYears,
       };
       dispatch({ type: "set-loading", payload: false });
 
