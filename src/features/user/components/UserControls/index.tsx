@@ -16,7 +16,8 @@ import styles from "./styles.module.css";
 export const UserControls = () => {
   const router = useRouter();
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const { dispatch } = useUserContext();
+  const { state, dispatch } = useUserContext();
+  const { userName } = state.user;
 
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -45,7 +46,9 @@ export const UserControls = () => {
   };
 
   const refreshButtonClickHandler = () => {
-    resetUserData({ dispatch });
+    if (userName.length > 0) {
+      resetUserData({ dispatch });
+    }
   };
 
   return (
