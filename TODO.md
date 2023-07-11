@@ -2,7 +2,7 @@
 
 ## High Priority
 
-- [ ] Make UserControls responsive with EraserButton
+- [ ] Make Statistics more responsive and include margin
 - [ ] Dispatch error message to /user for invalid characters in search
 
 ## Medium Priority
