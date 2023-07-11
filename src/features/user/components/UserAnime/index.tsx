@@ -16,7 +16,7 @@ import styles from "./styles.module.css";
 
 export const UserAnime = () => {
   const { state } = useUserContext();
-  const { anime } = state;
+  const { anime } = state.user;
 
   return (
     <>

@@ -7,7 +7,7 @@ import {
   UserInfo,
   UserAnime,
   UserManga,
-  fetchUser,
+  setUserData,
   useUserContext,
 } from "@/features/user";
 
@@ -16,21 +16,19 @@ import styles from "@/styles/[user].module.css";
 export default function User() {
   const router = useRouter();
   const { state, dispatch } = useUserContext();
-  const { userName, mode, errorMessage, loading, anime, manga } = state;
+  const { mode, loading, errorMessage } = state;
+  const { userName, anime, manga } = state.user;
 
-  let user = router.query.user;
+  let userUrl = router.query.user;
 
   useEffect(() => {
     if (
-      user !== undefined &&
-      userName.toLowerCase() !== user.toString().toLowerCase()
+      userUrl !== undefined &&
+      userName.toLowerCase() !== userUrl.toString().toLowerCase()
     ) {
-      fetchUser({
-        name: user.toString(),
-        dispatch: dispatch,
-      });
+      setUserData({ name: userUrl.toString(), dispatch });
     }
-  }, [user, dispatch, userName]);
+  }, [userUrl, userName, dispatch]);
 
   if (loading) {
     return (

@@ -7,7 +7,7 @@ import styles from "@/styles/Home.module.css";
 
 export default function Home() {
   const { state } = useUserContext();
-  const { userName } = state;
+  const { userName } = state.user;
 
   return (
     <>

@@ -12,7 +12,8 @@ interface LayoutProps {
 
 export const UserLayout = ({ children }: LayoutProps) => {
   const { state } = useUserContext();
-  const { loading, userName } = state;
+  const { loading } = state;
+  const { userName } = state.user;
 
   let titleStart = "User";
   const titleEnd = "- Review Charter";
