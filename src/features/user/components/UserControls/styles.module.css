@@ -32,7 +32,10 @@
   padding: 0 1rem;
   border-radius: 10px;
   transition: 0.1s;
-  margin: 0 0.25rem;
+}
+
+.user__controls-eraser-button {
+  margin-right: 0.5rem;
 }
 
 .user__controls-refresh-button:hover,
