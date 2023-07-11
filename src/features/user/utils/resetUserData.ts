@@ -16,4 +16,8 @@ export const resetUserData = async ({ dispatch }: ResetUserData) => {
       manga: initialState.user.manga,
     },
   });
+  dispatch({
+    type: "set-error-message",
+    payload: initialState.errorMessage,
+  });
 };

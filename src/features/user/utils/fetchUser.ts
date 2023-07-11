@@ -71,8 +71,6 @@ export const fetchUser = async ({ name }: fetchUser) => {
         manga,
       };
 
-      console.log(data);
-
       return user;
     } else {
       throw new Error(`There is no user named "${name}".`);

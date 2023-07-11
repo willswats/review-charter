@@ -28,7 +28,7 @@ export default function User() {
     ) {
       setUserData({ name: userUrl.toString(), dispatch });
     }
-  }, [userName, userUrl, dispatch]);
+  }, [userUrl, userName, dispatch]);
 
   if (loading) {
     return (

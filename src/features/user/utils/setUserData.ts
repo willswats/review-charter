@@ -1,5 +1,5 @@
 import { Dispatch } from "react";
-import { fetchUser, UserActions } from "@/features/user";
+import { fetchUser, resetUserData, UserActions } from "@/features/user";
 
 interface SetUserData {
   name: string;
@@ -7,6 +7,8 @@ interface SetUserData {
 }
 
 export const setUserData = async ({ name, dispatch }: SetUserData) => {
+  resetUserData({ dispatch });
+
   dispatch({ type: "set-loading", payload: true });
   try {
     const userData = await fetchUser({
