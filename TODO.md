@@ -2,6 +2,7 @@
 
 ## High Priority
 
+- [ ] Stop zoom in on Search on Safari
 - [ ] Dispatch error message to /user for invalid characters in search
 
 ## Medium Priority
