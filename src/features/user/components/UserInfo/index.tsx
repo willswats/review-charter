@@ -13,16 +13,13 @@ export const UserInfo = () => {
 
   return (
     <div className={styles["user-info"]}>
-      {bannerUrl !== null && bannerUrl.length > 0 && (
+      {bannerUrl !== null && (
         <Image
           className={styles["user-info__banner"]}
           src={bannerUrl}
           alt="Banner"
-          width={0}
-          height={0}
-          sizes="100vw"
-          placeholder="blur"
-          blurDataURL={bannerUrl}
+          width={2000}
+          height={2000}
         />
       )}
       <div className={styles["user-info__content"]}>
@@ -37,11 +34,8 @@ export const UserInfo = () => {
             className={styles["user-info__avatar"]}
             src={avatarUrl}
             alt="Avatar"
-            width={0}
-            height={0}
-            sizes="100vw"
-            placeholder="blur"
-            blurDataURL={avatarUrl}
+            width={150}
+            height={150}
           />
         )}
         <h1 className={styles["user-info__username"]}>{userName}</h1>
