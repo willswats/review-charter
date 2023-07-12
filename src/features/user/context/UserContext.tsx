@@ -8,16 +8,16 @@ import {
 
 import { State, UserActions, initialState, reducer } from "@/features/user";
 
-interface IUserContext {
+interface UserContext {
   state: State;
   dispatch: Dispatch<UserActions>;
 }
 
-interface IUserContextProvider {
+interface UserContextProvider {
   children: ReactNode;
 }
 
-const UserContext = createContext<IUserContext | null>(null);
+const UserContext = createContext<UserContext | null>(null);
 
 export const useUserContext = () => {
   const currentUserContext = useContext(UserContext);
@@ -31,7 +31,7 @@ export const useUserContext = () => {
   return currentUserContext;
 };
 
-export const UserContextProvider = ({ children }: IUserContextProvider) => {
+export const UserContextProvider = ({ children }: UserContextProvider) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
