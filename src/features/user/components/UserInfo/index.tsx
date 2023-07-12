@@ -18,8 +18,8 @@ export const UserInfo = () => {
           className={styles["user-info__banner"]}
           src={bannerUrl}
           alt="Banner"
-          width={2000}
-          height={2000}
+          width={1700}
+          height={330}
         />
       )}
       <div className={styles["user-info__content"]}>
@@ -34,8 +34,8 @@ export const UserInfo = () => {
             className={styles["user-info__avatar"]}
             src={avatarUrl}
             alt="Avatar"
-            width={150}
-            height={150}
+            width={230}
+            height={230}
           />
         )}
         <h1 className={styles["user-info__username"]}>{userName}</h1>
