@@ -20,6 +20,7 @@ export const UserInfo = () => {
           alt="Banner"
           width={1700}
           height={330}
+          priority={true}
         />
       )}
       <div className={styles["user-info__content"]}>
@@ -36,6 +37,7 @@ export const UserInfo = () => {
             alt="Avatar"
             width={230}
             height={230}
+            priority={true}
           />
         )}
         <h1 className={styles["user-info__username"]}>{userName}</h1>
