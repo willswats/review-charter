@@ -17,5 +17,4 @@
 
 ## Low Priority
 
-- [ ] Rename interfaces to be following the same naming conventions
 - [ ] Remove all `console.log()`
