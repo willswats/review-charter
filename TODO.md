@@ -16,5 +16,3 @@
 - [ ] Add footer
 
 ## Low Priority
-
-- [ ] Remove all `console.log()`
