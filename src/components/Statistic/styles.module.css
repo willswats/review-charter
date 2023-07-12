@@ -21,3 +21,14 @@
   color: #37a1d9;
   font-size: 2rem;
 }
+
+@media screen and (max-width: 768px) {
+  .statistic__svg svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .statistic__statistic {
+    font-size: 1.5rem;
+  }
+}

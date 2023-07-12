@@ -9,3 +9,10 @@
 .svg-link:hover svg path {
   fill: #37a1d9;
 }
+
+@media screen and (max-width: 768px) {
+  .svg-link svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
