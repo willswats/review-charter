@@ -1,0 +1,15 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 5px;
+}
+
+.footer a:hover {
+  color: #37a1d9;
+}
