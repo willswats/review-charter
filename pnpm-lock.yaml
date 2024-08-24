@@ -16,7 +16,7 @@ dependencies:
     version: 18.3.0
   chart.js:
     specifier: ^4.4.3
-    version: 4.4.3
+    version: 4.4.4
   eslint:
     specifier: 9.9.0
     version: 9.9.0
@@ -31,7 +31,7 @@ dependencies:
     version: 18.3.1
   react-chartjs-2:
     specifier: ^5.2.0
-    version: 5.2.0(chart.js@4.4.3)(react@18.3.1)
+    version: 5.2.0(chart.js@4.4.4)(react@18.3.1)
   react-dom:
     specifier: 18.3.1
     version: 18.3.1(react@18.3.1)
@@ -2178,8 +2178,8 @@ packages:
       supports-color: 7.2.0
     dev: false
 
-  /chart.js@4.4.3:
-    resolution: {integrity: sha512-qK1gkGSRYcJzqrrzdR6a+I0vQ4/R+SoODXyAjscQ/4mzuNzySaMCd+hyVxitSY1+L2fjPD1Gbn+ibNqRmwQeLw==}
+  /chart.js@4.4.4:
+    resolution: {integrity: sha512-emICKGBABnxhMjUjlYRR12PmOXhJ2eJjEHL2/dZlWjxRAZT1D8xplLFq5M0tMQK8ja+wBS/tuVEJB5C6r7VxJA==}
     engines: {pnpm: '>=8'}
     dependencies:
       '@kurkle/color': 0.3.2
@@ -3799,13 +3799,13 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: false
 
-  /react-chartjs-2@5.2.0(chart.js@4.4.3)(react@18.3.1):
+  /react-chartjs-2@5.2.0(chart.js@4.4.4)(react@18.3.1):
     resolution: {integrity: sha512-98iN5aguJyVSxp5U3CblRLH67J8gkfyGNbiK3c+l1QI/G4irHMPQw44aEPmjVag+YKTyQ260NcF82GTQ3bdscA==}
     peerDependencies:
       chart.js: ^4.1.1
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      chart.js: 4.4.3
+      chart.js: 4.4.4
       react: 18.3.1
     dev: false
 
