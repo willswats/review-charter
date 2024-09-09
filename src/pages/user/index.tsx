@@ -13,7 +13,7 @@ export default function UserHome() {
   return (
     <UserLayout>
       <div className={styles["user__instructions"]}>
-        Enter a username into the input to chart a user.
+        Enter a username into the input to chart a user (e.g. &apos;nazo&apos;).
       </div>
     </UserLayout>
   );
