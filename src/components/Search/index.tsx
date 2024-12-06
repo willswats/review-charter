@@ -1,8 +1,6 @@
 import { ChangeEvent, FormEvent, forwardRef } from "react";
 
-import { SvgButton } from "@/components/SvgButton";
-
-import SvgSearch from "public/assets/search-line.svg";
+import { ButtonSvg, SvgSearchLine } from "@/components";
 
 import styles from "./styles.module.css";
 
@@ -24,10 +22,10 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           onChange={changeHandler}
           placeholder={placeHolder}
         />
-        <SvgButton svg={<SvgSearch />} />
+        <ButtonSvg svg={<SvgSearchLine />} />
       </form>
     );
-  }
+  },
 );
 
 Search.displayName = "Search";

@@ -1,4 +1,4 @@
-import { Statistic } from "@/components";
+import { Statistic, SvgTv, SvgPlayCircle, SvgCalendarLine } from "@/components";
 import {
   PieChartStatuses,
   PieChartFormats,
@@ -7,10 +7,6 @@ import {
   LineChartReleaseYears,
   useUserContext,
 } from "@/features/user";
-
-import SvgTv from "public/assets/tv.svg";
-import SvgPlay from "public/assets/play-circle.svg";
-import SvgCalendar from "public/assets/calendar-line.svg";
 
 import styles from "./styles.module.css";
 
@@ -32,14 +28,14 @@ export const UserAnime = () => {
           <Statistic
             statistic={anime.episodesWatched}
             text="Episodes Watched"
-            svg={<SvgPlay />}
+            svg={<SvgPlayCircle />}
           />
         )}
         {parseFloat(anime.daysWatched) >= 0 && (
           <Statistic
             statistic={anime.daysWatched}
             text="Days Watched"
-            svg={<SvgCalendar />}
+            svg={<SvgCalendarLine />}
           />
         )}
       </div>

@@ -1,15 +1,13 @@
-import { SvgLink } from "@/components/SvgLink";
-
-import SvgGitHub from "public/assets/github-fill.svg";
+import { LinkSvg, SvgGitHubFill } from "@/components";
 
 import styles from "./styles.module.css";
 
 export const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <SvgLink
+      <LinkSvg
         href="https://github.com/willswats/review-charter"
-        svg={<SvgGitHub />}
+        svg={<SvgGitHubFill />}
       />
       <a
         href="https://williamwatson.dev"
