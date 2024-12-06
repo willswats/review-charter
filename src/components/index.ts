@@ -1,6 +1,7 @@
 export * from "./LinkButton";
 export * from "./ModeButton";
-export * from "./SvgButton";
+export * from "./ButtonSvg";
+export * from "./LinkSvg";
 export * from "./NavBar";
 export * from "./NavBarLink";
 export * from "./Search";
@@ -10,3 +11,15 @@ export * from "./LineChart";
 export * from "./LoadingIndicator";
 export * from "./Statistic";
 export * from "./Footer";
+
+export * from "./Svg/SvgBookClosed";
+export * from "./Svg/SvgBookmark";
+export * from "./Svg/SvgBookOpen";
+export * from "./Svg/SvgCalendarLine";
+export * from "./Svg/SvgEraserLine";
+export * from "./Svg/SvgGitHubFill";
+export * from "./Svg/SvgLinkRound";
+export * from "./Svg/SvgPlayCircle";
+export * from "./Svg/SvgRefresh";
+export * from "./Svg/SvgSearchLine";
+export * from "./Svg/SvgTv";

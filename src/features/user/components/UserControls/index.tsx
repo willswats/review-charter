@@ -1,15 +1,12 @@
 import { ChangeEvent, FormEvent, useState, useRef } from "react";
 import { useRouter } from "next/router";
 
-import { Search, SvgButton } from "@/components";
+import { Search, ButtonSvg, SvgEraserLine, SvgRefresh } from "@/components";
 import {
   UserModeButtons,
   resetUserData,
   useUserContext,
 } from "@/features/user";
-
-import SvgEraser from "public/assets/eraser-line.svg";
-import SvgRefresh from "public/assets/refresh.svg";
 
 import styles from "./styles.module.css";
 
@@ -70,13 +67,13 @@ export const UserControls = () => {
           className={styles["user__controls-eraser-button"]}
           onClick={eraserButtonClickHandler}
         >
-          <SvgButton svg={<SvgEraser />} />
+          <ButtonSvg svg={<SvgEraserLine />} />
         </span>
         <span
           className={styles["user__controls-refresh-button"]}
           onClick={refreshButtonClickHandler}
         >
-          <SvgButton svg={<SvgRefresh />} />
+          <ButtonSvg svg={<SvgRefresh />} />
         </span>
       </div>
     </div>

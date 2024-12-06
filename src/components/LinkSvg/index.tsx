@@ -1,10 +1,10 @@
 import styles from "./styles.module.css";
 
-interface SvgLinkProps {
+interface LinkSvgProps {
   svg: JSX.Element;
   href: string;
 }
-export const SvgLink = ({ svg, href }: SvgLinkProps) => {
+export const LinkSvg = ({ svg, href }: LinkSvgProps) => {
   return (
     <a
       className={styles["svg-link"]}

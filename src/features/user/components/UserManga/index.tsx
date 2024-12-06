@@ -1,4 +1,9 @@
-import { Statistic } from "@/components";
+import {
+  Statistic,
+  SvgBookClosed,
+  SvgBookmark,
+  SvgBookOpen,
+} from "@/components";
 import {
   PieChartStatuses,
   PieChartFormats,
@@ -9,10 +14,6 @@ import {
 } from "@/features/user";
 
 import styles from "./styles.module.css";
-
-import SvgBookClosed from "public/assets/book-closed.svg";
-import SvgBookmark from "public/assets/bookmark.svg";
-import SvgBookOpen from "public/assets/book-open.svg";
 
 export const UserManga = () => {
   const { state } = useUserContext();
