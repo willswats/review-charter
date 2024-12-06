@@ -24,7 +24,7 @@ export const UserLayout = ({ children }: LayoutProps) => {
     titleStart = `${userName}'s Stats`;
   }
 
-  let title = `${titleStart} ${titleEnd}`;
+  const title = `${titleStart} ${titleEnd}`;
 
   return (
     <>

@@ -19,7 +19,7 @@ export default function User() {
   const { mode, loading, errorMessage } = state;
   const { userName, anime, manga } = state.user;
 
-  let userUrl = router.query.user;
+  const userUrl = router.query.user;
 
   useEffect(() => {
     if (

@@ -25,7 +25,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 export const LineChart = ({ label, labelArray, dataArray }: LineChartProps) => {
@@ -51,9 +51,11 @@ export const LineChart = ({ label, labelArray, dataArray }: LineChartProps) => {
     },
     plugins: {
       legend: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onHover: (event: any) => {
           event.native.target.style.cursor = "pointer";
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onLeave: (event: any) => {
           event.native.target.style.cursor = "default";
         },

@@ -17,7 +17,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 interface BarChartProps {
@@ -49,9 +49,11 @@ export const BarChart = ({ label, labelArray, dataArray }: BarChartProps) => {
     },
     plugins: {
       legend: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onHover: (event: any) => {
           event.native.target.style.cursor = "pointer";
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onLeave: (event: any) => {
           event.native.target.style.cursor = "default";
         },

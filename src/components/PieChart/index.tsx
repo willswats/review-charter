@@ -42,9 +42,11 @@ export const PieChart = ({ label, labelArray, dataArray }: PieChartProps) => {
   const options = {
     plugins: {
       legend: {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onHover: (event: any) => {
           event.native.target.style.cursor = "pointer";
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onLeave: (event: any) => {
           event.native.target.style.cursor = "default";
         },
